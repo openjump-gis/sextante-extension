@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.qcount">
+	<description>
+		Indices for quadrat counts of sites lists.
+	</description>
+	<keywords>
+		vectorial, estadísticas
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Vectoria de puntos que define los puntos de muestra
+		</description>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Output quadrant centres, number of points is written as category
+		</description>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="n" type="integer" required="yes" multiple="no">
+		<description>
+			Number of quadrats
+		</description>
+	</parameter>
+	<parameter name="r" type="float" required="yes" multiple="no">
+		<description>
+			Quadrat radius
+		</description>
+	</parameter>
+	<flag name="g">
+		<description>
+			Imprimir resultados en estilo de script de consola
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			Quiet
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

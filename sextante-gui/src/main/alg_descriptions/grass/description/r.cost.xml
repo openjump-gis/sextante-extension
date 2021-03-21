@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.cost">
+	<description>
+		Creates a raster map showing the cumulative cost of moving between different geographic locations on an input raster map whose cell category values represent cost.
+	</description>
+	<keywords>
+		ráster, superficie de coste, coste acumulado
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster que contiene información de coste de celdas de cuadrícula
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="start_points" type="string" required="no" multiple="no">
+		<description>
+			Name of starting vector points map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Start
+		</guisection>
+	</parameter>
+	<parameter name="stop_points" type="string" required="no" multiple="no">
+		<description>
+			Name of stop vector points map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Stop
+		</guisection>
+	</parameter>
+	<parameter name="start_rast" type="string" required="no" multiple="no">
+		<description>
+			Name of starting raster points map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Start
+		</guisection>
+	</parameter>
+	<parameter name="coordinate" type="string" required="no" multiple="yes">
+		<description>
+			Map grid coordinates of a starting point (E,N)
+		</description>
+		<keydesc>
+			<item order="1">x</item>
+			<item order="2">y</item>
+		</keydesc>
+		<guisection>
+			Start
+		</guisection>
+	</parameter>
+	<parameter name="stop_coordinate" type="string" required="no" multiple="yes">
+		<description>
+			Map grid coordinates of a stopping point (E,N)
+		</description>
+		<keydesc>
+			<item order="1">x</item>
+			<item order="2">y</item>
+		</keydesc>
+		<guisection>
+			Stop
+		</guisection>
+	</parameter>
+	<parameter name="max_cost" type="integer" required="no" multiple="no">
+		<description>
+			Optional maximum cumulative cost
+		</description>
+		<keydesc>
+			<item order="1">cost</item>
+		</keydesc>
+		<default>
+			0
+		</default>
+	</parameter>
+	<parameter name="null_cost" type="float" required="no" multiple="no">
+		<description>
+			Coste asignado a celdas nulas. Por defecto, las celdas nulas son excluidas
+		</description>
+		<keydesc>
+			<item order="1">null cost</item>
+		</keydesc>
+	</parameter>
+	<parameter name="percent_memory" type="integer" required="no" multiple="no">
+		<description>
+			Porcentaje de mapa a mantener en memoria
+		</description>
+		<keydesc>
+			<item order="1">percent memory</item>
+		</keydesc>
+		<default>
+			100
+		</default>
+	</parameter>
+	<flag name="k">
+		<description>
+			Usar el 'Movimiento de caballero'; más lento, pero más preciso.
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			Keep null values in output raster map
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Comenzar con valores en mapa ráster
+		</description>
+ 		<guisection>
+			Start
+		</guisection>
+	</flag>
+	<flag name="v">
+		<description>
+			Ejecutar con comentarios
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

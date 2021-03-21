@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.select">
+	<description>
+		Selects features from vector map (A) by features from other vector map (B).
+	</description>
+	<keywords>
+		vector, query
+	</keywords>
+	<parameter name="ainput" type="string" required="yes" multiple="no">
+		<description>
+			Name of input vector map (A)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="atype" type="string" required="no" multiple="yes">
+		<label>
+			Feature type (vector map A)
+		</label>
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			point,line,boundary,centroid,area
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="alayer" type="integer" required="no" multiple="no">
+		<label>
+			Layer number (vector map A)
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="binput" type="string" required="yes" multiple="no">
+		<description>
+			Name of input vector map (B)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="btype" type="string" required="no" multiple="yes">
+		<label>
+			Feature type (vector map B)
+		</label>
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			point,line,boundary,centroid,area
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="blayer" type="integer" required="no" multiple="no">
+		<label>
+			Layer number (vector map B)
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="operator" type="string" required="no" multiple="no">
+		<label>
+			Operator defines required relation between features
+		</label>
+		<description>
+			A feature is written to output if the result of operation 'ainput operator binput' is true. An input feature is considered to be true, if category of given layer is defined.
+		</description>
+		<default>
+			overlap
+		</default>
+		<values>
+			<value>
+				<name>overlap</name>
+				<description>features partially or completely overlap</description>
+			</value>
+		</values>
+	</parameter>
+	<flag name="t">
+		<description>
+			No crear la tabla de atributos
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Invertir selección
+		</description>
+ 		<guisection>
+			Selection
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

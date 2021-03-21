@@ -1,0 +1,16 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Analytical Hillshading
+ 2	- Potential Incoming Solar Radiation
+ 3	- Sky View Factor
+ 4	- Topographic Correction
+
+type -h or --help for further information

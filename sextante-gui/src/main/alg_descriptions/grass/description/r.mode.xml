@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.mode">
+	<description>
+		Encuentra el modo de los valores en un para de cobertura dentro de áreas con los mismos valores de categoría asignados en un mapa base especificado por el usuario.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="base" type="string" required="yes" multiple="no">
+		<description>
+			Mapa base por clasificar
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="cover" type="string" required="yes" multiple="no">
+		<description>
+			Mapa de cobertura
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Mapa de salida
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

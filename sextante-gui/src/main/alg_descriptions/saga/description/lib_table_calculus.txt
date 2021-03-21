@@ -1,0 +1,20 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Function Fit
+ 1	- Table calculator
+ 2	- Table calculator for shapes
+ 3	- Trend for Table Data
+ 4	- Trend for Shapes Data
+ 5	- Running Average
+ 6	- Cluster Analysis
+ 7	- Principle Components Analysis
+
+type -h or --help for further information

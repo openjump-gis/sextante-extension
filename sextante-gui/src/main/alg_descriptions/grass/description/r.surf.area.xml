@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.surf.area">
+	<description>
+		Estimación del área para rásters.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Archivo ráster para superficie
+		</description>
+		<gisprompt age="old" element="cell" prompt="Raster" />
+	</parameter>
+	<parameter name="vscale" type="float" required="no" multiple="no">
+		<description>
+			Escala vertical
+		</description>
+	</parameter>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

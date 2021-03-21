@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.arc">
+	<description>
+		Convierte una capa de mapa ráster en un archivo ARCGRID de ESRI.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre de una capa de mapa ráster existente
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre de un mapa ARC-GID de salida (usar out=- para stdout)
+		</description>
+		<gisprompt age="new_file" element="file" prompt="output" />
+	</parameter>
+	<parameter name="dp" type="integer" required="no" multiple="no">
+		<description>
+			Número de posiciones decimales
+		</description>
+		<default>
+			8
+		</default>
+	</parameter>
+	<flag name="h">
+		<description>
+			Suprimir la impresión de información de cabecera
+		</description>
+	</flag>
+	<flag name="1">
+		<description>
+			Listar un vacío por línea en vez de fila completa
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

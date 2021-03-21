@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.resamp.rst">
+	<description>
+		Reinterpolates and optionally computes topographic analysis from input raster map to a new raster map (possibly with different resolution) using regularized spline with tension and smoothing.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="ew_res" type="float" required="yes" multiple="no">
+		<description>
+			Resolución Este-Oeste deseada
+		</description>
+	</parameter>
+	<parameter name="ns_res" type="float" required="yes" multiple="no">
+		<description>
+			Resolución Norte-Sur deseada
+		</description>
+	</parameter>
+	<parameter name="elev" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa de archivo Z (altura)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="slope" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa de pendientes (o fx)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="aspect" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa de orientación (o fy)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="pcurv" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa de curvatura de perfil (o fxx)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="tcurv" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa de curvatura tangencial (o fyy)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="mcurv" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa de curvatura media (o fxy)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="smooth" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster que contiene suavizado
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="maskmap" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster a utilizar como máscara
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="overlap" type="integer" required="no" multiple="no">
+		<description>
+			Solapamiento de filas/columnas para segmentación
+		</description>
+		<default>
+			3
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="zmult" type="float" required="no" multiple="no">
+		<description>
+			Multiplicador para valores Z
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="tension" type="float" required="no" multiple="no">
+		<description>
+			Spline tension value
+		</description>
+		<default>
+			40.
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="theta" type="float" required="no" multiple="no">
+		<description>
+			Ángulo de anisotropía (en grados)
+		</description>
+		<guisection>
+			Anisotropía
+		</guisection>
+	</parameter>
+	<parameter name="scalex" type="float" required="no" multiple="no">
+		<description>
+			Factor de escala de anisotropía
+		</description>
+		<guisection>
+			Anisotropía
+		</guisection>
+	</parameter>
+	<flag name="t">
+		<description>
+			Usar tensión independiente de dnorm
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			Producir derivadas parciales en vez de parámetros topográficos
+		</description>
+ 		<guisection>
+			Opciones de salida
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

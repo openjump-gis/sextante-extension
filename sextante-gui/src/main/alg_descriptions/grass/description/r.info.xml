@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.info">
+	<description>
+		Muestra información básica sobre una capa de mapa ráster.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="r">
+		<description>
+			Imprimir rango solamente
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Imprimir sólo resolución de mapa ráster (resolución-NS, resolución-EW)
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			Imprimir sólo el tipo de mapa ráster
+		</description>
+	</flag>
+	<flag name="g">
+		<description>
+			Imprimir sólo la región del mapa
+		</description>
+	</flag>
+	<flag name="h">
+		<description>
+			Imprimir histórico del ráster en vez de información
+		</description>
+	</flag>
+	<flag name="u">
+		<description>
+			Imprimir sólo unidades de datos del mapa ráster
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			Imprimir sólo datum vertical del mapa ráster
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Imprimir sólo el título del mapa
+		</description>
+	</flag>
+	<flag name="p">
+		<description>
+			Imprimir sólo la marca de tiempo del mapa ráster (día.mes.año hora:minutos:segundos)
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

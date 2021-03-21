@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.walk">
+	<description>
+		Produce una capa de mapa ráster que muestra el coste anisotrópico acumulado de moverse entre diferentes localizaciones geográficas en una capa de mapa ráster de elevación de entrada cuyos valores de categoría de celda representan elevación combinada con una capa de mapa ráster de entrada cuyos valores de celda representan coste de fricción.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="elevation" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster de elevación de entrada
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="friction" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster de entrada que contiene costes de fricción
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster que contendrá los resultados
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="start_points" type="string" required="no" multiple="no">
+		<description>
+			Mapa vectorial de puntos inicial
+		</description>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="stop_points" type="string" required="no" multiple="no">
+		<description>
+			Mapa vectorial de puntos final
+		</description>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="coordinate" type="string" required="no" multiple="yes">
+		<description>
+			Coordenadas de cuadrícula E y N del mapa de un punto de inicio (E,N)
+		</description>
+		<keydesc>
+			<item order="1">x</item>
+			<item order="2">y</item>
+		</keydesc>
+	</parameter>
+	<parameter name="stop_coordinate" type="string" required="no" multiple="yes">
+		<description>
+			Coordenadas de cuadrícula E y N del mapa de un punto de final (E,N)
+		</description>
+		<keydesc>
+			<item order="1">x</item>
+			<item order="2">y</item>
+		</keydesc>
+	</parameter>
+	<parameter name="max_cost" type="integer" required="no" multiple="no">
+		<description>
+			Un valor de coste acumulativo máximo opcional
+		</description>
+		<default>
+			0
+		</default>
+	</parameter>
+	<parameter name="null_cost" type="float" required="no" multiple="no">
+		<description>
+			Coste asignado a celdas nulas. Por defecto, las celdas nulas son excluidas
+		</description>
+	</parameter>
+	<parameter name="percent_memory" type="integer" required="no" multiple="no">
+		<description>
+			Porcentaje de mapa a mantener en memoria
+		</description>
+		<default>
+			100
+		</default>
+	</parameter>
+	<parameter name="nseg" type="integer" required="no" multiple="no">
+		<description>
+			Número del segmento a crear (biblioteca de segmento)
+		</description>
+		<default>
+			4
+		</default>
+	</parameter>
+	<parameter name="walk_coeff" type="float" required="no" multiple="no">
+		<description>
+			Coeficientes para los parámetros a,b,c,d de la fórmula de energía de desplazamiento
+		</description>
+		<keydesc>
+			<item order="1">a</item>
+			<item order="2">b</item>
+			<item order="3">c</item>
+			<item order="4">d</item>
+		</keydesc>
+		<default>
+			0.72,6.0,1.9998,-1.9998
+		</default>
+	</parameter>
+	<parameter name="lambda" type="float" required="no" multiple="no">
+		<description>
+			Coeficientes lambda para combinar energía de desplazamiento y coste de fricción
+		</description>
+		<default>
+			1.0
+		</default>
+	</parameter>
+	<parameter name="slope_factor" type="float" required="no" multiple="no">
+		<description>
+			El factor de pendiente determina el coste energético del viaje por paso de altura
+		</description>
+		<default>
+			-0.2125
+		</default>
+	</parameter>
+	<flag name="k">
+		<description>
+			Usar el 'Movimiento de caballero'; más lento, pero más preciso.
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			Conservar valores nulos en el mapa de entrada
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Comenzar con valores en mapa ráster
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

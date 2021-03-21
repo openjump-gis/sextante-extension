@@ -1,0 +1,26 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- 01: My first module
+ 1	- 02: Pixel by pixel operations with two grids
+ 2	- 03: Direct neighbours
+ 3	- 04: Direct neighbours - more...
+ 4	- 05: Direct neighbours - slope and aspect
+ 5	- 06: Extended neighbourhoods
+ 6	- 07: Extended neighbourhoods - catchment areas (trace flow)
+ 7	- 08: Extended neighbourhoods - catchment areas (parallel)
+ 8	- 09: Extended neighbourhoods - catchment areas (recursive)
+ 9	- 10: Dynamic Simulation - Life
+ 10	- 11: Dynamic Simulation - Soil Nitrogen Dynamics
+ 11	- 12: First steps with shapes
+ 12	- 13: Reprojecting a shapes layer
+ 13	- 14: Vectorising channel lines
+
+type -h or --help for further information

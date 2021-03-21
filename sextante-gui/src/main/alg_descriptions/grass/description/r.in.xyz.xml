@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.in.xyz">
+	<description>
+		Crear un mapa ráster a partir de un ensamblaje de muchas coordenadas usando estadísticas univariantes.
+	</description>
+	<keywords>
+		ráster, importar, LIDAR
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Archivo ASCII que contiene los datos de entrada (o "-" para leer de stdin)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_file" element="file" prompt="input" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Estadística a utilizar para los valores ráster
+		</description>
+		<default>
+			mean
+		</default>
+		<values>
+			<value>
+				<name>n</name>
+			</value>
+			<value>
+				<name>min</name>
+			</value>
+			<value>
+				<name>max</name>
+			</value>
+			<value>
+				<name>range</name>
+			</value>
+			<value>
+				<name>sum</name>
+			</value>
+			<value>
+				<name>mean</name>
+			</value>
+			<value>
+				<name>stddev</name>
+			</value>
+			<value>
+				<name>variance</name>
+			</value>
+			<value>
+				<name>coeff_var</name>
+			</value>
+			<value>
+				<name>median</name>
+			</value>
+			<value>
+				<name>percentile</name>
+			</value>
+			<value>
+				<name>skewness</name>
+			</value>
+			<value>
+				<name>trimmean</name>
+			</value>
+		</values>
+		<guisection>
+			Statistic
+		</guisection>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Tipo de almacenamiento para el mapa ráster resultante
+		</description>
+		<default>
+			FCELL
+		</default>
+		<values>
+			<value>
+				<name>CELL</name>
+			</value>
+			<value>
+				<name>FCELL</name>
+			</value>
+			<value>
+				<name>DCELL</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="fs" type="string" required="no" multiple="no">
+		<description>
+			Separador de campos.
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<default>
+			|
+		</default>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="x" type="integer" required="no" multiple="no">
+		<description>
+			Número de columna de las coordenadas X en el archivo de entrada (la primera columna es 1)
+		</description>
+		<default>
+			1
+		</default>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="y" type="integer" required="no" multiple="no">
+		<description>
+			Número de columna de las coordenadas Y en el archivo de entrada
+		</description>
+		<default>
+			2
+		</default>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="z" type="integer" required="no" multiple="no">
+		<description>
+			Número de columna de los valores de datos en el archivo de entrada
+		</description>
+		<default>
+			3
+		</default>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="zrange" type="float" required="no" multiple="no">
+		<description>
+			Rango de filtrado para los datos Z (mínimo, máximo)
+		</description>
+		<keydesc>
+			<item order="1">min</item>
+			<item order="2">max</item>
+		</keydesc>
+	</parameter>
+	<parameter name="zscale" type="float" required="no" multiple="no">
+		<description>
+			Scale to apply to z data
+		</description>
+		<default>
+			1.0
+		</default>
+	</parameter>
+	<parameter name="percent" type="integer" required="no" multiple="no">
+		<description>
+			Porcentaje de mapa a mantener en memoria
+		</description>
+		<default>
+			100
+		</default>
+		<values>
+			<value>
+				<name>1-100</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="pth" type="integer" required="no" multiple="no">
+		<description>
+			pth percentile of the values
+		</description>
+		<values>
+			<value>
+				<name>1-100</name>
+			</value>
+		</values>
+		<guisection>
+			Statistic
+		</guisection>
+	</parameter>
+	<parameter name="trim" type="float" required="no" multiple="no">
+		<description>
+			Descartar &lt;trim&gt; porcentaje de las menores y &lt;trim&gt; porcentaje de las mayores observaciones
+		</description>
+		<values>
+			<value>
+				<name>0-50</name>
+			</value>
+		</values>
+		<guisection>
+			Statistic
+		</guisection>
+	</parameter>
+	<flag name="s">
+		<description>
+			Escanear archivo de datos para la extensión y luego salir
+		</description>
+	</flag>
+	<flag name="g">
+		<description>
+			En modo de escaneo, imprimir usando estilo de script de consola
+		</description>
+	</flag>
+	<flag name="i">
+		<description>
+			Ignore broken lines
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

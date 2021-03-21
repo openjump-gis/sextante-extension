@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.surf.rst">
+	<description>
+		Spatial approximation and topographic analysis from given point or isoline data in vector format to floating point raster format using regularized spline with tension.
+	</description>
+	<keywords>
+		vectorial
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Valor de campo. Si se establece a 0, se usarán las coordenadas Z (sólo vectoriales 3D)
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer_zero" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			Condiciones "WHERE", de la instrucción SQL sin la palabra clave "where".
+		</label>
+		<description>
+			Ejemplo: salario &lt; 1000 y habitantes &gt;=10000.
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="elev" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa ráster de superficie (elevación)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="slope" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa ráster de pendiente
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="aspect" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa ráster de orientación
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="pcurv" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa ráster de curvatura de perfil
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="tcurv" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa ráster de curvatura tangencial
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="mcurv" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa ráster de curvatura media
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="devi" type="string" required="no" multiple="no">
+		<description>
+			Producir archivo de puntos vectorial de desviaciones
+		</description>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="cvdev" type="string" required="no" multiple="no">
+		<description>
+			Producir archivo de puntos vectorial de errores de validación cruzada
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="treefile" type="string" required="no" multiple="no">
+		<description>
+			Output vector map showing quadtree segmentation
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="overfile" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa vectorial que muestre ventanas solapadas
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Outputs
+		</guisection>
+	</parameter>
+	<parameter name="maskmap" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster usado como máscara
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="zcolumn" type="string" required="no" multiple="no">
+		<description>
+			Nombre de la columna de atributos con valores a usar para la aproximación (si capa&gt;0)
+		</description>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="tension" type="float" required="no" multiple="no">
+		<description>
+			Parámetro tensión
+		</description>
+		<default>
+			40.
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="smooth" type="float" required="no" multiple="no">
+		<description>
+			Parámetro suavizado
+		</description>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="scolumn" type="string" required="no" multiple="no">
+		<description>
+			Nombre de la columna de atributos con los parámetros de suavizado
+		</description>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="segmax" type="integer" required="no" multiple="no">
+		<description>
+			Número máximo de puntos en un segmento
+		</description>
+		<default>
+			40
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="npmin" type="integer" required="no" multiple="no">
+		<description>
+			Número mínimo de puntos para aproximación en un segmento (&gt;segmax)
+		</description>
+		<default>
+			300
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="dmin" type="float" required="no" multiple="no">
+		<description>
+			Distancia mínima entre puntos (para eliminar puntos casi indénticos)
+		</description>
+		<default>
+			0.500000
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="dmax" type="float" required="no" multiple="no">
+		<description>
+			Distancia mínima entre puntos en isolíneas (para insertar puntos adicionales)
+		</description>
+		<default>
+			2.500000
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="zmult" type="float" required="no" multiple="no">
+		<description>
+			Factor de conversión para valores usados para aproximación
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="theta" type="float" required="no" multiple="no">
+		<description>
+			Ángulo de anisotropía (en grados en sentido horario desde el Este)
+		</description>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="scalex" type="float" required="no" multiple="no">
+		<description>
+			Factor de escala de anisotropía
+		</description>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<flag name="c">
+		<description>
+			Realiza un procedimiento de validación cruzada sin aproximación ráster
+		</description>
+ 		<guisection>
+			Parámetros
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			Usar tensión dependiente de la escala
+		</description>
+ 		<guisection>
+			Parámetros
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Producir derivadas parciales en vez de parámetros topográficos
+		</description>
+ 		<guisection>
+			Outputs
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

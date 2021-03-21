@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.extract">
+	<description>
+		Selecciona objetos vectoriales de un vectorial existente y crea un nuevo mapa que contiene sólo los objetos seleccionados.
+	</description>
+	<keywords>
+		vector, extract
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<label>
+			Types to be extracted
+		</label>
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			point,line,boundary,centroid,area,face
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+			<value>
+				<name>face</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Layer number (if -1, all features in all layers of given type are extracted)
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer_all" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="list" type="string" required="no" multiple="no">
+		<label>
+			Valores de la categorías.
+		</label>
+		<description>
+			Ejemplo: 1,3,7-9,13.
+		</description>
+		<keydesc>
+			<item order="1">range</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			Condiciones "WHERE", de la instrucción SQL sin la palabra clave "where".
+		</label>
+		<description>
+			Ejemplo: salario &lt; 1000 y habitantes &gt;=10000.
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="file" type="string" required="no" multiple="no">
+		<label>
+			Archivo de texto de entrada con números de categoría/intervalo de números a extraer
+		</label>
+		<description>
+			Si se da '-' lee de la entrada estándar
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_file" element="file" prompt="input" />
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="random" type="integer" required="no" multiple="no">
+		<label>
+			Number of random categories matching vector objects to extract
+		</label>
+		<description>
+			Number must be smaller than unique cat count in layer
+		</description>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="new" type="integer" required="no" multiple="no">
+		<label>
+			Introduzca -1 para mantener las categorías originales o el NUEVO valor de categoría deseado
+		</label>
+		<description>
+			Si nuevo &gt;=0, la tabla no se copia
+		</description>
+		<default>
+			-1
+		</default>
+	</parameter>
+	<flag name="d">
+		<description>
+			Disolver contornos comunes (por omisión no)
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			No copiar tabla (ver también el parámetro 'nuevo')
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Invertir selección
+		</description>
+ 		<guisection>
+			Selection
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

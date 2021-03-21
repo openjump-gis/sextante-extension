@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.info">
+	<description>
+		Outputs basic information about a user-specified vector map.
+	</description>
+	<keywords>
+		vector, metadata, history
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<flag name="h">
+		<description>
+			Imprimir histórico del vectorial en vez de información
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Imprimir tipos/nombre de columnas de tabla para la capa especificada, en vez de información
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Imprimir sólo la región del mapa
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="m">
+		<description>
+			Imprimir sólo el título del mapa
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			Imprimir sólo información de topología
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.distance">
+	<description>
+		Finds the nearest element in vector map 'to' for elements in vector map 'from'.
+	</description>
+	<keywords>
+		vectorial, base de datos, tabla de atributos
+	</keywords>
+	<parameter name="from" type="string" required="yes" multiple="no">
+		<description>
+			Name of existing vector map (from)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			From
+		</guisection>
+	</parameter>
+	<parameter name="to" type="string" required="yes" multiple="no">
+		<description>
+			Name of existing vector map (to)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			To
+		</guisection>
+	</parameter>
+	<parameter name="from_type" type="string" required="no" multiple="yes">
+		<label>
+			Feature type (from)
+		</label>
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			point
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+		</values>
+		<guisection>
+			From
+		</guisection>
+	</parameter>
+	<parameter name="to_type" type="string" required="no" multiple="yes">
+		<label>
+			Feature type (to)
+		</label>
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			point,line,area
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+		<guisection>
+			To
+		</guisection>
+	</parameter>
+	<parameter name="from_layer" type="integer" required="no" multiple="no">
+		<label>
+			Layer number (from)
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			From
+		</guisection>
+	</parameter>
+	<parameter name="to_layer" type="integer" required="no" multiple="no">
+		<label>
+			Layer number (to)
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			To
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida que contiene líneas que conectan los elementos más cercanos
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="dmax" type="float" required="no" multiple="no">
+		<description>
+			Distancia máxima o -1 para sin límite
+		</description>
+		<default>
+			-1
+		</default>
+	</parameter>
+	<parameter name="dmin" type="float" required="no" multiple="no">
+		<description>
+			Minimum distance or -1 for no limit
+		</description>
+		<default>
+			-1
+		</default>
+	</parameter>
+	<parameter name="upload" type="string" required="yes" multiple="yes">
+		<description>
+			Valores que describen la relación entre los dos elementos más próximos
+		</description>
+		<values>
+			<value>
+				<name>cat</name>
+				<description>category of the nearest feature</description>
+			</value>
+			<value>
+				<name>dist</name>
+				<description>minimum distance to nearest feature</description>
+			</value>
+			<value>
+				<name>to_x</name>
+				<description>x coordinate of the nearest point on 'to' feature</description>
+			</value>
+			<value>
+				<name>to_y</name>
+				<description>y coordinate of the nearest point on 'to' feature</description>
+			</value>
+			<value>
+				<name>to_along</name>
+				<description>distance between points/centroids in 'from' map and the linear feature's start point in 'to' map, along this linear feature</description>
+			</value>
+			<value>
+				<name>to_angle</name>
+				<description>angle between the linear feature in 'to' map and the positive x axis, at the location of point/centroid in 'from' map, counterclockwise, in radians, which is between -PI and PI inclusive</description>
+			</value>
+			<value>
+				<name>to_attr</name>
+				<description>attribute of nearest feature given by to_column option</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="column" type="string" required="yes" multiple="yes">
+		<description>
+			Nombre(s) de columna donde se cargarán los valores especificados por la opción 'upload'
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_dbcolumn" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Desde_mapa
+		</guisection>
+	</parameter>
+	<parameter name="to_column" type="string" required="no" multiple="no">
+		<description>
+			Nombre de la columna del elemento más cercano (usada con upload=to_attr)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_dbcolumn" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			To
+		</guisection>
+	</parameter>
+	<parameter name="table" type="string" required="no" multiple="no">
+		<description>
+			Nombre de la tabla creada para la salida cuando se usa la opción distancia a todos
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new_dbtable" element="dbtable" prompt="dbtable" />
+	</parameter>
+	<flag name="p">
+		<label>
+			Imprimir la salida a stdout, no actualizar tabla de atributos
+		</label>
+		<description>
+			La primera columna es siempre la categoría del elemento 'desde' llamada from_cat
+		</description>
+	</flag>
+	<flag name="a">
+		<label>
+			Calcular distancias a todos los elementos dentro del umbral
+		</label>
+		<description>
+			La salida se escribe a stdout pero puede se puede cargar a una nueva tabla creada por este módulo. Las categorías 'desde' pueden ser múltiples.
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

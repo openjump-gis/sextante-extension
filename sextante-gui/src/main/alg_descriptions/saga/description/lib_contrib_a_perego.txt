@@ -1,0 +1,20 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Average With Thereshold 1
+ 1	- Average With Thereshold 2
+ 2	- Average With Thereshold 3
+ 3	- Average With Mask 1
+ 4	- Average With Mask 2
+ 5	- Destriping 1
+ 6	- Destriping 2
+ 7	- Directional Average 1
+
+type -h or --help for further information

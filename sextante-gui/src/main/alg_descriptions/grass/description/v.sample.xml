@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.sample">
+	<description>
+		Muestrear un mapa ráster en localizaciones de puntos vectoriales.
+	</description>
+	<keywords>
+		vectorial
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Mapa vectorial que define los puntos de muestreo
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="column" type="string" required="yes" multiple="no">
+		<description>
+			Columna de atributos del mapa vectorial a usar para comparación
+		</description>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Mapa vectorial para guardar las diferencias
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="raster" type="string" required="yes" multiple="no">
+		<description>
+			Mapa ráster a muestrear
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="z" type="float" required="no" multiple="no">
+		<description>
+			Opción factor de escala para valores leídos de un mapa ráster. Los valores muestrados se multiplicarán por este factor
+		</description>
+		<default>
+			1.0
+		</default>
+	</parameter>
+	<flag name="b">
+		<description>
+			Interpolación bilineal (lo predeterminado es el vecino más próximo)
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			Cubic convolution interpolation (default is nearest neighbor)
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			Silencioso
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.topmodel">
+	<description>
+		Simula TOPMODEL que es un modelo hidrológico basado físicamente.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="basin" type="string" required="no" multiple="no">
+		<description>
+			(i)   Mapa de cuenca creado por r.water.outlet (MÁSCARA)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="elevation" type="string" required="no" multiple="no">
+		<description>
+			(E)   Mapa de elevación
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="depressionless" type="string" required="no" multiple="no">
+		<description>
+			(S)   Mapa de elevación sin depresiones
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="direction" type="string" required="no" multiple="no">
+		<description>
+			(S)   Mapa de dirección para mapa de elevación sin depresiones
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="belevation" type="string" required="no" multiple="no">
+		<description>
+			(S/E) Mapa de elevación de cuenca (MÁSCARA aplicada)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="topidx" type="string" required="no" multiple="no">
+		<description>
+			(S)   Mapa ln(a/tanB) de índice topográfico (MÁSCARA aplicada)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="nidxclass" type="integer" required="no" multiple="no">
+		<description>
+			(E)   Número de clases de índice topográfico
+		</description>
+		<default>
+			30
+		</default>
+	</parameter>
+	<parameter name="idxstats" type="string" required="yes" multiple="no">
+		<description>
+			(S/E) Archivo de estadísticas de índice topográfico
+		</description>
+	</parameter>
+	<parameter name="parameters" type="string" required="yes" multiple="no">
+		<description>
+			(E)   Archivo de parámetros TOPMODEL
+		</description>
+	</parameter>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			(E)   Archivo de datos de precipitaciones y evotranspiración potencial
+		</description>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			(S)   Archivo de salida
+		</description>
+	</parameter>
+	<parameter name="Qobs" type="string" required="no" multiple="no">
+		<description>
+			(E)   Archivo de flujo observado OPCIONAL
+		</description>
+	</parameter>
+	<parameter name="timestep" type="integer" required="no" multiple="no">
+		<description>
+			(E)   Salida OPCIONAL para paso de tiempo dado
+		</description>
+	</parameter>
+	<parameter name="idxclass" type="integer" required="no" multiple="no">
+		<description>
+			(E)   Salida OPCIONAL para clase de índice topográfico dada
+		</description>
+	</parameter>
+	<flag name="i">
+		<description>
+			Datos de entrada dados para (S/E)
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

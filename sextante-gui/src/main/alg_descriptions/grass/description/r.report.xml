@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.report">
+	<description>
+		Informa estadísticas para capas de mapas ráster.
+	</description>
+	<keywords>
+		ráster, estadísticas
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="yes">
+		<description>
+			Mapa(s) ráster sobre el que informar
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="units" type="string" required="no" multiple="yes">
+		<description>
+			Unidades
+		</description>
+		<values>
+			<value>
+				<name>mi</name>
+				<description>miles</description>
+			</value>
+			<value>
+				<name>me</name>
+				<description>meters</description>
+			</value>
+			<value>
+				<name>k</name>
+				<description>kilometers</description>
+			</value>
+			<value>
+				<name>a</name>
+				<description>acres</description>
+			</value>
+			<value>
+				<name>h</name>
+				<description>hectares</description>
+			</value>
+			<value>
+				<name>c</name>
+				<description>cell counts</description>
+			</value>
+			<value>
+				<name>p</name>
+				<description>percent cover</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="null" type="string" required="no" multiple="no">
+		<description>
+			Carácter que representa valores de celdas sin datos
+		</description>
+		<default>
+			*
+		</default>
+		<guisection>
+			Formateando
+		</guisection>
+	</parameter>
+	<parameter name="pl" type="integer" required="no" multiple="no">
+		<description>
+			Longitud de página (por omisión: 0 líneas)
+		</description>
+		<guisection>
+			Formateando
+		</guisection>
+	</parameter>
+	<parameter name="pw" type="integer" required="no" multiple="no">
+		<description>
+			Anchura de página (por omisión: 79 caracteres)
+		</description>
+		<guisection>
+			Formateando
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre de un archivo de salida para albergar el informe
+		</description>
+	</parameter>
+	<parameter name="nsteps" type="integer" required="no" multiple="no">
+		<description>
+			Número de subrangos fp de los que recopilar las estadísticas
+		</description>
+		<default>
+			255
+		</default>
+	</parameter>
+	<flag name="q">
+		<description>
+			Silencioso
+		</description>
+	</flag>
+	<flag name="h">
+		<description>
+			Suprimir encabezados de página
+		</description>
+ 		<guisection>
+			Formateando
+		</guisection>
+	</flag>
+	<flag name="f">
+		<description>
+			Use formfeeds between pages
+		</description>
+ 		<guisection>
+			Formateando
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Formato científico
+		</description>
+ 		<guisection>
+			Formateando
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Filtrar todas las celdas sin datos
+		</description>
+	</flag>
+	<flag name="N">
+		<description>
+			Filtrar celdas en las que todos los mapas no tienen datos
+		</description>
+	</flag>
+	<flag name="C">
+		<description>
+			Informar para rangos fp de categorías (sólo mapas fp)
+		</description>
+	</flag>
+	<flag name="i">
+		<description>
+			Leer mapa fp como entero (usar reglas quant del mapa)
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

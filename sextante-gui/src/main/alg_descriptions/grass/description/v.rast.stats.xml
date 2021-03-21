@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.rast.stats">
+	<description>
+		Calcular estadísticas univariantes a partir de un mapa ráster de GRASS basadas en polígonos vectoriales y carga las estadísticas en nuevas columnas de atributos.
+	</description>
+	<keywords>
+		vectorial, ráster, estadísticas
+	</keywords>
+	<parameter name="vector" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa de polígono vectorial
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<description>
+			Capa al que está conectada la tabla a cambiar
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="raster" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster del que calcular estadísticas
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="colprefix" type="string" required="yes" multiple="no">
+		<description>
+			Prefijo de columna para las nuevas columnas de atributos
+		</description>
+	</parameter>
+	<parameter name="percentile" type="integer" required="no" multiple="no">
+		<description>
+			Percentil a calcular (requiere la opción de estadísticas ampliadas)
+		</description>
+		<default>
+			90
+		</default>
+		<values>
+			<value>
+				<name>0-100</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="c">
+		<description>
+			Continuar si la columna(s) en la que cargar ya existe
+		</description>
+	</flag>
+	<flag name="e">
+		<description>
+			Calcular estadísticas ampliadas
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

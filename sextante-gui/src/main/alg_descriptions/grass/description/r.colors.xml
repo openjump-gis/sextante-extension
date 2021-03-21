@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.colors">
+	<description>
+		Crea/modifica la tabla de colores asociada a una capa de mapa ráster.
+	</description>
+	<keywords>
+		raster, color table
+	</keywords>
+	<parameter name="map" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Requerido
+		</guisection>
+	</parameter>
+	<parameter name="color" type="string" required="no" multiple="no">
+		<description>
+			Tipo de tabla de colores
+		</description>
+		<keydesc>
+			<item order="1">style</item>
+		</keydesc>
+		<values>
+			<value>
+				<name>aspect</name>
+				<description>aspect oriented grey colors</description>
+			</value>
+			<value>
+				<name>aspectcolr</name>
+				<description>aspect oriented rainbow colors</description>
+			</value>
+			<value>
+				<name>bcyr</name>
+				<description>blue through cyan through yellow to red</description>
+			</value>
+			<value>
+				<name>bgyr</name>
+				<description>blue through green through yellow to red</description>
+			</value>
+			<value>
+				<name>byg</name>
+				<description>blue through yellow to green</description>
+			</value>
+			<value>
+				<name>byr</name>
+				<description>blue through yellow to red</description>
+			</value>
+			<value>
+				<name>celsius</name>
+				<description>blue to red for degree Celsius temperature</description>
+			</value>
+			<value>
+				<name>corine</name>
+				<description>EU Corine land cover colors</description>
+			</value>
+			<value>
+				<name>curvature</name>
+				<description>for terrain curvatures (from v.surf.rst and r.slope.aspect)</description>
+			</value>
+			<value>
+				<name>differences</name>
+				<description>differences oriented colors</description>
+			</value>
+			<value>
+				<name>elevation</name>
+				<description>maps relative ranges of raster values to elevation color ramp</description>
+			</value>
+			<value>
+				<name>etopo2</name>
+				<description>colors for ETOPO2 worldwide bathymetry/topography</description>
+			</value>
+			<value>
+				<name>evi</name>
+				<description>enhanced vegetative index colors</description>
+			</value>
+			<value>
+				<name>gdd</name>
+				<description>accumulated growing degree days</description>
+			</value>
+			<value>
+				<name>grey</name>
+				<description>grey scale</description>
+			</value>
+			<value>
+				<name>grey1.0</name>
+				<description>grey scale for raster values between 0.0-1.0</description>
+			</value>
+			<value>
+				<name>grey255</name>
+				<description>grey scale for raster values between 0-255</description>
+			</value>
+			<value>
+				<name>gyr</name>
+				<description>green through yellow to red</description>
+			</value>
+			<value>
+				<name>haxby</name>
+				<description>relative colors for bathymetry or topography</description>
+			</value>
+			<value>
+				<name>ndvi</name>
+				<description>Normalized Difference Vegetation Index colors</description>
+			</value>
+			<value>
+				<name>population</name>
+				<description>color table covering human population classification breaks</description>
+			</value>
+			<value>
+				<name>precipitation</name>
+				<description>precipitation color table (0..2000mm)</description>
+			</value>
+			<value>
+				<name>rainbow</name>
+				<description>rainbow color table</description>
+			</value>
+			<value>
+				<name>ramp</name>
+				<description>color ramp</description>
+			</value>
+			<value>
+				<name>rstcurv</name>
+				<description>terrain curvature (from r.resamp.rst)</description>
+			</value>
+			<value>
+				<name>ryb</name>
+				<description>red through yellow to blue</description>
+			</value>
+			<value>
+				<name>ryg</name>
+				<description>red through yellow to green</description>
+			</value>
+			<value>
+				<name>sepia</name>
+				<description>yellowish-brown through to white</description>
+			</value>
+			<value>
+				<name>slope</name>
+				<description>r.slope.aspect-type slope colors for raster values 0-90</description>
+			</value>
+			<value>
+				<name>srtm</name>
+				<description>color palette for Shuttle Radar Topography Mission elevation</description>
+			</value>
+			<value>
+				<name>terrain</name>
+				<description>global elevation color table covering -11000 to +8850m</description>
+			</value>
+			<value>
+				<name>wave</name>
+				<description>color wave</description>
+			</value>
+			<value>
+				<name>random</name>
+				<description>random color table</description>
+			</value>
+			<value>
+				<name>grey.eq</name>
+				<description>histogram-equalized grey scale</description>
+			</value>
+			<value>
+				<name>grey.log</name>
+				<description>histogram logarithmic transformed grey scale</description>
+			</value>
+			<value>
+				<name>rules</name>
+				<description>create new color table based on user-specified rules read from stdin</description>
+			</value>
+		</values>
+		<guisection>
+			Colores
+		</guisection>
+	</parameter>
+	<parameter name="raster" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster del que copiar la tabla de colores
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="rules" type="string" required="no" multiple="no">
+		<description>
+			Path to rules file ("-" to read rules from stdin)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_file" element="file" prompt="input" />
+		<guisection>
+			Colores
+		</guisection>
+	</parameter>
+	<flag name="r">
+		<description>
+			Eliminar la tabla de colores existente
+		</description>
+	</flag>
+	<flag name="w">
+		<description>
+			Sólo escribir nueva tabla de colores si no existe ya una
+		</description>
+	</flag>
+	<flag name="l">
+		<description>
+			Listar reglas disponibles y salir
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			Invertir colores
+		</description>
+ 		<guisection>
+			Colores
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Escalado logarítmico
+		</description>
+ 		<guisection>
+			Colores
+		</guisection>
+	</flag>
+	<flag name="a">
+		<description>
+			Logarithmic-absolute scaling
+		</description>
+ 		<guisection>
+			Colores
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Ecualización de histograma
+		</description>
+ 		<guisection>
+			Colores
+		</guisection>
+	</flag>
+	<flag name="i">
+		<description>
+			Introducir reglas de forma interactiva
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			Ejecutar en modo silencioso
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

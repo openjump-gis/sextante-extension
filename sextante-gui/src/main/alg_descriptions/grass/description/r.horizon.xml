@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.horizon">
+	<label>
+		Horizon angle computation from a digital elevation model.
+	</label>
+	<description>
+		Computes horizon angle height from a digital elevation model. The module has two different modes of operation:  1. Computes the entire horizon around a single point whose coordinates are given with the 'coord' option. The horizon height (in radians). 2. Computes one or more raster maps of the horizon height in a single direction.  The input for this is the angle (in degrees), which is measured  counterclockwise with east=0, north=90 etc. The output is the horizon height in radians.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="elevin" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster de elevación de entrada [metros]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="direction" type="float" required="no" multiple="no">
+		<description>
+			Direction in which you want to know the horizon height
+		</description>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="horizonstep" type="float" required="no" multiple="no">
+		<description>
+			Angle step size for multidirectional horizon [degrees]
+		</description>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="bufferzone" type="float" required="no" multiple="no">
+		<description>
+			For horizon rasters, read from the DEM an extra buffer around the present region
+		</description>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="e_buff" type="float" required="no" multiple="no">
+		<description>
+			For horizon rasters, read from the DEM an extra buffer eastward the present region
+		</description>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="w_buff" type="float" required="no" multiple="no">
+		<description>
+			For horizon rasters, read from the DEM an extra buffer westward the present region
+		</description>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="n_buff" type="float" required="no" multiple="no">
+		<description>
+			For horizon rasters, read from the DEM an extra buffer northward the present region
+		</description>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="s_buff" type="float" required="no" multiple="no">
+		<description>
+			For horizon rasters, read from the DEM an extra buffer southward the present region
+		</description>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="maxdistance" type="float" required="no" multiple="no">
+		<description>
+			The maximum distance to consider when finding the horizon height
+		</description>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="horizon" type="string" required="no" multiple="no">
+		<description>
+			Prefix of the horizon raster output maps
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="coord" type="float" required="no" multiple="no">
+		<description>
+			Coordinate for which you want to calculate the horizon
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="dist" type="float" required="no" multiple="no">
+		<description>
+			Sampling distance step coefficient (0.5-1.5)
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<flag name="d">
+		<description>
+			Write output in degrees (default is radians)
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

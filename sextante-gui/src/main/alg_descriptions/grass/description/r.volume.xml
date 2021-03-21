@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.volume">
+	<description>
+		Calculates the volume of data "clumps", and (optionally) produces a GRASS vector points map containing the calculated centroids of these clumps.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="data" type="string" required="yes" multiple="no">
+		<description>
+			Existing raster map representing data that will be summed within clumps
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="clump" type="string" required="no" multiple="no">
+		<description>
+			Mapa ráster existente, preferiblemente la salida de r.clump
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="centroids" type="string" required="no" multiple="no">
+		<description>
+			Vector points map to contain clump centroids
+		</description>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<flag name="f">
+		<description>
+			Generar informe sin formato
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.resamp.interp">
+	<description>
+		Resamples raster map layers to a finer grid using interpolation.
+	</description>
+	<keywords>
+		ráster, remuestrear
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Método de interpolación
+		</description>
+		<default>
+			bilinear
+		</default>
+		<values>
+			<value>
+				<name>nearest</name>
+			</value>
+			<value>
+				<name>bilinear</name>
+			</value>
+			<value>
+				<name>bicubic</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.crossbones">
+	<description>
+		A GRASS version of Crossbones: Create simple 3D representations of skeletal assemblages.
+	</description>
+	<keywords>
+		vector, surveying, crossbones
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Input ASCII file with point measurements
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_file" element="file" prompt="input" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Name of output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="mode" type="string" required="no" multiple="no">
+		<description>
+			3D Representation mode
+		</description>
+		<default>
+			pyramids
+		</default>
+		<values>
+			<value>
+				<name>darts</name>
+			</value>
+			<value>
+				<name>lines</name>
+			</value>
+			<value>
+				<name>planes_h</name>
+			</value>
+			<value>
+				<name>planes_v</name>
+			</value>
+			<value>
+				<name>points</name>
+			</value>
+			<value>
+				<name>pyramids</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="delimiter" type="string" required="no" multiple="no">
+		<description>
+			Field delimiter for ASCII input file (default: comma)
+		</description>
+		<default>
+			,
+		</default>
+	</parameter>
+	<parameter name="idcolumn" type="integer" required="no" multiple="no">
+		<description>
+			Position of ID column in ASCII input file (leftmost = 1)
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="xcolumn" type="float" required="no" multiple="no">
+		<description>
+			Position of X (Easting) column in ASCII input file (leftmost = 1)
+		</description>
+		<default>
+			2
+		</default>
+	</parameter>
+	<parameter name="ycolumn" type="float" required="no" multiple="no">
+		<description>
+			Position of Y (Northing) column in ASCII input file (leftmost = 1)
+		</description>
+		<default>
+			3
+		</default>
+	</parameter>
+	<parameter name="zcolumn" type="float" required="no" multiple="no">
+		<description>
+			Position of Z (Elevation) column in ASCII input file (leftmost = 1)
+		</description>
+		<default>
+			4
+		</default>
+	</parameter>
+	<parameter name="ratios" type="string" required="no" multiple="no">
+		<description>
+			List of length:1 ratios for specific bone IDs (boneID1=ratio, boneID2=ratio, ...).
+		</description>
+		<default>
+			1=3.0,2=8.0,5=6.0,8=6.0,11=6.0,14=6.0
+		</default>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

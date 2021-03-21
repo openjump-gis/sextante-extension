@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.transform">
+	<description>
+		Performs an affine transformation (shift, scale and rotate, or GPCs) on vector map.
+	</description>
+	<keywords>
+		vectorial, transformación
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="pointsfile" type="string" required="no" multiple="no">
+		<label>
+			Archivo ASCII que mantiene coordenadas de transformación
+		</label>
+		<description>
+			Si no se indican, los parámetros de transformación (xshift, yshift, zshift, xscale, yscale, zscale, zrot) se usan en su lugar
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_file" element="file" prompt="points" />
+	</parameter>
+	<parameter name="xshift" type="float" required="no" multiple="no">
+		<description>
+			Cambiando valor para coordenadas X
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Personalizado
+		</guisection>
+	</parameter>
+	<parameter name="yshift" type="float" required="no" multiple="no">
+		<description>
+			Cambiando valor para coordenadas Y
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Personalizado
+		</guisection>
+	</parameter>
+	<parameter name="zshift" type="float" required="no" multiple="no">
+		<description>
+			Cambiando valor para coordenadas Z
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Personalizado
+		</guisection>
+	</parameter>
+	<parameter name="xscale" type="float" required="no" multiple="no">
+		<description>
+			Factor de escala para coordenadas X
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Personalizado
+		</guisection>
+	</parameter>
+	<parameter name="yscale" type="float" required="no" multiple="no">
+		<description>
+			Factor de escala para coordenadas Y
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Personalizado
+		</guisection>
+	</parameter>
+	<parameter name="zscale" type="float" required="no" multiple="no">
+		<description>
+			Factor de escala para coordenadas Z
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Personalizado
+		</guisection>
+	</parameter>
+	<parameter name="zrot" type="float" required="no" multiple="no">
+		<description>
+			Rotación alrededor del eje Z en grados en sentido horario
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Personalizado
+		</guisection>
+	</parameter>
+	<parameter name="table" type="string" required="no" multiple="no">
+		<description>
+			Nombre de la tabla que contiene los parámetros de transformación
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_dbtable" element="dbtable" prompt="dbtable" />
+		<guisection>
+			Personalizado
+		</guisection>
+	</parameter>
+	<parameter name="columns" type="string" required="no" multiple="yes">
+		<label>
+			Nombre de la columna(s) de atributos usada como parámetros de transformación
+		</label>
+		<description>
+			Formato: parámetro:columna, ej. xshift:xs,yshift:ys,zrot:zr
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_dbcolumn" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Personalizado
+		</guisection>
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Personalizado
+		</guisection>
+	</parameter>
+	<flag name="q">
+		<description>
+			Suprime la visualización de residuales y otra información
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			Cambiar todos los valores Z a altura=0
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Imprimir la matriz de transformación a stdout
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			En vez de puntos usar parámetros de transformación (xshift, yshift, zshift, xscale, yscale, zscale, zrot)
+		</description>
+ 		<guisection>
+			Personalizado
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

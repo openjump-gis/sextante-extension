@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.average">
+	<description>
+		Encuentra la media de los valores en un mapa de cobertura dentro de áreas  con el mismo valor de categoría asignado en un mapa de base especificado por el usuario.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="base" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster base.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="cover" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de cobertura.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="c">
+		<description>
+			Valores de cobertura extraídos de las etiquetas de categoría del mapa de cobertura
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

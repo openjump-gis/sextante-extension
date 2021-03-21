@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.what.vect">
+	<description>
+		Carga valores vectoriales en las posiciones de puntos vectoriales a la tabla.
+	</description>
+	<keywords>
+		vectorial, base de datos, tabla de atributos
+	</keywords>
+	<parameter name="vector" type="string" required="yes" multiple="no">
+		<description>
+			Vector map to modify
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<description>
+			Capa del vectorial a modificar
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="column" type="string" required="yes" multiple="no">
+		<description>
+			Columna a actualizar con el resultado de la consulta
+		</description>
+	</parameter>
+	<parameter name="qvector" type="string" required="yes" multiple="no">
+		<description>
+			Mapa vectorial a consultar
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="qlayer" type="integer" required="no" multiple="no">
+		<description>
+			Layer of the query vector containing data
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="qcolumn" type="string" required="yes" multiple="no">
+		<description>
+			Columna a consultar
+		</description>
+	</parameter>
+	<parameter name="dmax" type="float" required="no" multiple="no">
+		<description>
+			Maximum query distance in map units
+		</description>
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

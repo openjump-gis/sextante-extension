@@ -1,0 +1,15 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- 01: A Simple Litter System
+ 1	- 02: Carbon Cycle Simulation for Terrestrial Biomes
+ 2	- 03: Spatially Distributed Simulation of Soil Nitrogen Dynamics
+
+type -h or --help for further information

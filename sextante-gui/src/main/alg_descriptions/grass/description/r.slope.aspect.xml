@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.slope.aspect">
+	<description>
+		Genera capas de mapa ráster de pendiente, orientación, curvaturas y derivadas parciales a partir de una capa de mapa ráster de valores reales de elevación. La orientación se calcula en sentido horario desde el Este.
+	</description>
+	<keywords>
+		raster, terrain analysis
+	</keywords>
+	<parameter name="elevation" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de elevación.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="slope" type="string" required="no" multiple="no">
+		<description>
+			Name for output slope raster map
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="aspect" type="string" required="no" multiple="no">
+		<description>
+			Name for output aspect raster map
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="format" type="string" required="no" multiple="no">
+		<description>
+			Formato para informar la pendiente
+		</description>
+		<default>
+			degrees
+		</default>
+		<values>
+			<value>
+				<name>degrees</name>
+			</value>
+			<value>
+				<name>percent</name>
+			</value>
+		</values>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="prec" type="string" required="no" multiple="no">
+		<description>
+			Tipo de mapas de orientación y pendiente
+		</description>
+		<default>
+			float
+		</default>
+		<values>
+			<value>
+				<name>default</name>
+			</value>
+			<value>
+				<name>double</name>
+			</value>
+			<value>
+				<name>float</name>
+			</value>
+			<value>
+				<name>int</name>
+			</value>
+		</values>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="pcurv" type="string" required="no" multiple="no">
+		<description>
+			Name for output profile curvature raster map
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Avanzado
+		</guisection>
+	</parameter>
+	<parameter name="tcurv" type="string" required="no" multiple="no">
+		<description>
+			Name for output tangential curvature raster map
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Avanzado
+		</guisection>
+	</parameter>
+	<parameter name="dx" type="string" required="no" multiple="no">
+		<description>
+			Name for output first order partial derivative dx (E-W slope) raster map
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Avanzado
+		</guisection>
+	</parameter>
+	<parameter name="dy" type="string" required="no" multiple="no">
+		<description>
+			Name for output first order partial derivative dy (N-S slope) raster map
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Avanzado
+		</guisection>
+	</parameter>
+	<parameter name="dxx" type="string" required="no" multiple="no">
+		<description>
+			Name for output second order partial derivative dxx raster map
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Avanzado
+		</guisection>
+	</parameter>
+	<parameter name="dyy" type="string" required="no" multiple="no">
+		<description>
+			Name for output second order partial derivative dyy raster map
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Avanzado
+		</guisection>
+	</parameter>
+	<parameter name="dxy" type="string" required="no" multiple="no">
+		<description>
+			Name for output second order partial derivative dxy raster map
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Avanzado
+		</guisection>
+	</parameter>
+	<parameter name="zfactor" type="float" required="no" multiple="no">
+		<description>
+			Factor de multiplicación para convertir unidades de elevación a metros
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="min_slp_allowed" type="float" required="no" multiple="no">
+		<description>
+			Valor de pendiente mínimo (en porcentaje) para el que se procesa la orientación
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<flag name="q">
+		<description>
+			Silencioso
+		</description>
+	</flag>
+	<flag name="a">
+		<description>
+			No alinear la región actual con la capa de elevación
+		</description>
+ 		<guisection>
+			Configuraciones
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

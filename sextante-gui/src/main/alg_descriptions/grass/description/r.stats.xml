@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.stats">
+	<description>
+		Genera estadísticas de superficie para capas de mapa ráster.
+	</description>
+	<keywords>
+		ráster, estadísticas
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="yes">
+		<description>
+			Nombre(s) del (los) mapa(s) raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el archivo de salida (si se omite o "-" salida a stdout)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new_file" element="file" prompt="output" />
+	</parameter>
+	<parameter name="fs" type="string" required="no" multiple="no">
+		<description>
+			Separador de campos de salida
+		</description>
+		<keydesc>
+			<item order="1">character|space|tab</item>
+		</keydesc>
+		<default>
+			space
+		</default>
+	</parameter>
+	<parameter name="nv" type="string" required="no" multiple="no">
+		<description>
+			Cadena que representa el valor de celda sin datos
+		</description>
+		<default>
+			*
+		</default>
+	</parameter>
+	<parameter name="nsteps" type="integer" required="no" multiple="no">
+		<description>
+			Número de subrangos fp de los que recopilar las estadísticas
+		</description>
+		<default>
+			255
+		</default>
+	</parameter>
+	<flag name="1">
+		<description>
+			Una celda (rango) por línea
+		</description>
+	</flag>
+	<flag name="A">
+		<description>
+			Imprimir valores medios en vez de intervalos
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="a">
+		<description>
+			Imprimir totales de áreas
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Imprimir cuenta de celdas
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="p">
+		<description>
+			Imprimir porcentajes APROXIMADOS (el porcentaje total puede no ser 100%)
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="l">
+		<description>
+			Imprimir etiquetas de categorías
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="g">
+		<description>
+			Imprimir coordenadas de cuadrícula (Este y Norte)
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="x">
+		<description>
+			Imprimir X e Y (columna y fila)
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="r">
+		<description>
+			Imprimir índices raw de rangos fp (sólo mapas fp)
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Suprimir informar de cualquier NULO
+		</description>
+	</flag>
+	<flag name="N">
+		<description>
+			Suprimir informar de cualquier NULO cuando todos los valores son NULO
+		</description>
+	</flag>
+	<flag name="C">
+		<description>
+			Informar para rangos fp de categorías (sólo mapas fp)
+		</description>
+	</flag>
+	<flag name="i">
+		<description>
+			Leer mapa fp como entero (usar reglas quant del mapa)
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

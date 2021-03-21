@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.rescale">
+	<description>
+		Rescala el rango de valores de categoría en una capa de mapa ráster.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster a rescalar
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="from" type="integer" required="no" multiple="no">
+		<description>
+			Rango de datos de entrada a rescalar (por omisión: todo el rango del mapa de entrada)
+		</description>
+		<keydesc>
+			<item order="1">min</item>
+			<item order="2">max</item>
+		</keydesc>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster resultante
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="to" type="integer" required="yes" multiple="no">
+		<description>
+			Rango de datos de salida
+		</description>
+		<keydesc>
+			<item order="1">min</item>
+			<item order="2">max</item>
+		</keydesc>
+	</parameter>
+	<parameter name="title" type="string" required="no" multiple="no">
+		<description>
+			Título para el nuevo mapa ráster
+		</description>
+		<keydesc>
+			<item order="1">"phrase"</item>
+		</keydesc>
+	</parameter>
+	<flag name="q">
+		<description>
+			De forma silenciosa
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

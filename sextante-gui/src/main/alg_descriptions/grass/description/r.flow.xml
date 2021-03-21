@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.flow">
+	<description>
+		Construcción de curvas de pendiente (líneas de flujo), longitudes de ruta de flujo y densidades de líneas de flujo (áreas pendiente arriba) a partir de un modelo de elevación digital (MDT) ráster
+	</description>
+	<keywords>
+		raster
+	</keywords>
+	<parameter name="elevin" type="string" required="yes" multiple="no">
+		<description>
+			Mapa ráster de elevación de entrada
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="aspin" type="string" required="no" multiple="no">
+		<description>
+			Mapa ráster de orientación de entrada
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="barin" type="string" required="no" multiple="no">
+		<description>
+			Mapa ráster de barrera de entrada
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="skip" type="integer" required="no" multiple="no">
+		<description>
+			Número de celdas entre líneas de flujo
+		</description>
+		<default>
+			1
+		</default>
+		<values>
+			<value>
+				<name>1-1</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="bound" type="integer" required="no" multiple="no">
+		<description>
+			Número máximo de segmentos por línea de flujo
+		</description>
+		<default>
+			5
+		</default>
+		<values>
+			<value>
+				<name>0-5</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="flout" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa vectorial de líneas de flujo
+		</description>
+		<gisprompt age="any" element="dig" prompt="vector" />
+	</parameter>
+	<parameter name="lgout" type="string" required="no" multiple="no">
+		<description>
+			Mapa ráster de longitud de ruta de corriente de salida
+		</description>
+		<gisprompt age="any" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="dsout" type="string" required="no" multiple="no">
+		<description>
+			Mapa ráster de densidad de línea de corriente de salida
+		</description>
+		<gisprompt age="any" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="u">
+		<description>
+			Procesar líneas de corriente pendiente arriba en vez de las líneas predeterminadas pendiente abajo
+		</description>
+	</flag>
+	<flag name="3">
+		<description>
+			Longitudes 3D en vez de 2D
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Usar menos memoria a costa de las prestaciones
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.neighbors">
+	<description>
+		Hace cada valor de categoría de celda una función de los valores de categoría asignados a las celdas a su alrededor y guarda los nuevos valores de celda en una capa de mapa ráster de salida.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Operación de vecindad
+		</description>
+		<default>
+			average
+		</default>
+		<values>
+			<value>
+				<name>average</name>
+			</value>
+			<value>
+				<name>median</name>
+			</value>
+			<value>
+				<name>mode</name>
+			</value>
+			<value>
+				<name>minimum</name>
+			</value>
+			<value>
+				<name>maximum</name>
+			</value>
+			<value>
+				<name>stddev</name>
+			</value>
+			<value>
+				<name>sum</name>
+			</value>
+			<value>
+				<name>variance</name>
+			</value>
+			<value>
+				<name>diversity</name>
+			</value>
+			<value>
+				<name>interspersion</name>
+			</value>
+		</values>
+		<guisection>
+			Neighborhood
+		</guisection>
+	</parameter>
+	<parameter name="size" type="integer" required="no" multiple="no">
+		<description>
+			Tamaño de vecindad
+		</description>
+		<default>
+			3
+		</default>
+		<guisection>
+			Neighborhood
+		</guisection>
+	</parameter>
+	<parameter name="title" type="string" required="no" multiple="no">
+		<description>
+			Título del mapa ráster de salida
+		</description>
+		<keydesc>
+			<item order="1">"phrase"</item>
+		</keydesc>
+	</parameter>
+	<parameter name="weight" type="string" required="no" multiple="no">
+		<description>
+			Archivo que contiene pesos
+		</description>
+		<gisprompt age="old_file" element="file" prompt="input" />
+	</parameter>
+	<flag name="a">
+		<description>
+			No alinear la salida con la entrada
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			Ejecutar en modo silencioso
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			Usar vecindario circular
+		</description>
+ 		<guisection>
+			Neighborhood
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

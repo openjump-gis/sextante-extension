@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.drain">
+	<description>
+		Traces a flow through an elevation model on a raster map.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de elevación.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="coordinate" type="string" required="no" multiple="yes">
+		<description>
+			Map coordinates of starting point(s) (E,N)
+		</description>
+		<keydesc>
+			<item order="1">x</item>
+			<item order="2">y</item>
+		</keydesc>
+		<guisection>
+			Start
+		</guisection>
+	</parameter>
+	<parameter name="vector_points" type="string" required="no" multiple="yes">
+		<description>
+			Name of vector map(s) containing starting point(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+		<guisection>
+			Start
+		</guisection>
+	</parameter>
+	<flag name="c">
+		<description>
+			Copiar valores de celdas de entrada en la salida
+		</description>
+	</flag>
+	<flag name="a">
+		<description>
+			Acumular valores de entrada a lo largo de la ruta
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			Contar números de celdas a lo largo de la ruta
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

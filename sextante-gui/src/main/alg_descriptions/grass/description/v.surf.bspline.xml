@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.surf.bspline">
+	<description>
+		Bicubic or bilinear spline interpolation with Tykhonov regularization.
+	</description>
+	<keywords>
+		vectorial, interpolación
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="sparse" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada de puntos esparcidos
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="raster" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="sie" type="float" required="no" multiple="no">
+		<description>
+			Length of each spline step in the east-west direction
+		</description>
+		<default>
+			4
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="sin" type="float" required="no" multiple="no">
+		<description>
+			Length of each spline step in the north-south direction
+		</description>
+		<default>
+			4
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Spline interpolation algorithm
+		</description>
+		<default>
+			bilinear
+		</default>
+		<values>
+			<value>
+				<name>bilinear</name>
+			</value>
+			<value>
+				<name>bicubic</name>
+			</value>
+		</values>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="lambda_i" type="float" required="no" multiple="no">
+		<description>
+			Tykhonov regularization parameter (affects smoothing)
+		</description>
+		<default>
+			1
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Valor de campo. Si se establece a 0, se usarán las coordenadas Z (sólo vectoriales 3D)
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer_zero" />
+		<default>
+			0
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="column" type="string" required="no" multiple="no">
+		<description>
+			Columna de la tabla de atributos con valores a interpolar (si capa&gt;0)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_dbcolumn" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<flag name="c">
+		<description>
+			Find the best Tykhonov regularizing parameter using a "leave-one-out" cross validation method
+		</description>
+	</flag>
+	<flag name="e">
+		<label>
+			Estimate point density and distance
+		</label>
+		<description>
+			Estimate point density and distance for the input vector points within the current region extends and quit
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

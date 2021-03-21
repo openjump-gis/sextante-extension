@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.patch">
+	<description>
+		Crear una capa de mapa vectorial nueva combinando otras capas de mapas vectoriales.
+	</description>
+	<keywords>
+		vectorial
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="yes">
+		<description>
+			Nombre(s) del (los) mapa(s) vectorial(es) de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="bbox" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida en el que se escriben los recuadros de límites de los mapas vectoriales de entrada
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<flag name="a">
+		<description>
+			Añadir archivos al existente (debe estar activada la sobrescritura de archivos existentes)
+		</description>
+	</flag>
+	<flag name="e">
+		<label>
+			Copiar también la tabla de atributos
+		</label>
+		<description>
+			Actualmente sólo está soportada la tabla de la capa 1
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

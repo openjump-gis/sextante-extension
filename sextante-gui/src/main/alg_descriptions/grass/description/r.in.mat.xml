@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.in.mat">
+	<description>
+		Importa un archivo binario MAT(v4) a un ráster de GRASS.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre de un archivo MAT(v4) existente
+		</description>
+		<gisprompt age="old_file" element="file" prompt="input" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el mapa ráster de salida (no tener en cuenta)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="v">
+		<description>
+			Modo verboso
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

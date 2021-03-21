@@ -1,0 +1,22 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Fast Representativeness
+ 1	- Residual Analysis (Grid)
+ 2	- Representativeness (Grid)
+ 3	- Radius of Variance (Grid)
+ 4	- Statistics for Grids
+ 5	- Zonal Grid Statistics
+ 6	- Directional Statistics for Single Grid
+ 7	- Global Moran's I for Grids
+ 8	- Principle Components Analysis
+ 9	- Multi-Band Variation
+
+type -h or --help for further information

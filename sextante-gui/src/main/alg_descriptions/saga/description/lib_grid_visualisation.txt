@@ -1,0 +1,19 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Color Palette Rotation
+ 1	- Color Blending
+ 2	- Fit Color Palette to Grid Values
+ 3	- RGB Composite
+ 4	- Create 3D Image
+ 5	- Color Triangle Composite
+ 6	- Histogram Surface
+
+type -h or --help for further information

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.clean">
+	<description>
+		Herramientas para limpiar la topología de mapas vectoriales.
+	</description>
+	<keywords>
+		vectorial, topología
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			point,line,boundary,centroid,area
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+			<value>
+				<name>face</name>
+			</value>
+			<value>
+				<name>kernel</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="error" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa de salida donde se escriben los errores
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="tool" type="string" required="yes" multiple="yes">
+		<description>
+			Herramienta de limpieza
+		</description>
+		<values>
+			<value>
+				<name>break</name>
+				<description>break lines at each intersection</description>
+			</value>
+			<value>
+				<name>snap</name>
+				<description>snap lines to vertex in threshold</description>
+			</value>
+			<value>
+				<name>rmdangle</name>
+				<description>remove dangles, threshold ignored if &lt; 0</description>
+			</value>
+			<value>
+				<name>chdangle</name>
+				<description>change the type of boundary dangle to line, threshold ignored if &lt; 0, input line type is ignored</description>
+			</value>
+			<value>
+				<name>rmbridge</name>
+				<description>remove bridges connecting area and island or 2 islands</description>
+			</value>
+			<value>
+				<name>chbridge</name>
+				<description>change the type of bridges connecting area and island or 2 islands from boundary to line</description>
+			</value>
+			<value>
+				<name>rmdupl</name>
+				<description>remove duplicate geometry features (pay attention to categories!)</description>
+			</value>
+			<value>
+				<name>rmdac</name>
+				<description>remove duplicate area centroids ('type' option ignored)</description>
+			</value>
+			<value>
+				<name>bpol</name>
+				<description>break (topologically clean) polygons (imported from non topological format, like ShapeFile). Boundaries are broken on each point shared between 2 and more polygons where angles of segments are different</description>
+			</value>
+			<value>
+				<name>prune</name>
+				<description>remove vertices in threshold from lines and boundaries, boundary is pruned only if topology is not damaged (new intersection, changed attachement of centroid), first and last segment of the boundary is never changed</description>
+			</value>
+			<value>
+				<name>rmarea</name>
+				<description>remove small areas, the longest boundary with adjacent area is removed</description>
+			</value>
+			<value>
+				<name>rmline</name>
+				<description>remove all lines or boundaries of zero length, threshold is ignored</description>
+			</value>
+			<value>
+				<name>rmsa</name>
+				<description>remove small angles between lines at nodes</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="thresh" type="float" required="no" multiple="yes">
+		<label>
+			Threshold
+		</label>
+		<description>
+			Umbral en unidades de mapa, un valor para cada herramienta (por omisión: 0.0[,0.0,...])
+		</description>
+	</parameter>
+	<flag name="b">
+		<description>
+			No construir la topología para el vectorial de salida
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

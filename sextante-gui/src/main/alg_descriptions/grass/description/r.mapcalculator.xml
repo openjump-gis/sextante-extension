@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.mapcalculator">
+	<description>
+		Calcular un nuevo mapa ráster a partir de una expresión r.mapcalc.
+	</description>
+	<parameter name="amap" type="string" required="no" multiple="no">
+		<description>
+			A
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="bmap" type="string" required="no" multiple="no">
+		<description>
+			B
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="cmap" type="string" required="no" multiple="no">
+		<description>
+			C
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="dmap" type="string" required="no" multiple="no">
+		<description>
+			D
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="emap" type="string" required="no" multiple="no">
+		<description>
+			E
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="fmap" type="string" required="no" multiple="no">
+		<description>
+			F
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="formula" type="string" required="yes" multiple="no">
+		<description>
+			Formula (ej. A-B o A*C+B)
+		</description>
+	</parameter>
+	<parameter name="outfile" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa ráster de salida
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="help" type="string" required="no" multiple="no">
+		<description>
+			Mostrar ayuda
+		</description>
+		<default>
+			-
+		</default>
+		<values>
+			<value>
+				<name>-</name>
+			</value>
+			<value>
+				<name>help</name>
+			</value>
+			<value>
+				<name>man</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="e">
+		<description>
+			Modo avanzado (introducir un conjunto de expresiones de r.mapcalc)
+		</description>
+	</flag>
+	<flag name="o">
+		<description>
+			No sobrescribir mapas existentes
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

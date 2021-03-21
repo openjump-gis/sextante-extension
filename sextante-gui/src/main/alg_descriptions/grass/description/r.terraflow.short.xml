@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.terraflow.short">
+	<description>
+		Flow computation for massive grids (Integer version).
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="elevation" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de elevación.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="filled" type="string" required="yes" multiple="no">
+		<description>
+			Output filled (flooded) elevation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="direction" type="string" required="yes" multiple="no">
+		<description>
+			Output flow direction raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="swatershed" type="string" required="yes" multiple="no">
+		<description>
+			Output sink-watershed raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="accumulation" type="string" required="yes" multiple="no">
+		<description>
+			Output flow accumulation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="tci" type="string" required="yes" multiple="no">
+		<description>
+			Output topographic convergence index (tci) raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="d8cut" type="float" required="no" multiple="no">
+		<description>
+			If flow accumulation is larger than this value it is routed using SFD (D8) direction 
+ 		 (meaningfull only  for MFD flow)
+		</description>
+		<default>
+			infinity
+		</default>
+	</parameter>
+	<parameter name="memory" type="integer" required="no" multiple="no">
+		<description>
+			Maximum runtime memory size (in MB)
+		</description>
+		<default>
+			300
+		</default>
+	</parameter>
+	<parameter name="STREAM_DIR" type="string" required="no" multiple="no">
+		<description>
+			Directory to hold temporary files (they can be large)
+		</description>
+		<default>
+			C:/Users/volaya/AppData/Local/Temp
+		</default>
+	</parameter>
+	<parameter name="stats" type="string" required="no" multiple="no">
+		<description>
+			Name of file containing runtime statistics
+		</description>
+		<default>
+			stats.out
+		</default>
+	</parameter>
+	<flag name="s">
+		<description>
+			SFD (D8) flow (default is MFD)
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			Silencioso
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

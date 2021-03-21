@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.describe">
+	<description>
+		Imprime una lista concisa de valores de categoría en una capa de mapa ráster.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="nv" type="string" required="no" multiple="no">
+		<description>
+			Cadena que representa el valor de celda sin datos
+		</description>
+		<default>
+			*
+		</default>
+	</parameter>
+	<parameter name="nsteps" type="integer" required="no" multiple="no">
+		<description>
+			Número de pasos de cuantización
+		</description>
+		<default>
+			255
+		</default>
+	</parameter>
+	<flag name="1">
+		<description>
+			Imprimir la salida un valor por línea
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Imprimir sólo el rango de los datos
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			Suprimir informar de cualquier NULO
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			Usar la región actual
+		</description>
+	</flag>
+	<flag name="i">
+		<description>
+			Leer mapa fp como entero
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			Ejecutar en modo silencioso
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

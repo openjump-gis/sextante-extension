@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.dissolve">
+	<description>
+		Disuelve contornos entre áreas adyacentes que comparten un número de categoría o atributo común.
+	</description>
+	<keywords>
+		vectorial, área, disolver
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Layer number. If -1, all layers are extracted.
+		</label>
+		<description>
+			A single vector map can be connected to multiple database tables. This number determines which table to use.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer_all" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="column" type="string" required="no" multiple="no">
+		<description>
+			Nombre de columna usada para disolver contornos comunes
+		</description>
+		<gisprompt age="old_dbcolumn" element="dbcolumn" prompt="dbcolumn" />
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

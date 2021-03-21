@@ -1,0 +1,15 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Supervised Classification
+ 1	- Cluster Analysis for Grids
+ 2	- Change Detection
+
+type -h or --help for further information

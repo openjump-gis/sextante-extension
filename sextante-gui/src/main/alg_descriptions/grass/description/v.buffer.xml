@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.buffer">
+	<description>
+		Crear un buffer alrededor de los elementos de tipo dado (las áreas deben contener centroide).
+	</description>
+	<keywords>
+		vector, buffer
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			point,line,area
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="distance" type="float" required="no" multiple="no">
+		<description>
+			Buffer distance along major axis in map units
+		</description>
+		<guisection>
+			Distance
+		</guisection>
+	</parameter>
+	<parameter name="minordistance" type="float" required="no" multiple="no">
+		<description>
+			Buffer distance along minor axis in map units
+		</description>
+		<guisection>
+			Distance
+		</guisection>
+	</parameter>
+	<parameter name="angle" type="float" required="no" multiple="no">
+		<description>
+			Angle of major axis in degrees
+		</description>
+		<default>
+			0
+		</default>
+		<guisection>
+			Distance
+		</guisection>
+	</parameter>
+	<parameter name="bufcolumn" type="string" required="no" multiple="no">
+		<description>
+			Name of column to use for buffer distances
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_dbcolumn" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Distance
+		</guisection>
+	</parameter>
+	<parameter name="scale" type="float" required="no" multiple="no">
+		<description>
+			Factor de escala para valores de columna de atributos
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Distance
+		</guisection>
+	</parameter>
+	<parameter name="tolerance" type="float" required="no" multiple="no">
+		<description>
+			Distancia máxima entre arcos teóricos y segmentos de polígonos como múltiplo de buffer
+		</description>
+		<default>
+			0.01
+		</default>
+		<guisection>
+			Distance
+		</guisection>
+	</parameter>
+	<parameter name="debug" type="string" required="no" multiple="no">
+		<description>
+			This does nothing. It is retained for backwards compatibility
+		</description>
+		<guisection>
+			Unused
+		</guisection>
+	</parameter>
+	<parameter name="buffer" type="float" required="no" multiple="no">
+		<label>
+			This is an alias to the distance option. It is retained for backwards compatibility
+		</label>
+		<description>
+			Distancia de buffer en unidades de mapa
+		</description>
+		<guisection>
+			Unused
+		</guisection>
+	</parameter>
+	<flag name="s">
+		<description>
+			Make outside corners straight
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			Don't make caps at the ends of polylines
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

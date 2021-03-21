@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.out.ogr">
+	<description>
+		Convierte a uno de los formatos vectoriales OGR soportados.
+	</description>
+	<keywords>
+		vectorial, exportar
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Tipo de elemento. La combinación de tipos no está soportada por todos los formatos.
+		</description>
+		<default>
+			line,boundary
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>kernel</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+			<value>
+				<name>face</name>
+			</value>
+		</values>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="dsn" type="string" required="yes" multiple="no">
+		<label>
+			Nombre del origen de datos de la salida OGR
+		</label>
+		<description>
+			Por ejemplo: Shapefile de ESRI: nombre o directorio para almacenamiento
+		</description>
+	</parameter>
+	<parameter name="olayer" type="string" required="no" multiple="no">
+		<label>
+			Nombre de capa OGR. Si no se especifica, se usará en nombre de entrado.
+		</label>
+		<description>
+			Por ejemplo: Shapefile de ESRI: nombre del shapefile
+		</description>
+		<guisection>
+			Creation
+		</guisection>
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="format" type="string" required="no" multiple="no">
+		<description>
+			Formato OGR
+		</description>
+		<default>
+			ESRI_Shapefile
+		</default>
+		<values>
+			<value>
+				<name>ESRI_Shapefile</name>
+			</value>
+			<value>
+				<name>MapInfo_File</name>
+			</value>
+			<value>
+				<name>TIGER</name>
+			</value>
+			<value>
+				<name>S57</name>
+			</value>
+			<value>
+				<name>DGN</name>
+			</value>
+			<value>
+				<name>Memory</name>
+			</value>
+			<value>
+				<name>BNA</name>
+			</value>
+			<value>
+				<name>CSV</name>
+			</value>
+			<value>
+				<name>GML</name>
+			</value>
+			<value>
+				<name>GPX</name>
+			</value>
+			<value>
+				<name>KML</name>
+			</value>
+			<value>
+				<name>GeoJSON</name>
+			</value>
+			<value>
+				<name>GMT</name>
+			</value>
+			<value>
+				<name>Geoconcept</name>
+			</value>
+		</values>
+		<guisection>
+			Creation
+		</guisection>
+	</parameter>
+	<parameter name="dsco" type="string" required="no" multiple="yes">
+		<description>
+			Opción de creación de conjunto de datos OGR (específica de formato, NOMBRE=VALOR)
+		</description>
+		<default>
+			
+		</default>
+		<guisection>
+			Creation
+		</guisection>
+	</parameter>
+	<parameter name="lco" type="string" required="no" multiple="yes">
+		<description>
+			Opción de creación de capa OGR (específica de formato, NOMBRE=VALOR)
+		</description>
+		<default>
+			
+		</default>
+		<guisection>
+			Creation
+		</guisection>
+	</parameter>
+	<flag name="c">
+		<description>
+			Exportar sólo elementos con categoría (etiquetados). En caso contrario se exportarán todos.
+		</description>
+	</flag>
+	<flag name="e">
+		<description>
+			Usar formato de archivo .prj tipo ESRI (sólo se aplica al Shapefile de salida)
+		</description>
+	</flag>
+	<flag name="p">
+		<description>
+			Exportar líneas como polígonos
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

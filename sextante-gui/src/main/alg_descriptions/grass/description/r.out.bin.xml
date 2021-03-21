@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.bin">
+	<description>
+		Exporta un ráster de GRASS a una secuencia binaria.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster de entrada
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el mapa binario de salida (usar salida=- para stdout)
+		</description>
+	</parameter>
+	<parameter name="null" type="integer" required="no" multiple="no">
+		<description>
+			Valor a escribir para nulos
+		</description>
+		<default>
+			0
+		</default>
+	</parameter>
+	<flag name="i">
+		<description>
+			Producir valores de categoría enteros, no valores de celda
+		</description>
+	</flag>
+	<flag name="h">
+		<description>
+			Exportar secuencia con cabecera compatible con GMT
+		</description>
+	</flag>
+	<flag name="b">
+		<description>
+			Generate BIL world and header files
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Byte swap output
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

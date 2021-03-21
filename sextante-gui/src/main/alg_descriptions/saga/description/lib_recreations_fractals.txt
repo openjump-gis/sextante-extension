@@ -1,0 +1,16 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Bifurcation
+ 1	- Pythagoras' Tree
+ 3	- Fractal Dimension of Grid Surface
+ 5	- Gaussian Landscapes
+
+type -h or --help for further information

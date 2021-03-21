@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.shaded.relief">
+	<description>
+		Crea un mapa compartido de relieve a partir de un mapa de elevaciones (DEM).
+	</description>
+	<keywords>
+		ráster, elevación
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Mapa de elevación de entrada
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="shadedmap" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa compartido de relieve de salida
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="altitude" type="float" required="no" multiple="no">
+		<description>
+			Altura del sol sobre el horizonte en grados
+		</description>
+		<default>
+			30
+		</default>
+		<values>
+			<value>
+				<name>0-90</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="azimuth" type="float" required="no" multiple="no">
+		<description>
+			Azimut del sol al Este del Norte en grados
+		</description>
+		<default>
+			270
+		</default>
+		<values>
+			<value>
+				<name>0-360</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="zmult" type="float" required="no" multiple="no">
+		<description>
+			Factor para exagerar el relive
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="scale" type="float" required="no" multiple="no">
+		<description>
+			Factor de escala para convertir unidades horizontales a unidades de elevación
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="units" type="string" required="no" multiple="no">
+		<description>
+			Set scaling factor (applies to lat./long. locations only, none: scale=1)
+		</description>
+		<default>
+			none
+		</default>
+		<values>
+			<value>
+				<name>none</name>
+			</value>
+			<value>
+				<name>meters</name>
+			</value>
+			<value>
+				<name>feet</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

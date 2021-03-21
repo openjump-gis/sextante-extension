@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.pov">
+	<description>
+		Convierte una capa de mapa ráster en un archivo de campo altura para POVRAY.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Nombre de un mapa ráster existente
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="tga" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del archivo POVRAY de salida (archivo de campo altura TGA)
+		</description>
+	</parameter>
+	<parameter name="hftype" type="integer" required="no" multiple="no">
+		<description>
+			Tipo de campo altura (0=alturas actuales 1=normalizado)
+		</description>
+	</parameter>
+	<parameter name="bias" type="float" required="no" multiple="no">
+		<description>
+			Elevation bias
+		</description>
+	</parameter>
+	<parameter name="scale" type="float" required="no" multiple="no">
+		<description>
+			Factor de escalado vertical
+		</description>
+	</parameter>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>
