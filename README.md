@@ -3,13 +3,13 @@ OpenJUMP extension for Sextante plugins
 
 This project is made of 4 modules
 
-##sextante-math
+## sextante-math
 
 Support library containing code for statistics
 
 Only depends on jama 1.0.3 (jsi library is a dependency of sextante-algorithm)
 
-##sextante-core
+## sextante-core
 
 Core Sextante library refactored to support locationtech version of JTS.
 It is renamed 2.0.0-SNAPSHOT version.
@@ -20,7 +20,7 @@ sextante-core has the following dependencies :
 - kxml2 2.3.0
 - sextante-math
 
-##sextante-gui
+## sextante-gui
 
 GUI components of Sextante. It depends on :
 - freechart 1.5.3
@@ -30,7 +30,7 @@ GUI components of Sextante. It depends on :
 - jgraph 5.13.0.0
 - sextante-core
 
-##sextante-algorithm
+## sextante-algorithm
 
 Algorithms for Sextante. Depends on
 - table-layout 4.3.0
