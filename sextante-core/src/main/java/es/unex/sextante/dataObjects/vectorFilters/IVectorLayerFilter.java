@@ -11,8 +11,6 @@ import es.unex.sextante.dataObjects.IFeature;
  */
 public interface IVectorLayerFilter {
 
-   public boolean accept(IFeature feature,
-                         int iIndex);
-
+   boolean accept(IFeature feature, int iIndex);
 
 }

@@ -53,7 +53,7 @@ public abstract class OutputFactory {
     */
    public abstract IVectorLayer getNewVectorLayer(String sName,
                                                   int iShapeType,
-                                                  Class[] types,
+                                                  Class<?>[] types,
                                                   String[] sFields,
                                                   IOutputChannel channel,
                                                   Object crs) throws UnsupportedOutputChannelException;
@@ -80,7 +80,7 @@ public abstract class OutputFactory {
     */
    public abstract IVectorLayer getNewVectorLayer(String sName,
                                                   int iShapeType,
-                                                  Class[] types,
+                                                  Class<?>[] types,
                                                   String[] sFields,
                                                   IOutputChannel channel,
                                                   Object crs,
@@ -167,7 +167,7 @@ public abstract class OutputFactory {
     * @return a new empty table object
     */
    public abstract ITable getNewTable(String sName,
-                                      Class[] types,
+                                      Class<?>[] types,
                                       String[] sFields,
                                       IOutputChannel channel) throws UnsupportedOutputChannelException;
 
@@ -256,11 +256,12 @@ public abstract class OutputFactory {
    /**
     * Returns a temporary filename with no extension
     * 
-    * @returns a temporary filename with no extension.
+    * @return a temporary filename with no extension.
     */
    public String getTempFilenameWithoutExtension() {
 
-      return getTempFolder() + File.separator + Long.toString(System.currentTimeMillis()) + Integer.toString(m_iCount++);
+      return getTempFolder() + File.separator +
+              System.currentTimeMillis() + "" + m_iCount++;
 
    }
 
