@@ -22,11 +22,6 @@
             <name>sourceforge jsi repository</name>
             <url>http://sourceforge.net/projects/jsi/files/m2_repo</url>
         </repository>
-        <!-- alternative repo for jsi (java spatial index) library -->
-        <!--repository>
-            <id>clojars.org</id>
-            <url>https://repo.clojars.org</url>
-        </repository-->
     </repositories>
 
     <dependencies>

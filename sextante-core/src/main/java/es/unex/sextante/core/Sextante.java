@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class Sextante {
 
-	private static SextanteLogHandler                             m_Logger = new SextanteLogHandler();
+	private static final SextanteLogHandler                       m_Logger = new SextanteLogHandler();
 
 	private static HashMap<String, String>                        m_Text;
 	private static HashMap<String, HashMap<String, GeoAlgorithm>> m_Algorithms;
@@ -26,8 +26,8 @@ public class Sextante {
 
 		AlgorithmsAndResources.addAlgorithmsAndPropertiesFromClasspath();
 
-		m_Text = new HashMap<String, String>();
-		m_Algorithms = new HashMap<String, HashMap<String, GeoAlgorithm>>();
+		m_Text = new HashMap<>();
+		m_Algorithms = new HashMap<>();
 
 		setLanguageStrings();
 
@@ -45,8 +45,8 @@ public class Sextante {
 	public static void initialize(final URL[] jars) {
 		AlgorithmsAndResources.addAlgorithmsAndPropertiesFromURLs(jars);
 
-		m_Text = new HashMap<String, String>();
-		m_Algorithms = new HashMap<String, HashMap<String, GeoAlgorithm>>();
+		m_Text = new HashMap<>();
+		m_Algorithms = new HashMap<>();
 
 		setLanguageStrings();
 
@@ -66,8 +66,8 @@ public class Sextante {
 
 		AlgorithmsAndResources.addAlgorithmsAndPropertiesFromFolder(sFolder);
 
-		m_Text = new HashMap<String, String>();
-		m_Algorithms = new HashMap<String, HashMap<String, GeoAlgorithm>>();
+		m_Text = new HashMap<>();
+		m_Algorithms = new HashMap<>();
 
 		setLanguageStrings();
 
@@ -139,16 +139,13 @@ public class Sextante {
 			try {
 				obj = alg.newInstance();
 			}
-			catch (final InstantiationException e) {
+			catch (final InstantiationException | IllegalAccessException e) {
 				Sextante.addErrorToLog(e);
 			}
-			catch (final IllegalAccessException e) {
-				Sextante.addErrorToLog(e);
-			}
-			if ((obj != null) && (obj instanceof GeoAlgorithm)) {
+			if ((obj instanceof GeoAlgorithm)) {
 				HashMap<String, GeoAlgorithm> group = m_Algorithms.get(sProviderGroup);
 				if (group == null) {
-					group = new HashMap<String, GeoAlgorithm>();
+					group = new HashMap<>();
 					m_Algorithms.put(sProviderGroup, group);
 				}
 				group.put(((GeoAlgorithm) obj).getCommandLineName(), (GeoAlgorithm) obj);
@@ -173,7 +170,7 @@ public class Sextante {
 		if (alg != null) {
 			HashMap<String, GeoAlgorithm> group = m_Algorithms.get(sProviderGroup);
 			if (group == null) {
-				group = new HashMap<String, GeoAlgorithm>();
+				group = new HashMap<>();
 				m_Algorithms.put(sProviderGroup, group);
 			}
 			group.put(alg.getCommandLineName(), alg);
@@ -287,9 +284,9 @@ public class Sextante {
 	 *                The filter to use
 	 * @return a map of algorithms in the library filtered according to a given filter.
 	 */
-	public static HashMap getAlgorithms(final IGeoAlgorithmFilter filter) {
+	public static HashMap<String, HashMap<String, GeoAlgorithm>> getAlgorithms(final IGeoAlgorithmFilter filter) {
 
-		final HashMap<String, HashMap<String, GeoAlgorithm>> algs = new HashMap<String, HashMap<String, GeoAlgorithm>>();
+		final HashMap<String, HashMap<String, GeoAlgorithm>> algs = new HashMap<>();
 
 		final Set<String> set = m_Algorithms.keySet();
 		final Iterator<String> iter = set.iterator();
@@ -304,7 +301,7 @@ public class Sextante {
 				if (filter.accept(alg)) {
 					HashMap<String, GeoAlgorithm> returnGroup = algs.get(key);
 					if (returnGroup == null) {
-						returnGroup = new HashMap<String, GeoAlgorithm>();
+						returnGroup = new HashMap<>();
 						algs.put(key, returnGroup);
 					}
 					returnGroup.put(key2, alg);
@@ -328,9 +325,7 @@ public class Sextante {
 	public static GeoAlgorithm getAlgorithmFromCommandLineName(final String sName) {
 
 		final Set<String> set = m_Algorithms.keySet();
-		final Iterator<String> iter = set.iterator();
-		while (iter.hasNext()) {
-			final String key = iter.next();
+		for (String key : set) {
 			final GeoAlgorithm alg = m_Algorithms.get(key).get(sName);
 			if (alg != null) {
 				return alg;
@@ -344,9 +339,7 @@ public class Sextante {
 	public static String getAlgorithmProviderName(final GeoAlgorithm alg) {
 
 		final Set<String> set = m_Algorithms.keySet();
-		final Iterator<String> iter = set.iterator();
-		while (iter.hasNext()) {
-			final String key = iter.next();
+		for (String key : set) {
 			final HashMap<String, GeoAlgorithm> algs = m_Algorithms.get(key);
 			final String sName = alg.getCommandLineName();
 			if (algs.containsKey(sName)) {
@@ -363,13 +356,13 @@ public class Sextante {
 	 */
 	private static void loadLibraryAlgorithms() {
 
-		final HashMap<String, GeoAlgorithm> algsMap = new HashMap<String, GeoAlgorithm>();
+		final HashMap<String, GeoAlgorithm> algsMap = new HashMap<>();
 
 		final String[] algs = AlgorithmsAndResources.getAlgorithmClassNames();
 
 		for (final String element : algs) {
 			try {
-				final Class clazz = Class.forName(element);
+				final Class<?> clazz = Class.forName(element);
 				final Object obj = clazz.newInstance();
 				if (obj instanceof GeoAlgorithm) {
 					final GeoAlgorithm alg = (GeoAlgorithm) obj;
@@ -419,7 +412,7 @@ public class Sextante {
 	 */
 	public static boolean isWindows() {
 		final String os = System.getProperty("os.name").toLowerCase();
-		return (os.indexOf("win") >= 0);
+		return (os.contains("win"));
 	}
 
 
@@ -430,7 +423,7 @@ public class Sextante {
 	 */
 	public static boolean isMacOSX() {
 		final String os = System.getProperty("os.name").toLowerCase();
-		return (os.indexOf("mac") >= 0);
+		return (os.contains("mac"));
 	}
 
 
@@ -441,7 +434,7 @@ public class Sextante {
 	 */
 	public static boolean isUnix() {
 		final String os = System.getProperty("os.name").toLowerCase();
-		return ((os.indexOf("nix") >= 0) || (os.indexOf("nux") >= 0));
+		return ((os.contains("nix")) || (os.contains("nux")));
 	}
 
 
@@ -454,9 +447,7 @@ public class Sextante {
 
 		int iCount = 0;
 		final Set<String> set = m_Algorithms.keySet();
-		final Iterator<String> iter = set.iterator();
-		while (iter.hasNext()) {
-			final String key = iter.next();
+		for (String key : set) {
 			iCount += m_Algorithms.get(key).size();
 
 		}
@@ -466,9 +457,6 @@ public class Sextante {
 
 
 	public static String getVersionNumber() {
-
-
-
 
 		return Sextante.getText("version_number");
 

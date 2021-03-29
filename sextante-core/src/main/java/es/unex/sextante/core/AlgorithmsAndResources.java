@@ -6,6 +6,7 @@ import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.StringTokenizer;
@@ -24,8 +25,8 @@ import java.util.zip.ZipFile;
  */
 public class AlgorithmsAndResources {
 
-   private static ArrayList<String> m_ClassNames      = new ArrayList<String>();
-   private static ArrayList<String> m_PropertiesFiles = new ArrayList<String>();
+   private static final ArrayList<String> m_ClassNames      = new ArrayList<>();
+   private static final ArrayList<String> m_PropertiesFiles = new ArrayList<>();
 
 
    /**
@@ -35,7 +36,7 @@ public class AlgorithmsAndResources {
     */
    public static String[] getAlgorithmClassNames() {
 
-      return m_ClassNames.toArray(new String[m_ClassNames.size()]);
+      return m_ClassNames.toArray(new String[0]);
 
    }
 
@@ -47,7 +48,7 @@ public class AlgorithmsAndResources {
     */
    public static String[] getPropertiesFilenames() {
 
-      return m_PropertiesFiles.toArray(new String[m_PropertiesFiles.size()]);
+      return m_PropertiesFiles.toArray(new String[0]);
 
    }
 
@@ -117,12 +118,12 @@ public class AlgorithmsAndResources {
          final File classpathFile = new File(URLDecoder.decode(url.getFile()));
          final String sFilename = classpathFile.getName();
          if (classpathFile.exists() && classpathFile.canRead()) {
-            if (sFilename.toLowerCase().endsWith(".jar") && sFilename.toLowerCase().startsWith("sextante")) {
+            if (sFilename.toLowerCase().endsWith(".jar") &&
+                sFilename.toLowerCase().startsWith("sextante")) {
                addAlgorithmsAndResourcesFromJarFile(classpathFile.getAbsolutePath());
             }
          }
       }
-
 
    }
 
@@ -140,11 +141,13 @@ public class AlgorithmsAndResources {
 
       final File folder = new File(sFolder);
       final File[] directoryFiles = folder.listFiles();
-      for (int i = 0; i < directoryFiles.length; i++) {
-         if (!directoryFiles[i].isDirectory()) {
-            final String sFilename = directoryFiles[i].getName();
-            if (sFilename.endsWith(".jar") && sFilename.startsWith("sextante")) {
-               addAlgorithmsAndResourcesFromJarFile(directoryFiles[i].getAbsolutePath());
+      if (directoryFiles != null) {
+         for (File file : directoryFiles) {
+            if (!file.isDirectory()) {
+               final String sFilename = file.getName();
+               if (sFilename.endsWith(".jar") && sFilename.startsWith("sextante")) {
+                  addAlgorithmsAndResourcesFromJarFile(file.getAbsolutePath());
+               }
             }
          }
       }
@@ -161,16 +164,19 @@ public class AlgorithmsAndResources {
 
       try {
          final ZipFile zip = new ZipFile(sFilename);
-         final Enumeration entries = zip.entries();
+         final Enumeration<? extends ZipEntry> entries = zip.entries();
          while (entries.hasMoreElements()) {
-            final ZipEntry entry = (ZipEntry) entries.nextElement();
+            final ZipEntry entry = entries.nextElement();
             final String sName = entry.getName();
             if (!entry.isDirectory()) {
-               if (sName.toLowerCase().endsWith("algorithm.class")) {
+               if (sName.endsWith("pom.properties")) {
+                  continue;
+               }
+               else if (sName.toLowerCase().endsWith("algorithm.class")) {
                   final String sClassName = sName.substring(0, sName.lastIndexOf('.')).replace('/', '.');
                   addAlgorithm(sClassName);
                }
-               else if (sName.endsWith(".properties") && (sName.indexOf("_") == -1)) {
+               else if (sName.endsWith(".properties") && !sName.contains("_")) {
                   addPropertiesFile(sName.substring(0, sName.lastIndexOf('.')));
                }
             }
