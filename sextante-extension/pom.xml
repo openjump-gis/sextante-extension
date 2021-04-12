@@ -55,7 +55,7 @@
             <artifactId>OpenJUMP</artifactId>
             <version>2.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/OpenJUMP-0.0.0-r6c6037006e98f46a22f3d937b67694a133e6167f.jar</systemPath>
+            <systemPath>${project.basedir}/lib/OpenJUMP-20210412-b68329e.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.locationtech.jts</groupId>
