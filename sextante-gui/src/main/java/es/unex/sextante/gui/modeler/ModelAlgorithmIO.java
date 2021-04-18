@@ -280,7 +280,8 @@ public class ModelAlgorithmIO {
                         sAlgName = parser.getAttributeValue("", KEY);
                         final String sCoords = parser.getAttributeValue("", COORDS);
                         if (alg == null) {
-                           throw new ModelIOException();
+                           throw new ModelIOException("Algorithm described in 'alg_cmd_line_name' attribute of 'algorithm' " +
+                               sAlgName + " element of " + file.getName() + " model has not been found");
                         }
                         model.addAlgorithm(alg, sAlgName);
                         if (!sCoords.equals("null")) {
