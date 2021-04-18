@@ -106,7 +106,7 @@ public class SextanteGUI {
    /**
     * Returns the current input factory
     * 
-    * @see IInputFactory.
+    * @see IInputFactory
     * @return the current input factory
     */
    public static IInputFactory getInputFactory() {
