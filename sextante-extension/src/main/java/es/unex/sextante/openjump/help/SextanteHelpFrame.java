@@ -44,7 +44,6 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
 import com.vividsolutions.jump.workbench.Logger;
-//import org.apache.log4j.Logger;
 import org.openjump.core.ui.io.file.FileNameExtensionFilter;
 
 import com.vividsolutions.jump.I18N;
@@ -64,15 +63,15 @@ import es.unex.sextante.gui.help.HelpIO;
 
 public class SextanteHelpFrame extends JInternalFrame {
 
-    private final String sSave = I18N
+    private final String sSave = I18N.JUMP
             .get("deejump.plugin.SaveLegendPlugIn.Save");
-    private final String sMenu = I18N
+    private final String sMenu = I18N.JUMP
             .get("org.openjump.core.ui.plugin.additionalResults.AdditionalResultsPlugIn.Menu");
-    private final String sSaved = I18N
+    private final String sSaved = I18N.JUMP
             .get("org.openjump.core.ui.plugin.raster.RasterImageLayerPropertiesPlugIn.file.saved");
-    private final String sClose = I18N
+    private final String sClose = I18N.JUMP
             .get("ui.plugin.imagery.ImageLayerManagerDialog.Close");
-    private final String SCouldNotSave = I18N
+    private final String SCouldNotSave = I18N.JUMP
             .get("org.openjump.core.ui.plugin.additionalResults.AdditionalResultsPlugIn.Could-not-save-selected-result");
     private static String sName = Sextante.getText("Help");
     private JSplitPane jSplitPane;
@@ -515,7 +514,7 @@ public class SextanteHelpFrame extends JInternalFrame {
     }
 
     protected void notsaved() {
-        JOptionPane.showMessageDialog(null, SCouldNotSave, I18N.get(sName),
+        JOptionPane.showMessageDialog(null, SCouldNotSave, I18N.JUMP.get(sName),
                 JOptionPane.WARNING_MESSAGE);
     }
 

@@ -114,7 +114,7 @@ public class Utils {
    /**
     * Formats time for output.
     *
-    * @param bytes
+    * @param ms
     *                Number of milliseconds.
     * @return "x,yyys" form.
     */
@@ -247,7 +247,7 @@ public class Utils {
    /**
     * Quick sort an array of Strings.
     *
-    * @param string
+    * @param strings
     *                Strings to be sorted
     */
 
@@ -401,7 +401,7 @@ public class Utils {
    /**
     * Counts things in an Enumeration (and destroys it as a side effect).
     *
-    * @param enum
+    * @param enu
     *                The enumeration, in the start position.
     * @return Elements found.
     */

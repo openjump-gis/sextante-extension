@@ -2,52 +2,62 @@ package es.unex.sextante.openjump.extensions;
 
 import javax.swing.ImageIcon;
 
+import com.vividsolutions.jump.I18N;
 import com.vividsolutions.jump.workbench.plugin.AbstractPlugIn;
 import com.vividsolutions.jump.workbench.plugin.PlugInContext;
 import com.vividsolutions.jump.workbench.ui.cursortool.QuasimodeTool;
 
-import es.unex.sextante.openjump.language.I18NPlug;
+import java.util.Objects;
+
 
 /**
- * @description: Following Victor Oyala Blog
- *               (http://sextantegis.blogspot.it/2009
- *               /05/herramientas-para-usuarios-gvsig.html) this functionality
- *               allows to interactive get coordinates of points from a view.
- *               Thos points can be used later on Sextante Algorithms,
+ * Following Victor Oyala Blog
+ * (http://sextantegis.blogspot.it/2009/05/herramientas-para-usuarios-gvsig.html)
+ * this functionality allows to interactive get coordinates of points from a view.
+ * Those points can be used later on Sextante Algorithms,
  * 
  * @author Giuseppe Aruta oct 2016
  *
- **/
-
+ */
 public class SextantePickCoordinatesPlugIn extends AbstractPlugIn {
 
-    public static final String NAME = I18NPlug
-            .getI18N("es.unex.sextante.kosmo.extensions.SextantePickCooridnates.pick-coordinates");
+  private static final I18N i18n = I18N.getInstance("es.unex.sextante.openjump");
 
-    @Override
-    public boolean execute(PlugInContext context) throws Exception {
-        reportNothingToUndoYet(context);
+  public static final String NAME = i18n
+      .get("es.unex.sextante.kosmo.extensions.SextantePickCoordinates.pick-coordinates");
 
-        context.getLayerViewPanel().setCurrentCursorTool(
-                QuasimodeTool
-                        .createWithDefaults(new SextantePickCoordinatesTool(
-                                context)));
 
-        return true;
-    }
+  @Override
+  public boolean execute(PlugInContext context) {
+    reportNothingToUndoYet(context);
+    context.getLayerViewPanel().setCurrentCursorTool(
+        QuasimodeTool.createWithDefaults(
+            new SextantePickCoordinatesTool(context)
+        )
+    );
+    return true;
+  }
 
-    public ImageIcon getIcon() {
-        return new ImageIcon(getClass().getResource("bullseye.png"));
-    }
 
-    @Override
-    public String getName() {
-        return NAME;
-    }
+  @Override
+  public ImageIcon getIcon() {
+    return new ImageIcon(Objects.requireNonNull(
+        getClass().getResource("bullseye.png"),
+        "Could not get resource bullseye.png from " + getClass())
+    );
+  }
 
-    public void initialize(PlugInContext context) throws Exception {
-        context.getFeatureInstaller().addMainMenuPlugin(this,
-                new String[] { "Sextante" }, getName(), false, getIcon(), null);
-    }
+
+  @Override
+  public String getName() {
+    return NAME;
+  }
+
+
+  @Override
+  public void initialize(PlugInContext context) throws Exception {
+    context.getFeatureInstaller().addMainMenuPlugin(this,
+        new String[] { "Sextante" }, getName(), false, getIcon(), null);
+  }
 
 }

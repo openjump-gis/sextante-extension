@@ -75,7 +75,7 @@ public class ToolboxDialog
 
    public void setAlgorithmsCount(final int iCount) {
 
-      setTitle("SEXTANTE. " + Integer.toString(iCount) + " " + Sextante.getText("Algorithms"));
+      setTitle("SEXTANTE. " + iCount + " " + Sextante.getText("Algorithms"));
 
    }
 
