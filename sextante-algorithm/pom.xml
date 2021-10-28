@@ -1,65 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>sextante</artifactId>
-        <groupId>es.unex.sextante</groupId>
-        <version>2.1.0</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>sextante</artifactId>
+    <groupId>es.unex.sextante</groupId>
+    <version>${project.build.version}</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sextante-algorithm</artifactId>
+  <artifactId>sextante-algorithm</artifactId>
 
-    <repositories>
-        <repository>
-            <id>n52-releases</id>
-            <name>52n Releases</name>
-            <url>http://52north.org/maven/project-sites</url>
-        </repository>
-        <repository>
-            <id>jsi.sourceforge.net</id>
-            <name>sourceforge jsi repository</name>
-            <url>http://sourceforge.net/projects/jsi/files/m2_repo</url>
-        </repository>
-    </repositories>
-
-    <dependencies>
-        <dependency>
-            <groupId>info.clearthought</groupId>
-            <artifactId>table-layout</artifactId>
-            <version>${table-layout.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.scijava</groupId>
-            <artifactId>jep</artifactId>
-            <version>2.4.2</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sourceforge.jsi</groupId>
-            <artifactId>jsi</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>net.lupinho.gishur</groupId>
-            <artifactId>gishur_core</artifactId>
-            <version>2.5</version>
-        </dependency>
-        <dependency>
-            <groupId>net.lupinho.gishur</groupId>
-            <artifactId>gishur_x</artifactId>
-            <version>2.5</version>
-        </dependency>
-        <dependency>
-            <groupId>es.unex.sextante</groupId>
-            <artifactId>sextante-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>es.unex.sextante</groupId>
-            <artifactId>sextante-gui</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>net.sourceforge.jsi</groupId>
+      <artifactId>jsi</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.scijava</groupId>
+      <artifactId>jep</artifactId>
+      <version>2.4.2</version>
+    </dependency>
+    <dependency>
+      <groupId>net.lupinho.gishur</groupId>
+      <artifactId>gishur_core</artifactId>
+      <version>2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>net.lupinho.gishur</groupId>
+      <artifactId>gishur_x</artifactId>
+      <version>2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>es.unex.sextante</groupId>
+      <artifactId>sextante-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>es.unex.sextante</groupId>
+      <artifactId>sextante-gui</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
 
 </project>
