@@ -1,46 +1,47 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <groupId>es.unex.sextante</groupId>
-    <artifactId>sextante</artifactId>
-    <packaging>pom</packaging>
-    <version>2.1.0</version>
-    <modules>
-        <module>sextante-math</module>
-        <module>sextante-core</module>
-        <module>sextante-gui</module>
-        <module>sextante-algorithm</module>
-        <module>sextante-extension</module>
-    </modules>
+  <groupId>es.unex.sextante</groupId>
+  <artifactId>sextante</artifactId>
+  <packaging>pom</packaging>
+  <version>2.1.0</version>
+  <modules>
+    <module>sextante-math</module>
+    <module>sextante-core</module>
+    <module>sextante-gui</module>
+    <module>sextante-algorithm</module>
+    <module>sextante-extension</module>
+  </modules>
 
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <oj.version>2.0-main-SNAPSHOT</oj.version>
-        <jts.version>1.18.1</jts.version>
-        <jfreechart.version>1.5.3</jfreechart.version>
-        <table-layout.version>4.3.0</table-layout.version>
-    </properties>
+    <oj.version>2.0-main-SNAPSHOT</oj.version>
+    <jts.version>1.18.1</jts.version>
+    <jfreechart.version>1.5.3</jfreechart.version>
+    <table-layout.version>4.3.0</table-layout.version>
+  </properties>
 
-    <repositories>
-        <repository>
-          <id>ojrepo</id>
-          <name>OpenJUMP Snapshot Repository</name>
-          <url>https://ojrepo.soldin.de/</url>
-        </repository>
-        <repository>
-          <id>clojars</id>
-          <name>clojars</name>
-          <url>https://clojars.org/repo/</url>
-        </repository>
-        <repository>
-          <id>n52-releases</id>
-          <name>52n Releases</name>
-          <url>https://52north.org/maven/repo/releases/</url>
-        </repository>
-    </repositories>
+  <repositories>
+    <repository>
+      <id>ojrepo</id>
+      <name>OpenJUMP Snapshot Repository</name>
+      <url>https://ojrepo.soldin.de/</url>
+    </repository>
+    <repository>
+      <id>clojars</id>
+      <name>clojars</name>
+      <url>https://clojars.org/repo/</url>
+    </repository>
+    <repository>
+      <id>n52-releases</id>
+      <name>52n Releases</name>
+      <url>https://52north.org/maven/repo/releases/</url>
+    </repository>
+  </repositories>
 
 </project>
