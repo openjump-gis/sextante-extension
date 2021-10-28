@@ -2,9 +2,11 @@ package es.unex.sextante.openjump.extensions;
 
 import com.vividsolutions.jump.workbench.plugin.Extension;
 import com.vividsolutions.jump.workbench.plugin.PlugInContext;
-
+import com.vividsolutions.jump.I18N;
 
 public class SextanteExtension extends Extension {
+
+  public static final I18N I18N = com.vividsolutions.jump.I18N.getInstance("es.unex.sextante.openjump");
 
   /*
    * Version History
