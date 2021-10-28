@@ -13,7 +13,7 @@
     <module>sextante-core</module>
     <module>sextante-gui</module>
     <module>sextante-algorithm</module>
-    <module>sextante-extension</module>
+    <module>sextante-openjump</module>
   </modules>
 
   <properties>
