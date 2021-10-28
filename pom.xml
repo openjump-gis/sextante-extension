@@ -17,19 +17,30 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <version.number>0.0.0</version.number>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <oj.version>2.0-main-SNAPSHOT</oj.version>
         <jts.version>1.18.1</jts.version>
         <jfreechart.version>1.5.3</jfreechart.version>
         <table-layout.version>4.3.0</table-layout.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <repositories>
+        <repository>
+          <id>ojrepo</id>
+          <name>OpenJUMP Snapshot Repository</name>
+          <url>https://ojrepo.soldin.de/</url>
+        </repository>
+        <repository>
+          <id>clojars</id>
+          <name>clojars</name>
+          <url>https://clojars.org/repo/</url>
+        </repository>
+        <repository>
+          <id>n52-releases</id>
+          <name>52n Releases</name>
+          <url>https://52north.org/maven/repo/releases/</url>
+        </repository>
+    </repositories>
+
 </project>
