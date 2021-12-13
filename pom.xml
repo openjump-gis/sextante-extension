@@ -24,10 +24,8 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+    <!-- set OJ version this extension is to be compiled against -->
     <oj.version>2.0-main-SNAPSHOT</oj.version>
-    <jts.version>1.18.1</jts.version>
-    <jfreechart.version>1.5.3</jfreechart.version>
-    <table-layout.version>4.3.0</table-layout.version>
   </properties>
 
   <repositories>
