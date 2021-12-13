@@ -12,10 +12,11 @@
   <artifactId>sextante-core</artifactId>
 
   <dependencies>
+    <!-- OJ2 dependency provides jts and all the others -->
     <dependency>
-      <groupId>org.locationtech.jts</groupId>
-      <artifactId>jts-core</artifactId>
-      <version>${jts.version}</version>
+      <groupId>org.openjump</groupId>
+      <artifactId>OpenJUMP</artifactId>
+      <version>${oj.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jfree</groupId>
