@@ -21,7 +21,7 @@
     <dependency>
       <groupId>org.jfree</groupId>
       <artifactId>jfreechart</artifactId>
-      <version>${jfreechart.version}</version>
+      <version>1.5.3</version>
     </dependency>
     <dependency>
       <groupId>net.sf.kxml</groupId>
@@ -34,4 +34,34 @@
       <version>${project.version}</version>
     </dependency>
   </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <!-- fix "not covered by lifecycle configuration" Eclipse issue -->
+            <?m2e execute onConfiguration,onIncremental?>
+            <id>copy-dependencies</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <includeScope>runtime</includeScope>
+              <outputDirectory>${project.build.directory}/libs/</outputDirectory>
+              <excludeTransitive>true</excludeTransitive>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteSnapshots>false</overWriteSnapshots>
+              <overWriteIfNewer>true</overWriteIfNewer>
+              <excludeGroupIds></excludeGroupIds>
+              <excludeArtifactIds>OpenJUMP,sextante-math</excludeArtifactIds>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
