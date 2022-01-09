@@ -1,28 +1,33 @@
 package es.unex.sextante.openjump.extensions;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.*;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import java.util.List;
+import java.util.Objects;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import javax.swing.ImageIcon;
 
 import com.vividsolutions.jump.I18N;
-import com.vividsolutions.jump.workbench.JUMPWorkbench;
 import com.vividsolutions.jump.workbench.Logger;
-import com.vividsolutions.jump.workbench.plugin.PlugIn;
+import com.vividsolutions.jump.workbench.plugin.AbstractPlugIn;
+import com.vividsolutions.jump.workbench.plugin.EnableCheck;
+import com.vividsolutions.jump.workbench.plugin.EnableCheckFactory;
 import com.vividsolutions.jump.workbench.plugin.PlugInContext;
 
+import es.unex.sextante.core.AlgorithmsAndResources;
+import es.unex.sextante.core.GeoAlgorithm;
 import es.unex.sextante.core.Sextante;
+import es.unex.sextante.gui.core.GUIResources;
 import es.unex.sextante.gui.core.IAlgorithmProvider;
 import es.unex.sextante.gui.core.SextanteGUI;
+import es.unex.sextante.openjump.Finder;
 import es.unex.sextante.openjump.core.OpenJUMPOutputFactory;
 import es.unex.sextante.openjump.gui.OpenJUMPGUIFactory;
 import es.unex.sextante.openjump.gui.OpenJUMPInputFactory;
 import es.unex.sextante.openjump.gui.OpenJUMPPostProcessTaskFactory;
 
-public class SextanteToolboxPlugin implements PlugIn {
+public class SextanteToolboxPlugin extends AbstractPlugIn {
 
   private final I18N i18n = I18N.getInstance("es.unex.sextante.openjump");
 
@@ -57,26 +62,47 @@ public class SextanteToolboxPlugin implements PlugIn {
     return i18n.get("es.unex.sextante.kosmo.extensions.SextanteToolboxPlugin.Sextante-toolbox");
   }
 
-
-  public void initialize_old(final PlugInContext context) {
-    context.getFeatureInstaller().addMainMenuPlugin(this,
-        new String[]{"Sextante"}, getName(), false, getIcon(), null);
-  }
-
-
   @Override
   public void initialize(PlugInContext context) throws Exception {
-    final String sextantePath = getJarsFolder();
-    Sextante.initialize(sextantePath);
-    SextanteGUI.setSextantePath(sextantePath);
+    super.initialize(context);
 
-    final List<IAlgorithmProvider> algorithmProviders = getAlgorithmProvidersFromFolder(sextantePath);
-    for (final IAlgorithmProvider provider : algorithmProviders) {
-      if (!containsProvider(provider)) {
-        SextanteGUI.addAlgorithmProvider(provider);
+    File folder = context.getWorkbenchContext().getWorkbench().getPlugInManager().findFileOrFolderInExtensionDirs("sextante");
+    if ( folder == null || !folder.exists() || !folder.isDirectory() ) {
+      throw new IllegalArgumentException("Invalid sextante folder '"+folder+"'! Initialize failed.");
+    }
+
+    String sextantePath = folder.getAbsolutePath();
+
+    // find algos/i18n files
+    List<Class<GeoAlgorithm>> algorithmClasses = Finder.findClassesImplementingOrExtending(GeoAlgorithm.class,null);
+    List<String> paths = Finder.findResourcesMatching(Pattern.compile(".*i18n/[^_/]+\\.properties$", Pattern.CASE_INSENSITIVE));
+    
+    List<String> algorithmClassNames = algorithmClasses.stream().map(o -> o.getName()).collect(Collectors.toList());
+    AlgorithmsAndResources.addAlgorithmClassNames(algorithmClassNames.toArray(new String[0]));
+    paths = paths.stream().map(p -> p.substring(0, p.lastIndexOf('.'))).collect(Collectors.toList());
+    AlgorithmsAndResources.addPropertiesFilenames(paths.toArray(new String[0]));
+    Sextante.initialize();
+
+    // find and add algorithmProviderClasses
+    final List<Class<IAlgorithmProvider>> algorithmProviderClasses = Finder.findClassesImplementingOrExtending(IAlgorithmProvider.class,null);
+    for (final Class<IAlgorithmProvider> algoProviderClass : algorithmProviderClasses) {
+      SextanteGUI.addAlgorithmProvider(algoProviderClass.newInstance());
+    }
+    // find and add ParametersPanels
+    List<String> panels = Finder.findResourcesMatching(Pattern.compile("(?i).*[^/]+parameterspanel.class$"));
+    for (String sName : panels) {
+      if (sName.toLowerCase().endsWith("parameterspanel.class")) {
+         final String sClassName = sName.substring(0, sName.lastIndexOf('.')).replace('/', '.');
+         GUIResources.addParameterPanelClassNames(sClassName);
+      }
+      if (sName.toLowerCase().endsWith("modelerparameterspanel.class")) {
+         final String sClassName = sName.substring(0, sName.lastIndexOf('.')).replace('/', '.');
+         GUIResources.addModelerParameterPanelClassNames(sClassName);
       }
     }
-    SextanteGUI.initialize(sextantePath);
+
+    SextanteGUI.setSextantePath(sextantePath);
+    SextanteGUI.initialize();
     SextanteGUI.setMainFrame(context.getWorkbenchFrame());
     SextanteGUI.setOutputFactory(new OpenJUMPOutputFactory(context
         .getWorkbenchContext()));
@@ -85,37 +111,13 @@ public class SextanteToolboxPlugin implements PlugIn {
         .getWorkbenchContext()));
     SextanteGUI
         .setPostProcessTaskFactory(new OpenJUMPPostProcessTaskFactory());
-    Logger.info("Sextante help file in folder: "
-        + getJarsFolder().concat(File.separator).concat("help"));
+    Logger.info("Sextante help files in folder: "
+        + SextanteGUI.getHelpPath());
 
     context.getFeatureInstaller().addMainMenuPlugin(this,
         new String[]{"Sextante"}, getName(), false, getIcon(), null);
 
   }
-
-
-  private String getJarsFolder() {
-    final String path = JUMPWorkbench.getInstance().getPlugInManager()
-        .getPlugInDirectory().getAbsolutePath();
-    final String sPath = path.concat(File.separator).concat("sextante");
-    //   LOGGER.info("Sextante jar folder: " + sPath);
-    return sPath;
-  }
-
-
-  // [Giuseppe Aruta 2018-04-08] Activated connection to external providers (Grass, Saga, R...)
-  private boolean containsProvider(IAlgorithmProvider provider) {
-    final List<IAlgorithmProvider> algorithmProviders = SextanteGUI
-        .getAlgorithmProviders();
-    for (final IAlgorithmProvider iAlgorithmProvider : algorithmProviders) {
-      if (iAlgorithmProvider.getClass().isAssignableFrom(
-          provider.getClass())) {
-        return true;
-      }
-    }
-    return false;
-  }
-
 
   public ImageIcon getIcon() {
     return new ImageIcon(Objects.requireNonNull(
@@ -124,71 +126,78 @@ public class SextanteToolboxPlugin implements PlugIn {
     );
   }
 
+  @Override
+  public EnableCheck getEnableCheck() {
+    EnableCheckFactory checkFactory = EnableCheckFactory.getInstance(getContext().getWorkbenchContext());
 
-  private List<IAlgorithmProvider> getAlgorithmProvidersFromFolder(
-      String sFolder) {
-    final Set<String> algorithmProviderNames = new TreeSet<String>();
-    final List<IAlgorithmProvider> providers = new ArrayList<IAlgorithmProvider>();
-
-    final File folder = new File(sFolder);
-    final File[] directoryFiles = folder.listFiles();
-    for (int i = 0; i < directoryFiles.length; i++) {
-      if (!directoryFiles[i].isDirectory()) {
-        final String sFilename = directoryFiles[i].getName();
-        if (sFilename.endsWith(".jar")) {
-          algorithmProviderNames
-              .addAll(addAlgorithmProvidersFromFolder(directoryFiles[i]
-                  .getAbsolutePath()));
-        }
-      }
-    }
-    for (final String algProviderName : algorithmProviderNames) {
-      try {
-        final Class<?> clazz = Class.forName(algProviderName);
-        if (!clazz.isInterface()) {
-          final Object obj = clazz.newInstance();
-          if ((obj instanceof IAlgorithmProvider)) {
-            providers.add((IAlgorithmProvider) obj);
-          }
-        }
-      } catch (final Exception ex) {
-        Logger.error("Error on loading Sextante algorithm provider: ", ex);
-      }
-    }
-    return providers;
+    return checkFactory.createTaskWindowMustBeActiveCheck();
   }
 
 
-  private List<String> addAlgorithmProvidersFromFolder(String sFilename) {
-    final ArrayList<String> algorithmProviders = new ArrayList<String>();
-    ZipFile zip = null;
-    try {
-      zip = new ZipFile(sFilename);
-      final Enumeration<? extends ZipEntry> entries = zip.entries();
-      while (entries.hasMoreElements()) {
-        final ZipEntry entry = entries.nextElement();
-        final String sName = entry.getName();
-        if ((!entry.isDirectory())
-            && (sName.toLowerCase()
-            .endsWith("algorithmprovider.class"))) {
-          final String sClassName = sName.substring(0,
-              sName.lastIndexOf('.')).replace('/', '.');
+//  private List<IAlgorithmProvider> getAlgorithmProvidersFromFolderOld(
+//      File folder) {
+//    final Set<String> algorithmProviderNames = new TreeSet<String>();
+//    final List<IAlgorithmProvider> providers = new ArrayList<IAlgorithmProvider>();
+//
+//    final File[] directoryFiles = folder.listFiles();
+//    for (int i = 0; i < directoryFiles.length; i++) {
+//      if (directoryFiles[i].isDirectory()) {
+//        
+//      } else {
+//        final String sFilename = directoryFiles[i].getName();
+//        if (sFilename.toLowerCase().endsWith(".jar")) {
+//          algorithmProviderNames
+//              .addAll(addAlgorithmProvidersFromZipfile(directoryFiles[i]
+//                  .getAbsolutePath()));
+//        }
+//      }
+//    }
+//    for (final String algProviderName : algorithmProviderNames) {
+//      try {
+//        final Class<?> clazz = Class.forName(algProviderName);
+//        if (!clazz.isInterface()) {
+//          final Object obj = clazz.newInstance();
+//          if ((obj instanceof IAlgorithmProvider)) {
+//            providers.add((IAlgorithmProvider) obj);
+//          }
+//        }
+//      } catch (final Exception ex) {
+//        Logger.error("Error on loading Sextante algorithm provider: ", ex);
+//      }
+//    }
+//    return providers;
+//  }
 
-          algorithmProviders.add(sClassName);
-        }
-      }
-      return algorithmProviders;
-    } catch (final Exception e) {
-      Logger.error("Error on adding Sextante algorithm provider: ", e);
-    } finally {
-      if (zip != null) {
-        try {
-          zip.close();
-        } catch (final IOException ignored) {
-        }
-      }
-    }
-    return algorithmProviders;
-  }
-
+//  // TODO: remove
+//  private List<String> addAlgorithmProvidersFromZipfile(String sFilename) {
+//    final ArrayList<String> algorithmProviders = new ArrayList<String>();
+//    ZipFile zip = null;
+//    try {
+//      zip = new ZipFile(sFilename);
+//      final Enumeration<? extends ZipEntry> entries = zip.entries();
+//      while (entries.hasMoreElements()) {
+//        final ZipEntry entry = entries.nextElement();
+//        final String sName = entry.getName();
+//        if ((!entry.isDirectory())
+//            && (sName.toLowerCase()
+//            .endsWith("algorithmprovider.class"))) {
+//          final String sClassName = sName.substring(0,
+//              sName.lastIndexOf('.')).replace('/', '.');
+//
+//          algorithmProviders.add(sClassName);
+//        }
+//      }
+//      return algorithmProviders;
+//    } catch (final Exception e) {
+//      Logger.error("Error on adding Sextante algorithm provider: ", e);
+//    } finally {
+//      if (zip != null) {
+//        try {
+//          zip.close();
+//        } catch (final IOException ignored) {
+//        }
+//      }
+//    }
+//    return algorithmProviders;
+//  }
 }
