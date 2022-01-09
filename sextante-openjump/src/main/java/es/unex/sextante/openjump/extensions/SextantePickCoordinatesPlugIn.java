@@ -4,6 +4,8 @@ import javax.swing.ImageIcon;
 
 import com.vividsolutions.jump.I18N;
 import com.vividsolutions.jump.workbench.plugin.AbstractPlugIn;
+import com.vividsolutions.jump.workbench.plugin.EnableCheck;
+import com.vividsolutions.jump.workbench.plugin.EnableCheckFactory;
 import com.vividsolutions.jump.workbench.plugin.PlugInContext;
 import com.vividsolutions.jump.workbench.ui.cursortool.QuasimodeTool;
 
@@ -56,8 +58,16 @@ public class SextantePickCoordinatesPlugIn extends AbstractPlugIn {
 
   @Override
   public void initialize(PlugInContext context) throws Exception {
+    super.initialize(context);
+    
     context.getFeatureInstaller().addMainMenuPlugin(this,
         new String[] { "Sextante" }, getName(), false, getIcon(), null);
   }
 
+  @Override
+  public EnableCheck getEnableCheck() {
+    EnableCheckFactory checkFactory = EnableCheckFactory.getInstance(getContext().getWorkbenchContext());
+
+    return checkFactory.createTaskWindowMustBeActiveCheck();
+  }
 }

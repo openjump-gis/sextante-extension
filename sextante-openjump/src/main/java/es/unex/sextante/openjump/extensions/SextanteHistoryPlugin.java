@@ -3,6 +3,9 @@ package es.unex.sextante.openjump.extensions;
 import javax.swing.ImageIcon;
 
 import com.vividsolutions.jump.I18N;
+import com.vividsolutions.jump.workbench.plugin.AbstractPlugIn;
+import com.vividsolutions.jump.workbench.plugin.EnableCheck;
+import com.vividsolutions.jump.workbench.plugin.EnableCheckFactory;
 import com.vividsolutions.jump.workbench.plugin.PlugIn;
 import com.vividsolutions.jump.workbench.plugin.PlugInContext;
 
@@ -11,7 +14,7 @@ import es.unex.sextante.gui.history.History;
 
 import java.util.Objects;
 
-public class SextanteHistoryPlugin implements PlugIn {
+public class SextanteHistoryPlugin extends AbstractPlugIn {
 
   private final I18N i18n = I18N.getInstance("es.unex.sextante.openjump");
 
@@ -28,6 +31,8 @@ public class SextanteHistoryPlugin implements PlugIn {
 
 
   public void initialize(final PlugInContext context) throws Exception {
+    super.initialize(context);
+
     History.startSession();
     context.getFeatureInstaller().addMainMenuPlugin(this,
         new String[] { "Sextante" }, getName(), false, getIcon(), null);
@@ -41,4 +46,10 @@ public class SextanteHistoryPlugin implements PlugIn {
     );
   }
 
+  @Override
+  public EnableCheck getEnableCheck() {
+    EnableCheckFactory checkFactory = EnableCheckFactory.getInstance(getContext().getWorkbenchContext());
+
+    return checkFactory.createTaskWindowMustBeActiveCheck();
+  }
 }
