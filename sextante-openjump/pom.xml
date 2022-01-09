@@ -22,6 +22,11 @@
       <artifactId>sextante-gui</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <dependency>
+      <groupId>io.github.classgraph</groupId>
+      <artifactId>classgraph</artifactId>
+      <version>4.8.138</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -107,6 +112,41 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <!-- fix "not covered by lifecycle configuration" Eclipse issue -->
+            <?m2e execute onConfiguration,onIncremental?>
+            <id>copy-dependencies</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <includeScope>runtime</includeScope>
+              <outputDirectory>${project.build.directory}/libs/</outputDirectory>
+              <excludeTransitive>true</excludeTransitive>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteSnapshots>false</overWriteSnapshots>
+              <overWriteIfNewer>true</overWriteIfNewer>
+              <excludeGroupIds>es.unex.sextante</excludeGroupIds>
+              <excludeArtifactIds></excludeArtifactIds>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.1</version>
+        <configuration>
+          <excludes>
+            <exclude>sextante/</exclude>
+          </excludes>
+        </configuration>
       </plugin>
     </plugins>
   </build>

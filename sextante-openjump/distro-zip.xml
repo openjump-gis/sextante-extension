@@ -7,6 +7,17 @@
     <format>zip</format>
   </formats>
   <includeBaseDirectory>false</includeBaseDirectory>
+  <fileSets>
+    <fileSet>
+      <!-- sextante/ files folder -->
+      <directory>${project.build.outputDirectory}</directory>
+      <outputDirectory>/</outputDirectory>
+      <includes>
+        <include>sextante/**</include>
+      </includes>
+      <filtered>false</filtered>
+    </fileSet>
+  </fileSets>
   <dependencySets>
     <dependencySet>
       <!-- place extension jar in folder root to be parsed by OJ -->
