@@ -5,6 +5,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.StringTokenizer;
 import java.util.zip.ZipEntry;
@@ -58,7 +59,6 @@ public class GUIResources {
       addResourcesFromURLs(webappClasses);
 
    }
-
 
    public static void addResourcesFromURLs(final URL[] urls) {
 
@@ -148,4 +148,11 @@ public class GUIResources {
 
    }
 
+   public static void addParameterPanelClassNames( String... names ) {
+     m_ParameterPanelNames.addAll(Arrays.asList(names));
+   }
+
+   public static void addModelerParameterPanelClassNames( String... names ) {
+     m_ModelerParameterPanelNames.addAll(Arrays.asList(names));
+   }
 }

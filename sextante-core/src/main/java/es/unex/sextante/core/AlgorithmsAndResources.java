@@ -8,11 +8,11 @@ import java.net.URLClassLoader;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.StringTokenizer;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-
 
 /**
  * 
@@ -40,6 +40,9 @@ public class AlgorithmsAndResources {
 
    }
 
+   public static void addAlgorithmClassNames( String... names) {
+     m_ClassNames.addAll(Arrays.asList(names));
+   }
 
    /**
     * Returns an array of names of properties files containing resource strings for i18N
@@ -52,6 +55,9 @@ public class AlgorithmsAndResources {
 
    }
 
+   public static void addPropertiesFilenames( String... names) {
+     m_PropertiesFiles.addAll(Arrays.asList(names));
+   }
 
    /**
     * Adds a new algorithm to the list or currently available ones

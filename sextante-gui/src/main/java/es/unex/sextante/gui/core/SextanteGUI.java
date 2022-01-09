@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javax.swing.ImageIcon;
@@ -30,7 +31,6 @@ import es.unex.sextante.gui.modeler.ModelerAlgorithmProvider;
 import es.unex.sextante.gui.settings.Setting;
 import es.unex.sextante.gui.settings.SextanteFolderSettings;
 import es.unex.sextante.gui.settings.SextanteGeneralSettings;
-
 
 /**
  * This class centralizes most actions related to the SextanteGUI, containing methods to show dialogs and retrieve basic values
@@ -223,12 +223,26 @@ public class SextanteGUI {
     *                the algorithm provider to add
     */
    public static void addAlgorithmProvider(final IAlgorithmProvider provider) {
-
-      //providers are added at the beginning of the array, because models and scripts might depend on them
-      m_AlgorithmProviders.add(0, provider);
-
+     if (isAlgorithmProviderAlreadyRegistered (provider)) {
+       // TODO: exclude Script-/ModelerAlgorithmProvider added statically above?
+       Sextante.addErrorToLog(
+           "Another instance of AlgorithmProvider '" + provider.getName() + "' already registered. Skip it.");
+       return;
+     }
+     // providers are added at the beginning of the array, because models and scripts
+     // might depend on them
+     m_AlgorithmProviders.add(0, provider);
    }
 
+   public static boolean isAlgorithmProviderAlreadyRegistered(IAlgorithmProvider provider) {
+     final List<IAlgorithmProvider> registeredAlgoProviders = getAlgorithmProviders();
+     for (final IAlgorithmProvider registeredAlgoProvider : registeredAlgoProviders) {
+       if (provider.getClass().equals(registeredAlgoProvider.getClass())) {
+         return true;
+       }
+     }
+     return false;
+   }
 
    /**
     * Initializes the GUI parameters and resources. It takes GUI resources (custom panels, etc.) from classpath jars. Should be
@@ -237,7 +251,8 @@ public class SextanteGUI {
     */
    public static void initialize() {
 
-      GUIResources.addResourcesFromClasspath();
+      // replaced by external find/add in SextanteToolboxPlugin
+      //GUIResources.addResourcesFromClasspath();
       _initialize();
 
    }
