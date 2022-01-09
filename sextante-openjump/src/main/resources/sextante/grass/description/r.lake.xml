@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.lake">
+	<description>
+		Fills lake from seed at given level.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="dem" type="string" required="yes" multiple="no">
+		<description>
+			Name of terrain raster map (DEM)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="wl" type="float" required="yes" multiple="no">
+		<description>
+			Nivel del agua
+		</description>
+	</parameter>
+	<parameter name="lake" type="string" required="no" multiple="no">
+		<description>
+			Name for output raster map with lake
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="xy" type="float" required="no" multiple="no">
+		<description>
+			Seed point coordinates
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+	</parameter>
+	<parameter name="seed" type="string" required="no" multiple="no">
+		<description>
+			Name of raster map with seed (at least 1 cell &gt; 0)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="n">
+		<description>
+			Usar valores de profundidad negativos para mapa ráster con lago
+		</description>
+	</flag>
+	<flag name="o">
+		<description>
+			Overwrite seed map with result (lake) map
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

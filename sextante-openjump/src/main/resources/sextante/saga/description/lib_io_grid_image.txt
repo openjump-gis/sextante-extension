@@ -1,0 +1,14 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Export Image (bmp, jpg, pcx, png, tif)
+ 1	- Import Image (bmp, jpg, png, tif, gif, pnm, xpm)
+
+type -h or --help for further information

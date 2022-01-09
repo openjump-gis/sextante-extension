@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.normal">
+	<description>
+		Test de normalidad para puntos.
+	</description>
+	<keywords>
+		vectorial, estadísticas
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			point vector defining sample points
+		</description>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="tests" type="string" required="yes" multiple="yes">
+		<description>
+			Lists of tests (1-15): e.g. 1,3-8,13
+		</description>
+		<keydesc>
+			<item order="1">range</item>
+		</keydesc>
+	</parameter>
+	<parameter name="column" type="string" required="yes" multiple="no">
+		<description>
+			Attribute column
+		</description>
+	</parameter>
+	<flag name="r">
+		<description>
+			Use only points in current region
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			Quiet
+		</description>
+	</flag>
+	<flag name="l">
+		<description>
+			lognormal
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

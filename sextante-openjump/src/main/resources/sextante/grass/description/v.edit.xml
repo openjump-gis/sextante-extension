@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.edit">
+	<description>
+		Edita un mapa vectorial, permite añadir, borrar y modificar los elementos del vectorial seleccionado.
+	</description>
+	<keywords>
+		vectorial, edición, geometría
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Nombre de mapa vectorial a editar
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="new_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			point,line,boundary,centroid
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="tool" type="string" required="yes" multiple="no">
+		<description>
+			Herramienta
+		</description>
+		<values>
+			<value>
+				<name>create</name>
+				<description>Create new (empty) vector map</description>
+			</value>
+			<value>
+				<name>add</name>
+				<description>Add new features to existing vector map</description>
+			</value>
+			<value>
+				<name>delete</name>
+				<description>Delete selected features from vector map</description>
+			</value>
+			<value>
+				<name>copy</name>
+				<description>Copy selected features</description>
+			</value>
+			<value>
+				<name>move</name>
+				<description>Move selected features in vector map</description>
+			</value>
+			<value>
+				<name>flip</name>
+				<description>Flip direction of selected vector lines</description>
+			</value>
+			<value>
+				<name>catadd</name>
+				<description>Set new categories to selected vector features for defined layer</description>
+			</value>
+			<value>
+				<name>catdel</name>
+				<description>Delete categories from selected vector features for defined layer</description>
+			</value>
+			<value>
+				<name>merge</name>
+				<description>Merge selected vector lines</description>
+			</value>
+			<value>
+				<name>break</name>
+				<description>Break/split vector lines</description>
+			</value>
+			<value>
+				<name>snap</name>
+				<description>Snap vector features in given threshold</description>
+			</value>
+			<value>
+				<name>connect</name>
+				<description>Connect two lines</description>
+			</value>
+			<value>
+				<name>chtype</name>
+				<description>Change feature type (point&lt;-&gt;centroid, line&lt;-&gt;boundary)</description>
+			</value>
+			<value>
+				<name>vertexadd</name>
+				<description>Add new vertex to selected vector lines</description>
+			</value>
+			<value>
+				<name>vertexdel</name>
+				<description>Remove vertex from selected vector lines</description>
+			</value>
+			<value>
+				<name>vertexmove</name>
+				<description>Move vertex of selected vector lines</description>
+			</value>
+			<value>
+				<name>zbulk</name>
+				<description>Z bulk-labeling (automated assignment of z coordinate to vector lines)</description>
+			</value>
+			<value>
+				<name>select</name>
+				<description>Select lines and print their ID's</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="input" type="string" required="no" multiple="no">
+		<label>
+			Archivo ASCII a convertir en mapa vectorial binario
+		</label>
+		<description>
+			Si no se indica (o "-") lee de la entrada estándar
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_file" element="file" prompt="input" />
+		<guisection>
+			Input
+		</guisection>
+	</parameter>
+	<parameter name="move" type="float" required="no" multiple="no">
+		<description>
+			Diferencia en dirección X, Y para mover elemento o vértice
+		</description>
+		<keydesc>
+			<item order="1">x</item>
+			<item order="2">y</item>
+		</keydesc>
+	</parameter>
+	<parameter name="thresh" type="float" required="no" multiple="yes">
+		<label>
+			Threshold distance (coords,snap,query)
+		</label>
+		<description>
+			'-1' para umbral basado en la configuración de la región actual
+		</description>
+		<default>
+			-1,0,0
+		</default>
+	</parameter>
+	<parameter name="ids" type="string" required="no" multiple="no">
+		<label>
+			Identificadores de objetos espaciales: 
+		</label>
+		<description>
+			Ejemplo: 1,3,7-9,13.
+		</description>
+		<keydesc>
+			<item order="1">range</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="cats" type="string" required="no" multiple="no">
+		<label>
+			Valores de la categorías.
+		</label>
+		<description>
+			Ejemplo: 1,3,7-9,13.
+		</description>
+		<keydesc>
+			<item order="1">range</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="coords" type="float" required="no" multiple="yes">
+		<description>
+			Lista de coordenadas de puntos
+		</description>
+		<keydesc>
+			<item order="1">x</item>
+			<item order="2">y</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="bbox" type="float" required="no" multiple="no">
+		<description>
+			Recuadro de límites para seleccionar elementos
+		</description>
+		<keydesc>
+			<item order="1">x1</item>
+			<item order="2">y1</item>
+			<item order="3">x2</item>
+			<item order="4">y2</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="polygon" type="float" required="no" multiple="yes">
+		<description>
+			Polígono para seleccionar elementos
+		</description>
+		<keydesc>
+			<item order="1">x</item>
+			<item order="2">y</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			Condiciones "WHERE", de la instrucción SQL sin la palabra clave "where".
+		</label>
+		<description>
+			Ejemplo: salario &lt; 1000 y habitantes &gt;=10000.
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="query" type="string" required="no" multiple="no">
+		<label>
+			Herramienta consulta
+		</label>
+		<description>
+			Para 'más corto' usar valor de umbral negativo, para 'más largo' positivo
+		</description>
+		<values>
+			<value>
+				<name>length</name>
+				<description>Select only lines or boundaries shorter/longer than threshold distance</description>
+			</value>
+			<value>
+				<name>dangle</name>
+				<description>Select dangles shorter/longer than threshold distance</description>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="bgmap" type="string" required="no" multiple="yes">
+		<description>
+			Name of background vector map(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="snap" type="string" required="no" multiple="no">
+		<description>
+			Autoensamblar objetos espaciales añadidos o modificados en el umbral dado al objeto espacial existente más próximo
+		</description>
+		<default>
+			no
+		</default>
+		<values>
+			<value>
+				<name>no</name>
+				<description>No aplicar autoensamblado</description>
+			</value>
+			<value>
+				<name>node</name>
+				<description>Autoensamblar sólo a nodo</description>
+			</value>
+			<value>
+				<name>vertex</name>
+				<description>Permitir autoensamblado también a vértice</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="zbulk" type="float" required="no" multiple="no">
+		<label>
+			Valor inicial y paso para el etiquetado Z en masa
+		</label>
+		<description>
+			Par: valor, paso (ej.: 1100,10)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+			<item order="2">step</item>
+		</keydesc>
+	</parameter>
+	<flag name="r">
+		<description>
+			Invertir selección
+		</description>
+ 		<guisection>
+			Selection
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Cerrar los contornos añadidos (usando la distancia umbral)
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			No esperar cabecera de los datos de entrada
+		</description>
+ 		<guisection>
+			Input
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			No construir topología
+		</description>
+	</flag>
+	<flag name="1">
+		<description>
+			Modificar sólo el primer elemento encontrado en el recuadro de límites
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

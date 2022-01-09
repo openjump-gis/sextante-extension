@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.surf.random">
+	<description>
+		Produce una capa de mapa ráster de desviaciones aleatorias uniformes cuyo intervalo puede ser expresado por el usuario.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="min" type="integer" required="no" multiple="no">
+		<description>
+			Valor aleatorio mínimo
+		</description>
+		<default>
+			0
+		</default>
+	</parameter>
+	<parameter name="max" type="integer" required="no" multiple="no">
+		<description>
+			Valor aleatorio máximo
+		</description>
+		<default>
+			100
+		</default>
+	</parameter>
+	<flag name="i">
+		<description>
+			Crear un mapa entero
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

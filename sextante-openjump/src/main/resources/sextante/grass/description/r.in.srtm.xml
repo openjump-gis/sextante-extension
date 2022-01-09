@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.in.srtm">
+	<description>
+		Importar archivos SRTM HGT a GRASS
+	</description>
+	<keywords>
+		ráster, importar
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Archivo de entrada SRTM (archivo sin extensión .hgt.zip)
+		</description>
+		<gisprompt age="old_file" element="file" prompt="input" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Mapa ráster de salida (por omisión: tesela de entrada)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="1">
+		<description>
+			Input is a 1-arcsec tile (default: 3-arcsec)
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

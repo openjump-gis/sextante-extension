@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.plane">
+	<description>
+		Crea un mapa ráster plano dando pendiente (inclinación), orientación (azimut) y un punto.
+	</description>
+	<keywords>
+		ráster, elevación
+	</keywords>
+	<parameter name="name" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del plano ráster a crear
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="dip" type="float" required="yes" multiple="no">
+		<description>
+			Pendiente del plano. El valor debe estar entre -90 y 90 grados
+		</description>
+		<gisprompt age="-90-90" />
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<parameter name="azimuth" type="float" required="yes" multiple="no">
+		<description>
+			Azimut del plano. El valor debe estar entre 0 y 360 grados
+		</description>
+		<gisprompt age="0-360" />
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<parameter name="easting" type="float" required="yes" multiple="no">
+		<description>
+			Coordenada Este de un punto en el plano
+		</description>
+	</parameter>
+	<parameter name="northing" type="float" required="yes" multiple="no">
+		<description>
+			Coordenada Norte de un punto en el plano
+		</description>
+	</parameter>
+	<parameter name="elevation" type="float" required="yes" multiple="no">
+		<description>
+			Coordenada de elevación de un punto en el plano
+		</description>
+	</parameter>
+	<parameter name="type" type="string" required="yes" multiple="no">
+		<description>
+			Tipo de mapa ráster a crear
+		</description>
+		<values>
+			<value>
+				<name>int</name>
+			</value>
+			<value>
+				<name>float</name>
+			</value>
+			<value>
+				<name>double</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

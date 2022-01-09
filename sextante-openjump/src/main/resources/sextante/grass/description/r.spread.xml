@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.spread">
+	<label>
+		Simula propagación anisotrópica elípticamente en una ventana de gráficos y general un mapa ráster del tiempo acumulado de propagación, dados mapas ráster que contengan las tasas de propagación (ROS), las direcciones de ROS y los orígenes de propagación.
+	</label>
+	<description>
+		It optionally produces raster maps to contain backlink UTM coordinates for tracing spread paths.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="max" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster que contiene la tasa MÁXIMA de propagación (ROS) (cm(min)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Mapa de entrada
+		</guisection>
+	</parameter>
+	<parameter name="dir" type="string" required="yes" multiple="no">
+		<description>
+			Nombre de mapa ráster que contenga Direcciones de máxima Tasa de Propagación ROS (grados)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Mapa de entrada
+		</guisection>
+	</parameter>
+	<parameter name="base" type="string" required="yes" multiple="no">
+		<description>
+			Nombre de mapa ráster que contenga Tasa de Propagación BASE /cm/min)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Mapa de entrada
+		</guisection>
+	</parameter>
+	<parameter name="start" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster map containing STARTing sources
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Mapa de entrada
+		</guisection>
+	</parameter>
+	<parameter name="spot_dist" type="string" required="no" multiple="no">
+		<description>
+			Name of raster map containing max SPOTting DISTance (m) (required w/ -s)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Mapa de entrada
+		</guisection>
+	</parameter>
+	<parameter name="w_speed" type="string" required="no" multiple="no">
+		<description>
+			Name of raster map containing midflame Wind SPEED (ft/min) (required w/ -s)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Mapa de entrada
+		</guisection>
+	</parameter>
+	<parameter name="f_mois" type="string" required="no" multiple="no">
+		<description>
+			Name of raster map containing fine Fuel MOISture of the cell receiving a spotting firebrand (%) (required w/ -s)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Mapa de entrada
+		</guisection>
+	</parameter>
+	<parameter name="least_size" type="string" required="no" multiple="no">
+		<description>
+			TAMAÑO de ventana de muestreo básico necesario para conseguir cierta precisión (3)
+		</description>
+		<keydesc>
+			<item order="1">odd int</item>
+		</keydesc>
+		<values>
+			<value>
+				<name>3</name>
+			</value>
+			<value>
+				<name>5</name>
+			</value>
+			<value>
+				<name>7</name>
+			</value>
+			<value>
+				<name>9</name>
+			</value>
+			<value>
+				<name>11</name>
+			</value>
+			<value>
+				<name>13</name>
+			</value>
+			<value>
+				<name>15</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="comp_dens" type="string" required="no" multiple="no">
+		<description>
+			DENSIDAD de muestreo para cálculos adicionales (rango: 0.0 - 1.0 (0.5))
+		</description>
+		<keydesc>
+			<item order="1">decimal</item>
+		</keydesc>
+	</parameter>
+	<parameter name="init_time" type="string" required="no" multiple="no">
+		<description>
+			HORA INICIAL para la simulación actual (0) (mínimo)
+		</description>
+		<keydesc>
+			<item order="1">int (&gt;= 0)</item>
+		</keydesc>
+	</parameter>
+	<parameter name="lag" type="string" required="no" multiple="no">
+		<description>
+			Simulating time duration LAG (fill the region) (min)
+		</description>
+		<keydesc>
+			<item order="1">int (&gt;= 0)</item>
+		</keydesc>
+	</parameter>
+	<parameter name="backdrop" type="string" required="no" multiple="no">
+		<description>
+			Name of raster map as a display backdrop
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster para contener el tiempo de propagación de SALIDA (min)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Mapas de salida
+		</guisection>
+	</parameter>
+	<parameter name="x_output" type="string" required="no" multiple="no">
+		<description>
+			Name of raster map to contain X_BACK coordinates
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Mapas de salida
+		</guisection>
+	</parameter>
+	<parameter name="y_output" type="string" required="no" multiple="no">
+		<description>
+			Name of raster map to contain Y_BACK coordinates
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Mapas de salida
+		</guisection>
+	</parameter>
+	<flag name="v">
+		<description>
+			Ejecutar de forma VERBOSA
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			MOSTRAR proceso de propagación 'en directo' en pantalla
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			For wildfires: consider SPOTTING effect
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

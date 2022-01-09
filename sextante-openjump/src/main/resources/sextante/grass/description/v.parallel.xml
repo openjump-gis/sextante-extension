@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.parallel">
+	<description>
+		Creates parallel line to input vector lines.
+	</description>
+	<keywords>
+		vectorial, geometría
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="distance" type="float" required="yes" multiple="no">
+		<description>
+			Offset along major axis in map units
+		</description>
+	</parameter>
+	<parameter name="minordistance" type="float" required="no" multiple="no">
+		<description>
+			Offset along minor axis in map units
+		</description>
+		<values>
+			<value>
+				<name>0-100000000</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="angle" type="float" required="no" multiple="no">
+		<description>
+			Angle of major axis in degrees
+		</description>
+		<default>
+			0
+		</default>
+	</parameter>
+	<parameter name="side" type="string" required="yes" multiple="no">
+		<description>
+			Side
+		</description>
+		<default>
+			right
+		</default>
+		<values>
+			<value>
+				<name>left</name>
+				<description>Parallel line is on the left</description>
+			</value>
+			<value>
+				<name>right</name>
+				<description>Parallel line is on the right</description>
+			</value>
+			<value>
+				<name>both</name>
+				<description>Parallel lines on both sides</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="tolerance" type="float" required="no" multiple="no">
+		<description>
+			Tolerance of arc polylines in map units
+		</description>
+		<values>
+			<value>
+				<name>0-100000000</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="r">
+		<description>
+			Make outside corners round
+		</description>
+	</flag>
+	<flag name="b">
+		<description>
+			Create buffer-like parallel lines
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

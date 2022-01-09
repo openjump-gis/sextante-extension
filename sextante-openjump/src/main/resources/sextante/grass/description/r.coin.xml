@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.coin">
+	<description>
+		Tabula la ocurrencia mutua (coincidencia) de categorías de dos capas de mapa ráster.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="map1" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del primer mapa ráster
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="map2" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del segundo mapa ráster
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="units" type="string" required="yes" multiple="no">
+		<label>
+			Unidad de medida
+		</label>
+		<description>
+			c(eldas), p(orcentaje), x(porcentaje de categoría [columna]), y(porcentaje de categoría [fila]), a(cres), h(ectáreas), k(ilómetros cuadrados), m(illas cuadradas)
+		</description>
+		<values>
+			<value>
+				<name>c</name>
+			</value>
+			<value>
+				<name>p</name>
+			</value>
+			<value>
+				<name>x</name>
+			</value>
+			<value>
+				<name>y</name>
+			</value>
+			<value>
+				<name>a</name>
+			</value>
+			<value>
+				<name>h</name>
+			</value>
+			<value>
+				<name>k</name>
+			</value>
+			<value>
+				<name>m</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="w">
+		<description>
+			Informe amplio, 132 columnas (por omisión: 80)
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

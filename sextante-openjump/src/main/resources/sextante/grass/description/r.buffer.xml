@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.buffer">
+	<description>
+		Crea una capa de mapa ráster que muestra zonas de buffer que rodean celdas que contienen valores de categoría no NULOS.
+	</description>
+	<keywords>
+		ráster, buffer
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="distances" type="float" required="yes" multiple="yes">
+		<description>
+			Zona(s) de distancia
+		</description>
+	</parameter>
+	<parameter name="units" type="string" required="no" multiple="no">
+		<description>
+			Unidades de distancia
+		</description>
+		<default>
+			meters
+		</default>
+		<values>
+			<value>
+				<name>meters</name>
+			</value>
+			<value>
+				<name>kilometers</name>
+			</value>
+			<value>
+				<name>feet</name>
+			</value>
+			<value>
+				<name>miles</name>
+			</value>
+			<value>
+				<name>nautmiles</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="z">
+		<description>
+			Ignorar celdas de datos cero (0) en vez de celdas NULAS
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			Ejecutar en modo silencioso
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.in.region">
+	<description>
+		Crear un nuevo vectorial a partir de la región actual.
+	</description>
+	<keywords>
+		vectorial
+	</keywords>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Seleccione tipo: línea o área
+		</description>
+		<default>
+			area
+		</default>
+		<values>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="cat" type="integer" required="no" multiple="no">
+		<description>
+			Valor de la categoría.
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

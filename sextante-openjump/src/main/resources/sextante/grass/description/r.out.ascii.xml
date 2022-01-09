@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.ascii">
+	<description>
+		Convierte una capa de mapa ráster a un archivo de texto ASCII.
+	</description>
+	<keywords>
+		ráster, exportar
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre de un mapa ráster existente
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el mapa de cuadrícula ASCII de salida (usar salida=- para stdout)
+		</description>
+		<gisprompt age="new_file" element="file" prompt="output" />
+	</parameter>
+	<parameter name="dp" type="integer" required="no" multiple="no">
+		<description>
+			Número de dígitos significativos (coma flotante solamente)
+		</description>
+	</parameter>
+	<parameter name="width" type="integer" required="no" multiple="no">
+		<description>
+			Number of values printed before wrapping a line (only SURFER or MODFLOW format)
+		</description>
+	</parameter>
+	<parameter name="null" type="string" required="no" multiple="no">
+		<description>
+			Cadena para representar celdas nulas (sólo cuadrícula GRASS)
+		</description>
+		<default>
+			*
+		</default>
+	</parameter>
+	<flag name="h">
+		<description>
+			Suprimir la impresión de información de cabecera
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Escribir cuadrícula ASCII SURFER (Golden Software)
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Escribir secuencia ASCII MODFLOW (USGS)
+		</description>
+	</flag>
+	<flag name="i">
+		<description>
+			Forzar salida de valores enteros
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

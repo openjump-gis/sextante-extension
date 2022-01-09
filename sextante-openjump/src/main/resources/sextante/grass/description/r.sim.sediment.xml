@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.sim.sediment">
+	<description>
+		Sediment transport and erosion/deposition simulation using path sampling method (SIMWE)
+	</description>
+	<keywords>
+		raster, sediment flow, erosion, deposition
+	</keywords>
+	<parameter name="elevin" type="string" required="yes" multiple="no">
+		<description>
+			Name of the elevation raster map [m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="wdepth" type="string" required="yes" multiple="no">
+		<description>
+			Name of the water depth raster map [m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="dxin" type="string" required="yes" multiple="no">
+		<description>
+			Name of the x-derivatives raster map [m/m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="dyin" type="string" required="yes" multiple="no">
+		<description>
+			Name of the y-derivatives raster map [m/m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="detin" type="string" required="yes" multiple="no">
+		<description>
+			Name of the detachment capacity coefficient raster map [s/m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="tranin" type="string" required="yes" multiple="no">
+		<description>
+			Name of the transport capacity coefficient raster map [s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="tauin" type="string" required="yes" multiple="no">
+		<description>
+			Name of the critical shear stress raster map [Pa]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="manin" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster n de Mannings
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="maninval" type="float" required="no" multiple="no">
+		<description>
+			Name of the Mannings n value
+		</description>
+		<default>
+			0.1
+		</default>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="tc" type="string" required="no" multiple="no">
+		<description>
+			Output transport capacity raster map [kg/ms]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="et" type="string" required="no" multiple="no">
+		<description>
+			Output transp.limited erosion-deposition raster map [kg/m2s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="conc" type="string" required="no" multiple="no">
+		<description>
+			Output sediment concentration raster map [particle/m3]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="flux" type="string" required="no" multiple="no">
+		<description>
+			Output sediment flux raster map [kg/ms]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="erdep" type="string" required="no" multiple="no">
+		<description>
+			Output erosion-deposition raster map [kg/m2s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="nwalk" type="integer" required="no" multiple="no">
+		<description>
+			Número de walkers
+		</description>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="niter" type="integer" required="no" multiple="no">
+		<description>
+			Time used for iterations [minutes]
+		</description>
+		<default>
+			10
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="outiter" type="integer" required="no" multiple="no">
+		<description>
+			Time interval for creating output maps [minutes]
+		</description>
+		<default>
+			2
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="diffc" type="float" required="no" multiple="no">
+		<description>
+			Constante de difusión del agua
+		</description>
+		<default>
+			0.8
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

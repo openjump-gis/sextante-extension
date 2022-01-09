@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.report">
+	<description>
+		Informa estadísticas de geometría para vectoriales.
+	</description>
+	<keywords>
+		vectorial, informe, estadísticas
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada
+		</description>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<description>
+			Número de capa
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="option" type="string" required="yes" multiple="no">
+		<description>
+			Valor a calcular
+		</description>
+		<values>
+			<value>
+				<name>area</name>
+			</value>
+			<value>
+				<name>length</name>
+			</value>
+			<value>
+				<name>coor</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="units" type="string" required="no" multiple="no">
+		<description>
+			mi(llas),f(pies),me(tros),k(ilómetros),a(cres),h(ectáreas),p(orcentaje)
+		</description>
+		<values>
+			<value>
+				<name>mi</name>
+			</value>
+			<value>
+				<name>miles</name>
+			</value>
+			<value>
+				<name>f</name>
+			</value>
+			<value>
+				<name>feet</name>
+			</value>
+			<value>
+				<name>me</name>
+			</value>
+			<value>
+				<name>meters</name>
+			</value>
+			<value>
+				<name>k</name>
+			</value>
+			<value>
+				<name>kilometers</name>
+			</value>
+			<value>
+				<name>a</name>
+			</value>
+			<value>
+				<name>acres</name>
+			</value>
+			<value>
+				<name>h</name>
+			</value>
+			<value>
+				<name>hectares</name>
+			</value>
+			<value>
+				<name>p</name>
+			</value>
+			<value>
+				<name>percent</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="r">
+		<description>
+			Resultado en orden inverso
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Ordenar el resultado
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

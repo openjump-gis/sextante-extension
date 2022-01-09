@@ -1,0 +1,19 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Regression Analysis (Points/Grid)
+ 1	- Multiple Regression Analysis (Points/Grids)
+ 2	- Polynomial Regression
+ 3	- Geographically Weighted Regression
+ 4	- Geographically Weighted Regression (Points/Grid)
+ 5	- Geographically Weighted Multiple Regression
+ 6	- Geographically Weighted Multiple Regression (Points/Grids)
+
+type -h or --help for further information

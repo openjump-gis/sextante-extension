@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.colors.stddev">
+	<description>
+		Set color rules based on stddev from a map's mean value.
+	</description>
+	<keywords>
+		raster, color table
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster de entrada
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="b">
+		<description>
+			Color using standard deviation bands
+		</description>
+	</flag>
+	<flag name="z">
+		<description>
+			Force center at zero
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

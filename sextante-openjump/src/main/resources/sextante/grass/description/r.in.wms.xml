@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.in.wms">
+	<description>
+		Descarga e importa datos de servidores WMS.
+	</description>
+	<keywords>
+		wms
+	</keywords>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el mapa ráster de salida
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Importar
+		</guisection>
+	</parameter>
+	<parameter name="mapserver" type="string" required="yes" multiple="no">
+		<description>
+			Servidor de mapas del que solicitar los datos
+		</description>
+		<guisection>
+			Solicitud
+		</guisection>
+	</parameter>
+	<parameter name="layers" type="string" required="no" multiple="yes">
+		<description>
+			Capas a solicitar del servidor de mapas
+		</description>
+		<guisection>
+			Solicitud
+		</guisection>
+	</parameter>
+	<parameter name="styles" type="string" required="no" multiple="yes">
+		<description>
+			Estilos a solicitar del servidor de mapas
+		</description>
+		<guisection>
+			Solicitud
+		</guisection>
+	</parameter>
+	<parameter name="srs" type="string" required="no" multiple="no">
+		<description>
+			Proyección de origen a solicitar del servidor
+		</description>
+		<default>
+			EPSG:4326
+		</default>
+		<guisection>
+			Solicitud
+		</guisection>
+	</parameter>
+	<parameter name="format" type="string" required="yes" multiple="no">
+		<description>
+			Formato de imagen solicitado del servidor
+		</description>
+		<default>
+			geotiff
+		</default>
+		<values>
+			<value>
+				<name>geotiff</name>
+			</value>
+			<value>
+				<name>tiff</name>
+			</value>
+			<value>
+				<name>jpeg</name>
+			</value>
+			<value>
+				<name>gif</name>
+			</value>
+			<value>
+				<name>png</name>
+			</value>
+		</values>
+		<guisection>
+			Solicitud
+		</guisection>
+	</parameter>
+	<parameter name="wmsquery" type="string" required="no" multiple="no">
+		<description>
+			Opciones de consulta adicionales para el servidor
+		</description>
+		<default>
+			version=1.1.1
+		</default>
+		<guisection>
+			Solicitud
+		</guisection>
+	</parameter>
+	<parameter name="maxcols" type="integer" required="yes" multiple="no">
+		<description>
+			Máximo de columnas a solicitar a la vez
+		</description>
+		<default>
+			1024
+		</default>
+		<guisection>
+			Solicitud
+		</guisection>
+	</parameter>
+	<parameter name="maxrows" type="integer" required="yes" multiple="no">
+		<description>
+			Máximo de filas a solicitar a la vez
+		</description>
+		<default>
+			1024
+		</default>
+		<guisection>
+			Solicitud
+		</guisection>
+	</parameter>
+	<parameter name="tileoptions" type="string" required="no" multiple="no">
+		<description>
+			Opciones adicionales para r.tileset
+		</description>
+	</parameter>
+	<parameter name="region" type="string" required="no" multiple="no">
+		<description>
+			Nombre de la región para la que solicitar datos. Región actual si se omite
+		</description>
+		<guisection>
+			Solicitud
+		</guisection>
+	</parameter>
+	<parameter name="folder" type="string" required="no" multiple="no">
+		<description>
+			Carpeta en la que guardar los datos descargados
+		</description>
+		<guisection>
+			Descargar
+		</guisection>
+	</parameter>
+	<parameter name="wgetoptions" type="string" required="no" multiple="no">
+		<description>
+			Opciones adicionales para wget
+		</description>
+		<default>
+			-c -t 5 -nv
+		</default>
+		<guisection>
+			Descargar
+		</guisection>
+	</parameter>
+	<parameter name="curloptions" type="string" required="no" multiple="no">
+		<description>
+			Opciones adicionales para curl
+		</description>
+		<default>
+			-C - --retry 5 -s -S
+		</default>
+		<guisection>
+			Descargar
+		</guisection>
+	</parameter>
+	<parameter name="method" type="string" required="yes" multiple="no">
+		<description>
+			Método de reproyección a usar
+		</description>
+		<default>
+			nearest
+		</default>
+		<values>
+			<value>
+				<name>nearest</name>
+			</value>
+			<value>
+				<name>bilinear</name>
+			</value>
+			<value>
+				<name>cubic</name>
+			</value>
+			<value>
+				<name>cubicspline</name>
+			</value>
+		</values>
+		<guisection>
+			Importar
+		</guisection>
+	</parameter>
+	<parameter name="cap_file" type="string" required="no" multiple="no">
+		<label>
+			Filename to save capabilities XML file to
+		</label>
+		<description>
+			Requires list available layers flag
+		</description>
+		<guisection>
+			Solicitud
+		</guisection>
+	</parameter>
+	<parameter name="v" type="integer" required="no" multiple="no">
+		<description>
+			Nivel de verbosidad
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<flag name="l">
+		<description>
+			Listar las capas disponibles y salir
+		</description>
+ 		<guisection>
+			Solicitud
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Saltar la descarga (para continuar descargas más rápido)
+		</description>
+ 		<guisection>
+			Descargar
+		</guisection>
+	</flag>
+	<flag name="o">
+		<description>
+			Don't request transparent data
+		</description>
+ 		<guisection>
+			Solicitud
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Clean existing data out of download directory
+		</description>
+ 		<guisection>
+			Descargar
+		</guisection>
+	</flag>
+	<flag name="k">
+		<description>
+			Mantener números de banda en vez de usar nombre de color de banda
+		</description>
+ 		<guisection>
+			Importar
+		</guisection>
+	</flag>
+	<flag name="p">
+		<description>
+			Don't reproject the data, just patch it
+		</description>
+ 		<guisection>
+			Importar
+		</guisection>
+	</flag>
+	<flag name="g">
+		<label>
+			Use GET method instead of POST data method
+		</label>
+		<description>
+			This may be needed to connect to servers which lack POST capability
+		</description>
+ 		<guisection>
+			Solicitud
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

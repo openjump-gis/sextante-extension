@@ -1,0 +1,19 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Flat Detection
+ 1	- Sink Drainage Route Detection
+ 2	- Sink Removal
+ 3	- Fill Sinks (Planchon/Darboux, 2001)
+ 4	- Fill Sinks (Wang & Liu)
+ 5	- Fill Sinks XXL (Wang & Liu)
+ 6	- Burn Stream Network into DEM
+
+type -h or --help for further information

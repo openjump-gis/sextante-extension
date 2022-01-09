@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.grow">
+	<description>
+		Genera una capa de mapa ráster con áreas contiguas incrementadas en una celda.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="radius" type="float" required="no" multiple="no">
+		<description>
+			Radio de buffer en celdas ráster
+		</description>
+		<default>
+			1.01
+		</default>
+	</parameter>
+	<parameter name="metric" type="string" required="no" multiple="no">
+		<description>
+			Métrica
+		</description>
+		<default>
+			euclidean
+		</default>
+		<values>
+			<value>
+				<name>euclidean</name>
+			</value>
+			<value>
+				<name>maximum</name>
+			</value>
+			<value>
+				<name>manhattan</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="old" type="integer" required="no" multiple="no">
+		<description>
+			Valor a escribir para celdas de entrada que no son NULAS (-1 =&gt; NULO)
+		</description>
+	</parameter>
+	<parameter name="new" type="integer" required="no" multiple="no">
+		<description>
+			Valor a escribir para celdas "incrementadas"
+		</description>
+	</parameter>
+	<flag name="q">
+		<description>
+			Silencioso
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

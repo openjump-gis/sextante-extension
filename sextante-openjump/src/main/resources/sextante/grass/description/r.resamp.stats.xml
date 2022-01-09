@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.resamp.stats">
+	<description>
+		Resamples raster map layers to a coarser grid using aggregation.
+	</description>
+	<keywords>
+		ráster, remuestrear
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="method" type="string" required="no" multiple="no">
+		<description>
+			Método de agregación
+		</description>
+		<default>
+			average
+		</default>
+		<values>
+			<value>
+				<name>average</name>
+			</value>
+			<value>
+				<name>median</name>
+			</value>
+			<value>
+				<name>mode</name>
+			</value>
+			<value>
+				<name>minimum</name>
+			</value>
+			<value>
+				<name>maximum</name>
+			</value>
+			<value>
+				<name>quart1</name>
+			</value>
+			<value>
+				<name>quart3</name>
+			</value>
+			<value>
+				<name>perc90</name>
+			</value>
+			<value>
+				<name>sum</name>
+			</value>
+			<value>
+				<name>variance</name>
+			</value>
+			<value>
+				<name>stddev</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="n">
+		<description>
+			Propagar NULOS
+		</description>
+	</flag>
+	<flag name="w">
+		<description>
+			Weight according to area (slower)
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

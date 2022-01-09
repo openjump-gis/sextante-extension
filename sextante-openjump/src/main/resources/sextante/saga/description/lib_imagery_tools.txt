@@ -1,0 +1,14 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Vegetation Index[distance based]
+ 1	- Vegetation Index[slope based]
+
+type -h or --help for further information

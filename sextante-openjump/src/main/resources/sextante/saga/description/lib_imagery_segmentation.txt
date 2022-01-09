@@ -1,0 +1,16 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Watershed Segmentation
+ 1	- Grid Skeletonization
+ 2	- Seed Generation
+ 3	- Simple Region Growing
+
+type -h or --help for further information

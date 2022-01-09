@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.fillnulls">
+	<description>
+		Rellenar áreas sin datos de los mapas ráster usando la interpolación splines de v.sufr.rst
+	</description>
+	<keywords>
+		ráster, elevación, interpolación
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Mapa ráster en el que rellenar los nulos
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Producir mapa ráster con nulos rellenos por interpolación de los valores circundantes
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="tension" type="float" required="no" multiple="no">
+		<description>
+			Parámetro de tensión spline
+		</description>
+		<default>
+			40.
+		</default>
+	</parameter>
+	<parameter name="smooth" type="float" required="no" multiple="no">
+		<description>
+			Parámetro de suavizado spline
+		</description>
+		<default>
+			0.1
+		</default>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

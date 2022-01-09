@@ -1,0 +1,19 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Channel Network
+ 1	- Watershed Basins
+ 2	- Watershed Basins (Extended)
+ 3	- Vertical Distance to Channel Network
+ 4	- Overland Flow Distance to Channel Network
+ 5	- D8 Flow Analysis
+ 6	- Strahler Order
+
+type -h or --help for further information

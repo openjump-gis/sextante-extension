@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.lidar.edgedetection">
+	<description>
+		Detecta los bordes de un objeto a partir de un conjunto de datos LIDAR.
+	</description>
+	<keywords>
+		vectorial, LIDAR, bordes
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="see" type="float" required="no" multiple="no">
+		<description>
+			Valor de paso spline de interpolación en dirección Este
+		</description>
+		<default>
+			4
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="sen" type="float" required="no" multiple="no">
+		<description>
+			Valor de paso spline de interpolación en dirección Norte
+		</description>
+		<default>
+			4
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="lambda_g" type="float" required="no" multiple="no">
+		<description>
+			Regularization weight in gradient evaluation
+		</description>
+		<default>
+			0.01
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="tgh" type="float" required="no" multiple="no">
+		<description>
+			High gradient threshold for edge classification
+		</description>
+		<default>
+			6
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="tgl" type="float" required="no" multiple="no">
+		<description>
+			Low gradient threshold for edge classification
+		</description>
+		<default>
+			3
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="theta_g" type="float" required="no" multiple="no">
+		<description>
+			Intervalo de ángulos para detección de misma dirección
+		</description>
+		<default>
+			0.26
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="lambda_r" type="float" required="no" multiple="no">
+		<description>
+			Regularization weight in residual evaluation
+		</description>
+		<default>
+			2
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<flag name="e">
+		<label>
+			Estimate point density and distance
+		</label>
+		<description>
+			Estimate point density and distance for the input vector points within the current region extends and quit
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

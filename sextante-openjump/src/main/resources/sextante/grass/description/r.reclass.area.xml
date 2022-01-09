@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.reclass.area">
+	<description>
+		Reclasses a raster map greater or less than user specified area size (in hectares).
+	</description>
+	<keywords>
+		ráster, estadísticas, agregación
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster de entrada
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa ráster de salida
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="lesser" type="float" required="no" multiple="no">
+		<description>
+			Lesser value option that sets the &lt;= area size limit [hectares]
+		</description>
+	</parameter>
+	<parameter name="greater" type="float" required="no" multiple="no">
+		<description>
+			Greater value option that sets the &gt;= area size limit [hectares]
+		</description>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

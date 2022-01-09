@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.univar">
+	<description>
+		Calcula estadísticas univariante para atributos. La varianza y la desviación estándar sólo se calculan para puntos si se especifica.
+	</description>
+	<keywords>
+		vectorial, estadísticas
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			point,line,boundary,centroid,area
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="column" type="string" required="yes" multiple="no">
+		<description>
+			Nombre de columna
+		</description>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			Condiciones "WHERE", de la instrucción SQL sin la palabra clave "where".
+		</label>
+		<description>
+			Ejemplo: salario &lt; 1000 y habitantes &gt;=10000.
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="percentile" type="integer" required="no" multiple="no">
+		<description>
+			Percentil a calcular (requiere la opción de estadísticas ampliadas)
+		</description>
+		<default>
+			90
+		</default>
+		<values>
+			<value>
+				<name>0-100</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="g">
+		<description>
+			Imprimir las estadísticas en estilo de script de consola
+		</description>
+	</flag>
+	<flag name="e">
+		<description>
+			Calcular estadísticas ampliadas
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

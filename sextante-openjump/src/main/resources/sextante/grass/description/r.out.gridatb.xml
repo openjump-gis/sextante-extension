@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.gridatb">
+	<description>
+		Exporta mapa ráster de GRASS a archivo de mapa GRIDATB.FOR (TOPMODEL)
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Mapa de entrada
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Archivo de mapa GRIDATB de E/S
+		</description>
+	</parameter>
+	<flag name="o">
+		<description>
+			Sobrescribir archivo de mapa de salida
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

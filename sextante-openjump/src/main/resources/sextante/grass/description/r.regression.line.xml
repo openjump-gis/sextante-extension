@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.regression.line">
+	<description>
+		Calcula la regresión lineal de dos mapas ráster: y = a + b*x
+	</description>
+	<keywords>
+		ráster, estadísticas
+	</keywords>
+	<parameter name="map1" type="string" required="yes" multiple="no">
+		<description>
+			Mapa para el coeficiente X
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="map2" type="string" required="yes" multiple="no">
+		<description>
+			Mapa para el coeficiente Y
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Archivo ASCII para guardar los coeficientes de regresión (salida a pantalla si no se especifica ningún archivo).
+		</description>
+		<gisprompt age="new_file" element="file" prompt="output" />
+	</parameter>
+	<flag name="g">
+		<description>
+			Imprimir en estilo de script de consola
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Slower but accurate (applies to FP maps only)
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

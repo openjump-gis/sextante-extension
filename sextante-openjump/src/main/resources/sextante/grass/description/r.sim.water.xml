@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.sim.water">
+	<description>
+		Overland flow hydrologic simulation using path sampling method (SIMWE)
+	</description>
+	<keywords>
+		raster, flow, hydrology
+	</keywords>
+	<parameter name="elevin" type="string" required="yes" multiple="no">
+		<description>
+			Name of the elevation raster map [m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="dxin" type="string" required="yes" multiple="no">
+		<description>
+			Name of the x-derivatives raster map [m/m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="dyin" type="string" required="yes" multiple="no">
+		<description>
+			Name of the y-derivatives raster map [m/m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="rain" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster [mm/hr] de tasa de exceso de precipitación (lluvia-infiltración)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="rain_val" type="float" required="no" multiple="no">
+		<description>
+			Rainfall excess rate unique value [mm/hr]
+		</description>
+		<default>
+			50
+		</default>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="infil" type="string" required="no" multiple="no">
+		<description>
+			Name of the runoff infiltration rate raster map [mm/hr]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="infil_val" type="float" required="no" multiple="no">
+		<description>
+			Runoff infiltration rate unique value [mm/hr]
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="manin" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster n de Mannings
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="manin_val" type="float" required="no" multiple="no">
+		<description>
+			Mannings n unique value
+		</description>
+		<default>
+			0.1
+		</default>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="traps" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster de controles de flujo (relación de permeabilidad 0-1)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="depth" type="string" required="no" multiple="no">
+		<description>
+			Output water depth raster map [m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="disch" type="string" required="no" multiple="no">
+		<description>
+			Output water discharge raster map [m3/s]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="err" type="string" required="no" multiple="no">
+		<description>
+			Output simulation error raster map [m]
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="nwalk" type="integer" required="no" multiple="no">
+		<description>
+			Number of walkers, default is twice the no. of cells
+		</description>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="niter" type="integer" required="no" multiple="no">
+		<description>
+			Time used for iterations [minutes]
+		</description>
+		<default>
+			10
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="outiter" type="integer" required="no" multiple="no">
+		<description>
+			Time interval for creating output maps [minutes]
+		</description>
+		<default>
+			2
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="diffc" type="float" required="no" multiple="no">
+		<description>
+			Constante de difusión del agua
+		</description>
+		<default>
+			0.8
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="hmax" type="float" required="no" multiple="no">
+		<description>
+			Threshold water depth [m] (diffusion increases after this water depth is reached)
+		</description>
+		<default>
+			0.3
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="halpha" type="float" required="no" multiple="no">
+		<description>
+			Constante de incremento de difusión
+		</description>
+		<default>
+			4.0
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<parameter name="hbeta" type="float" required="no" multiple="no">
+		<description>
+			Factor de peso para vectorial de velocidad de flujo de agua
+		</description>
+		<default>
+			0.5
+		</default>
+		<guisection>
+			Parámetros
+		</guisection>
+	</parameter>
+	<flag name="t">
+		<description>
+			Time-series output
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

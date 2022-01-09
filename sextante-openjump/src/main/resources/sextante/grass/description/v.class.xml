@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.class">
+	<description>
+		Classifies attribute data, e.g. for thematic mapping
+	</description>
+	<keywords>
+		vectorial, estadísticas
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="column" type="string" required="yes" multiple="no">
+		<description>
+			Column name or expression
+		</description>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			Condiciones "WHERE", de la instrucción SQL sin la palabra clave "where".
+		</label>
+		<description>
+			Ejemplo: salario &lt; 1000 y habitantes &gt;=10000.
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<parameter name="algorithm" type="string" required="yes" multiple="no">
+		<description>
+			Algorithm to use for classification
+		</description>
+		<values>
+			<value>
+				<name>int</name>
+				<description>simple intervals</description>
+			</value>
+			<value>
+				<name>std</name>
+				<description>standard deviations</description>
+			</value>
+			<value>
+				<name>qua</name>
+				<description>quantiles</description>
+			</value>
+			<value>
+				<name>equ</name>
+				<description>equiprobable (normal distribution)</description>
+			</value>
+			<value>
+				<name>dis</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="nbclasses" type="integer" required="yes" multiple="no">
+		<description>
+			Number of classes to define
+		</description>
+	</parameter>
+	<flag name="g">
+		<description>
+			Print only class breaks (without min and max)
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

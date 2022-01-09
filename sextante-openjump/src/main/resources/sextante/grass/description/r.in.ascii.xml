@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.in.ascii">
+	<description>
+		Convierte un archivo ráster ASCII en una capa de mapa ráster binaria.
+	</description>
+	<keywords>
+		ráster, importar, conversión
+	</keywords>
+	<parameter name="input" type="string" required="no" multiple="no">
+		<description>
+			Archivo ráster ASCII a importar. Si no se indica se leerá la entrada estándar
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_file" element="file" prompt="input" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="title" type="string" required="no" multiple="no">
+		<description>
+			Título para el mapa ráster resultante
+		</description>
+		<keydesc>
+			<item order="1">"phrase"</item>
+		</keydesc>
+	</parameter>
+	<parameter name="mult" type="float" required="no" multiple="no">
+		<description>
+			Multiplicador para datos ASCII
+		</description>
+		<default>
+			1.0 or read from header
+		</default>
+	</parameter>
+	<parameter name="nv" type="string" required="no" multiple="no">
+		<description>
+			Cadena que representa celdas de datos con valor NULO
+		</description>
+		<default>
+			* or read from header
+		</default>
+	</parameter>
+	<flag name="i">
+		<description>
+			Se importan los valores enteros
+		</description>
+	</flag>
+	<flag name="f">
+		<description>
+			Se importan lo valores de coma flotante
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			Se importan los valores de coma flotante doble
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Se importará archivo ASCII SURFER (Golden Software)
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

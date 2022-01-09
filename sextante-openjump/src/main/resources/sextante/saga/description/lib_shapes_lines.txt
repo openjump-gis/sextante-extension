@@ -1,0 +1,18 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Convert Polygons to Lines
+ 1	- Convert Points to Line(s)
+ 2	- Line Properties
+ 3	- Line-Polygon Intersection
+ 4	- Line Simplification
+ 5	- Line Dissolve
+
+type -h or --help for further information

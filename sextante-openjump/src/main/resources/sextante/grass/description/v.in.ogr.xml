@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.in.ogr">
+	<description>
+		Convertir capas vectoriales OGR a mapas vectoriales de GRASS.
+	</description>
+	<keywords>
+		vectorial, importar
+	</keywords>
+	<parameter name="dsn" type="string" required="no" multiple="no">
+		<label>
+			Nombre del origen de datos OGR
+		</label>
+		<description>
+			Ejemplos:
+	Shapefile de ESRI: directorio que contiene shapefiles
+	Archivo MapInfo: directorio que contiene archivos MapInfo
+		</description>
+		<gisprompt age="old_file" element="file" prompt="dsn" />
+		<guisection>
+			Requerido
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Requerido
+		</guisection>
+	</parameter>
+	<parameter name="layer" type="string" required="no" multiple="yes">
+		<label>
+			Nombre de capa OGR. Si no se indica, se importan todas las capas disponibles.
+		</label>
+		<description>
+			Ejemplos:
+		Shapefile ESRI: nombre del shapefile
+		Archivo MapInfo: nombre del archivo MapInfo
+		</description>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="spatial" type="float" required="no" multiple="yes">
+		<label>
+			Importar sólo la subregión
+		</label>
+		<description>
+			Formato: xmin,ymin,xmax,ymax - normalmente W,S,E,N
+		</description>
+		<keydesc>
+			<item order="1">xmin</item>
+			<item order="2">ymin</item>
+			<item order="3">xmax</item>
+			<item order="4">ymax</item>
+		</keydesc>
+		<guisection>
+			Subregión
+		</guisection>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			Condiciones "WHERE", de la instrucción SQL sin la palabra clave "where".
+		</label>
+		<description>
+			Ejemplo: salario &lt; 1000 y habitantes &gt;=10000.
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="min_area" type="float" required="no" multiple="no">
+		<label>
+			Tamaño mínimo del área a importar (unidades cuadradas)
+		</label>
+		<description>
+			Las áreas más pequeñas y las islas se ignorarán. Debería ser mayor que snap²
+		</description>
+		<default>
+			0.0001
+		</default>
+		<guisection>
+			Min-area &amp; snap
+		</guisection>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Optionally change default input type
+		</description>
+		<default>
+			
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+				<description>importar centroides de área como puntos</description>
+			</value>
+			<value>
+				<name>line</name>
+				<description>importar contornos de área como líneas</description>
+			</value>
+			<value>
+				<name>boundary</name>
+				<description>importar líneas como contornos de área</description>
+			</value>
+			<value>
+				<name>centroid</name>
+				<description>importar puntos como centroides</description>
+			</value>
+		</values>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="snap" type="float" required="no" multiple="no">
+		<label>
+			Umbral de salto para contornos
+		</label>
+		<description>
+			'-1' para sin autoensamblaje
+		</description>
+		<default>
+			-1
+		</default>
+		<guisection>
+			Min-area &amp; snap
+		</guisection>
+	</parameter>
+	<parameter name="location" type="string" required="no" multiple="no">
+		<description>
+			Nombre de la nueva localización a crear
+		</description>
+	</parameter>
+	<parameter name="cnames" type="string" required="no" multiple="yes">
+		<description>
+			Lista de nombres de columna a usar en vez de los originales. El primero se usa para la columna de categoría
+		</description>
+		<guisection>
+			Attributes
+		</guisection>
+	</parameter>
+	<flag name="l">
+		<description>
+			Listar las capas disponibles en la fuente de datos y salir
+		</description>
+	</flag>
+	<flag name="f">
+		<description>
+			Listar los formatos soportados y salir
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			No limpiar polígonos (no recomendado)
+		</description>
+	</flag>
+	<flag name="z">
+		<description>
+			Crear salida 3D
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			No crear la tabla de atributos
+		</description>
+ 		<guisection>
+			Attributes
+		</guisection>
+	</flag>
+	<flag name="o">
+		<description>
+			Ignorar proyección del conjunto de datos (usar proyección de la localización)
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Limitar importación a la región actual
+		</description>
+ 		<guisection>
+			Subregión
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Ampliar la extensión de la localización en base a nuevo conjunto de datos
+		</description>
+	</flag>
+	<flag name="w">
+		<description>
+			Cambiar nombres de columna a minúsculas
+		</description>
+ 		<guisection>
+			Attributes
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

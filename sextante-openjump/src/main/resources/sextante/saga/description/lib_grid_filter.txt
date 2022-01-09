@@ -1,0 +1,22 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Simple Filter
+ 1	- Gaussian Filter
+ 2	- Laplacian Filter
+ 3	- Multi Direction Lee Filter
+ 4	- User Defined Filter
+ 5	- Filter Clumps
+ 6	- Majority Filter
+ 7	- DTM Filter (slope-based)
+ 8	- Morphological Filter
+ 9	- Rank Filter
+
+type -h or --help for further information

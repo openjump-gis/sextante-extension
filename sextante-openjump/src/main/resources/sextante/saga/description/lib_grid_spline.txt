@@ -1,0 +1,19 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Thin Plate Spline (Global)
+ 1	- Thin Plate Spline (Local)
+ 2	- Thin Plate Spline (TIN)
+ 3	- B-Spline Approximation
+ 4	- Multilevel B-Spline Interpolation
+ 5	- Multilevel B-Spline Interpolation (from Grid)
+ 6	- Cubic Spline Approximation
+
+type -h or --help for further information

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.vrml">
+	<description>
+		Exportar un mapa ráster al Lenguaje de Modelado de Realidad Virtual (VRML)
+	</description>
+	<keywords>
+		ráster, exportar, VRML
+	</keywords>
+	<parameter name="elev" type="string" required="yes" multiple="no">
+		<description>
+			Nombre de mapa de elevación
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="color" type="string" required="no" multiple="no">
+		<description>
+			Nombre de archivo de color
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="exag" type="float" required="no" multiple="no">
+		<description>
+			Exageración vertical
+		</description>
+		<default>
+			1.0
+		</default>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el nuevo archivo VRML
+		</description>
+		<gisprompt age="new_file" element="file" prompt="output" />
+	</parameter>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

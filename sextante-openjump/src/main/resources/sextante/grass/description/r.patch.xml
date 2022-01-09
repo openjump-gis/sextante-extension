@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.patch">
+	<description>
+		Crea una capa de mapa ráster compuesta usando valores de categoría conocidos de una (o más) capa(s) de mapa para rellenar áreas "sin datos" en otra capa de mapa.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="yes">
+		<description>
+			Nombre de los mapas ráster a parchear juntos
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa ráster resultante
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="q">
+		<description>
+			Silencioso
+		</description>
+	</flag>
+	<flag name="z">
+		<description>
+			Usar cero (0) para transparencia en vez de NULO
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

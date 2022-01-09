@@ -1,0 +1,19 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Grid to TIN
+ 1	- Grid to TIN (Surface Specific Points)
+ 2	- Shapes to TIN
+ 3	- TIN to Shapes
+ 4	- Gradient
+ 5	- Flow Accumulation (Trace)
+ 6	- Flow Accumulation (Parallel)
+
+type -h or --help for further information

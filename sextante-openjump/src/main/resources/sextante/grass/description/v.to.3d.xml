@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.to.3d">
+	<description>
+		Performs transformation of 2D vector features to 3D.
+	</description>
+	<keywords>
+		vector, transformation, 3D
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			point,line,boundary,centroid
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="height" type="float" required="no" multiple="no">
+		<description>
+			Fixed height for 3D vector features
+		</description>
+		<guisection>
+			Height
+		</guisection>
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Height
+		</guisection>
+	</parameter>
+	<parameter name="column" type="string" required="no" multiple="no">
+		<label>
+			Name of attribute column used for height
+		</label>
+		<description>
+			Can be used for reverse transformation, to store height of points
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_dbcolumn" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Height
+		</guisection>
+	</parameter>
+	<flag name="r">
+		<description>
+			Reverse transformation; 3D vector features to 2D
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			Do not copy table
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

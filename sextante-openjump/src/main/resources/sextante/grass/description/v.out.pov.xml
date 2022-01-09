@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.out.pov">
+	<description>
+		Converts to POV-Ray format, GRASS x,y,z -&gt; POV-Ray x,z,y
+	</description>
+	<keywords>
+		vectorial, exportar
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			point,line,area,face
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+			<value>
+				<name>face</name>
+			</value>
+			<value>
+				<name>kernel</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Output file
+		</description>
+	</parameter>
+	<parameter name="size" type="string" required="no" multiple="no">
+		<description>
+			Radius of sphere for points and tube for lines. May be also variable, e.g. grass_r.
+		</description>
+		<default>
+			10
+		</default>
+	</parameter>
+	<parameter name="zmod" type="string" required="no" multiple="no">
+		<description>
+			Modifier for z coordinates, this string is appended to each z coordinate.
+		Examples: '*10', '+1000', '*10+100', '*exaggeration'
+		</description>
+		<default>
+			
+		</default>
+	</parameter>
+	<parameter name="objmod" type="string" required="no" multiple="no">
+		<description>
+			Object modifier (OBJECT_MODIFIER in POV-Ray documentation).
+		Example: "pigment { color red 0 green 1 blue 0 }"
+		</description>
+		<default>
+			
+		</default>
+	</parameter>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.out.vtk">
+	<description>
+		Convierte un mapa vectorial binario de GRASS a salida ASCII VTK.
+	</description>
+	<keywords>
+		vectorial
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Ruta al archivo VTK resultante
+		</description>
+		<gisprompt age="new_file" element="file" prompt="output" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			point,kernel,centroid,line,boundary,area,face
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>kernel</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+			<value>
+				<name>face</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="dp" type="integer" required="no" multiple="no">
+		<description>
+			Número de dígitos significativos (coma flotante solamente)
+		</description>
+	</parameter>
+	<parameter name="scale" type="float" required="no" multiple="no">
+		<description>
+			Factor de escala para la elevación
+		</description>
+		<default>
+			1.0
+		</default>
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<description>
+			Número de capa
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<flag name="c">
+		<description>
+			Corregir las coordenadas para ajustar a la precisión VTK-OpenGL
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			Export numeric attribute table fields as VTK scalar variables
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

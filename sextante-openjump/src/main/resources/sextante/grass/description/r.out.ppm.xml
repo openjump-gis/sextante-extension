@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.ppm">
+	<description>
+		Convierte un mapa ráster de GRASS en un archivo de imagen PPM a la resolución de píxel de la región definida actualmente.
+	</description>
+	<keywords>
+		ráster, exportar
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el nuevo archivo PPM. (usar '-' para stdout)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new_file" element="file" prompt="output" />
+		<default>
+			&lt;rasterfilename&gt;.ppm
+		</default>
+	</parameter>
+	<flag name="q">
+		<description>
+			Ejecutar en modo silencioso
+		</description>
+	</flag>
+	<flag name="G">
+		<description>
+			Salida en escala de grises en vez de color
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

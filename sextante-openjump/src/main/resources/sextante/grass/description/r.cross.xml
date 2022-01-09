@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.cross">
+	<description>
+		Crea un producto cruzado de los valores de categoría a partir de múltiples capas de mapa ráster.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="yes">
+		<description>
+			Nombres de 2-30 mapas ráster de entrada
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="z">
+		<description>
+			Solamente datos distintos de cero
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			Ejecutar en modo silencioso
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

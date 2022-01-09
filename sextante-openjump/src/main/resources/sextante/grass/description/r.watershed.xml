@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.watershed">
+	<description>
+		Programa de análisis de cuenca hidrográfica.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="elevation" type="string" required="yes" multiple="no">
+		<description>
+			Mapa de entrada: elevación en la que se basa todo el análisis
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="depression" type="string" required="no" multiple="no">
+		<description>
+			Mapa de entrada: localizaciones de depresiones reales
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="flow" type="string" required="no" multiple="no">
+		<description>
+			Mapa de entrada: cantidad de flujo superficial por celda
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="disturbed.land" type="string" required="no" multiple="no">
+		<description>
+			Mapa o valor de entrada: porcentaje de terreno perturbado, para USLE
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="blocking" type="string" required="no" multiple="no">
+		<description>
+			Input map: terrain blocking overland surface flow, for USLE
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="threshold" type="integer" required="no" multiple="no">
+		<description>
+			Valor de entrada: tamaño mínimo de la cuenca hidrográfica exterior
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="max.slope.length" type="float" required="no" multiple="no">
+		<description>
+			Valor de entrada: longitud máxima de flujo de superficie, para USLE
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="accumulation" type="string" required="no" multiple="no">
+		<description>
+			Mapa de salida: número de celdas que drenan a través de cada celda
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="drainage" type="string" required="no" multiple="no">
+		<description>
+			Mapa de salida: dirección de drenaje
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="basin" type="string" required="no" multiple="no">
+		<description>
+			Mapa de salida: etiqueta única para cada cuenca hidrográfica
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="stream" type="string" required="no" multiple="no">
+		<description>
+			Mapa de salida: segmentos de corriente
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="half.basin" type="string" required="no" multiple="no">
+		<description>
+			Mapa de salida: se da un valor único a cada semicuenca
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="visual" type="string" required="no" multiple="no">
+		<description>
+			Mapa de salida: útil para  visualizar los resultados
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="length.slope" type="string" required="no" multiple="no">
+		<description>
+			Mapa de salida: factor de longitud e inclinación de la pendiente (LS) para USLE
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="slope.steepness" type="string" required="no" multiple="no">
+		<description>
+			Mapa de salida: factor de inclinación de la pendiente (S) para USLE
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="memory" type="integer" required="no" multiple="no">
+		<description>
+			Maximum memory to be used with -m flag (in MB)
+		</description>
+		<default>
+			300
+		</default>
+	</parameter>
+	<flag name="4">
+		<description>
+			Permitir sólo flujo de agua horizontal y vertical
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Activar opción de swapping de memoria a disco: funcionamiento lento
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

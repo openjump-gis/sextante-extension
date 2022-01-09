@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.sun">
+	<label>
+		Modelo de irradiancia e irradiación solar.
+	</label>
+	<description>
+		Procesa mapas ráster de irradiación solar directa (rayo), difusa y reflejada para un día, latitud, superficie y condiciones atmosféricas dados. Los parámetros solares (ej. horas de salida y puesta del sol, declinación, irradiancia extraterrestre, duración del día) se guardan en el archivo histórico del mapa. De forma alternativa, se puede especificar una hora local para procesar el ángulo de incidencia solar y/o mapas ráster de irradiancia. El efecto de sombreo de la topografía se puede incorporar opcionalmente.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="elevin" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster de elevación de entrada [metros]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="aspin" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster de orientación (orientación del terreno o azimut del panel solar) [grados decimales]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="aspect" type="float" required="no" multiple="no">
+		<description>
+			A single value of the orientation (aspect), 270 is south
+		</description>
+		<default>
+			270
+		</default>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="slopein" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster de pendiente de entrada (pendiente del terreno o inclinación del panel solar) [grados decimales]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="slope" type="float" required="no" multiple="no">
+		<description>
+			A single value of inclination (slope)
+		</description>
+		<default>
+			0.0
+		</default>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="linkein" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster de coeficiente de turbidez atmosférica Linke de entrada [-]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="lin" type="float" required="no" multiple="no">
+		<description>
+			Un valor único del coeficiente de turbidez atmosférica Linke [-]
+		</description>
+		<default>
+			3.0
+		</default>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="albedo" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster de entrada de coeficiente albedo del terreno [-]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="alb" type="float" required="no" multiple="no">
+		<description>
+			Un solo valor del coeficiente albedo del terreno [-]
+		</description>
+		<default>
+			0.2
+		</default>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="latin" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster de latitudes de entrada [grados decimales]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="lat" type="float" required="no" multiple="no">
+		<description>
+			Un valor único de latitud [grados decimales]
+		</description>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="longin" type="string" required="no" multiple="no">
+		<description>
+			Name of the longitude input raster map [decimal degrees]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="coefbh" type="string" required="no" multiple="no">
+		<description>
+			Name of real-sky beam radiation coefficient input raster map [-]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="coefdh" type="string" required="no" multiple="no">
+		<description>
+			Name of real-sky diffuse radiation coefficient input raster map [-]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="horizon" type="string" required="no" multiple="no">
+		<description>
+			The horizon information input map prefix
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="horizonstep" type="float" required="no" multiple="no">
+		<description>
+			Angle step size for multidirectional horizon [degrees]
+		</description>
+		<guisection>
+			Opciones de entrada
+		</guisection>
+	</parameter>
+	<parameter name="incidout" type="string" required="no" multiple="no">
+		<description>
+			Mapa ráster de ángulo de incidencia de salida (modo 1 solamente)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="beam_rad" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa ráster de irradiancia [W.m-2] (modo 1) o irradiación [Wh.m-2.día-1] (modo 2) de los rayos
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="insol_time" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa ráster de tiempo de insolación [h] (modo 2 solamente)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="diff_rad" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa ráster de irradiancia [W.m-2] (modo 1) o irradiación [Wh.m-2.día-1] (modo 2) difusas
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="refl_rad" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa ráster de irradiancia [W.m-2] (modo 1) o irradiación [Wh.m-2.día-1] (modo 2) reflejadas del terreno
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="glob_rad" type="string" required="no" multiple="no">
+		<description>
+			Output global (total) irradiance/irradiation [W.m-2] (mode 1) or irradiance/irradiation raster map [Wh.m-2.day-1] (mode 2)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="day" type="integer" required="yes" multiple="no">
+		<description>
+			Número de día del año (1-365)
+		</description>
+		<values>
+			<value>
+				<name>1-365</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="step" type="float" required="no" multiple="no">
+		<description>
+			Intervalo de tiempo cuando se procesan sumas de radiación de todo el día [horas decimales]
+		</description>
+		<default>
+			0.5
+		</default>
+	</parameter>
+	<parameter name="declin" type="float" required="no" multiple="no">
+		<description>
+			Valor de declinación (ignorando el valor procesado internamente) [radianes]
+		</description>
+	</parameter>
+	<parameter name="time" type="float" required="no" multiple="no">
+		<description>
+			Hora local (solar) (a establecer sólo para modo 1) [horas decimales]
+		</description>
+		<values>
+			<value>
+				<name>0-24</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="dist" type="float" required="no" multiple="no">
+		<description>
+			Sampling distance step coefficient (0.5-1.5)
+		</description>
+		<default>
+			1.0
+		</default>
+	</parameter>
+	<parameter name="numpartitions" type="integer" required="no" multiple="no">
+		<description>
+			Read the input files in this number of chunks
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="civiltime" type="float" required="no" multiple="no">
+		<description>
+			Civil time zone value, if none, the time will be local solar time
+		</description>
+	</parameter>
+	<flag name="s">
+		<description>
+			Incorporar el efecto de sombreo del terreno
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Use the low-memory version of the program
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

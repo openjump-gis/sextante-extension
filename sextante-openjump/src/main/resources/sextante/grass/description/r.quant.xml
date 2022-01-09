@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.quant">
+	<description>
+		Produce el archivo de cuantización para un mapa de coma flotante.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="basemap" type="string" required="no" multiple="no">
+		<description>
+			Mapa base del que tomar las reglas de cuantización
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<default>
+			NONE
+		</default>
+	</parameter>
+	<parameter name="input" type="string" required="yes" multiple="yes">
+		<description>
+			Mapa(s) ráster a cuantizar
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="fprange" type="string" required="yes" multiple="no">
+		<description>
+			Rango de coma flotante: dmin, dmax
+		</description>
+		<keydesc>
+			<item order="1">dmin</item>
+			<item order="2">dmax</item>
+		</keydesc>
+		<default>
+			
+		</default>
+	</parameter>
+	<parameter name="range" type="string" required="yes" multiple="no">
+		<description>
+			Rango de enteros: mínimo, máximo
+		</description>
+		<keydesc>
+			<item order="1">min</item>
+			<item order="2">max</item>
+		</keydesc>
+		<default>
+			1,255
+		</default>
+	</parameter>
+	<flag name="t">
+		<description>
+			Truncar datos de coma flotante
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Redondear datos de coma flotante
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.in.wfs">
+	<description>
+		Import GetFeature from WFS
+	</description>
+	<parameter name="wfs" type="string" required="no" multiple="no">
+		<description>
+			URL de GetFeature comenzando con http
+		</description>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Mapa vectorial de salida
+		</description>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

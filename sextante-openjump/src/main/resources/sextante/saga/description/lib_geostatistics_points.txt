@@ -1,0 +1,17 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Variogram
+ 1	- Variogram Cloud
+ 2	- Variogram Surface
+ 3	- Minimum Distance Analysis
+ 4	- Spatial Point Pattern Analysis
+
+type -h or --help for further information

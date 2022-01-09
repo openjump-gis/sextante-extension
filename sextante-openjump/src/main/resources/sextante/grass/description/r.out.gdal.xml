@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.gdal">
+	<description>
+		Exports GRASS raster maps into GDAL supported formats.
+	</description>
+	<keywords>
+		ráster, exportar
+	</keywords>
+	<parameter name="input" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster (o grupo) a exportar
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Requerido
+		</guisection>
+	</parameter>
+	<parameter name="format" type="string" required="no" multiple="no">
+		<description>
+			Formato GIS a escribir (sensible a mayúsculas, ver también la opción -l)
+		</description>
+		<default>
+			GTiff
+		</default>
+		<values>
+			<value>
+				<name>VRT</name>
+			</value>
+			<value>
+				<name>GTiff</name>
+			</value>
+			<value>
+				<name>NITF</name>
+			</value>
+			<value>
+				<name>HFA</name>
+			</value>
+			<value>
+				<name>ELAS</name>
+			</value>
+			<value>
+				<name>AAIGrid</name>
+			</value>
+			<value>
+				<name>DTED</name>
+			</value>
+			<value>
+				<name>PNG</name>
+			</value>
+			<value>
+				<name>JPEG</name>
+			</value>
+			<value>
+				<name>MEM</name>
+			</value>
+			<value>
+				<name>GIF</name>
+			</value>
+			<value>
+				<name>XPM</name>
+			</value>
+			<value>
+				<name>BMP</name>
+			</value>
+			<value>
+				<name>PCIDSK</name>
+			</value>
+			<value>
+				<name>PCRaster</name>
+			</value>
+			<value>
+				<name>ILWIS</name>
+			</value>
+			<value>
+				<name>SGI</name>
+			</value>
+			<value>
+				<name>SRTMHGT</name>
+			</value>
+			<value>
+				<name>Leveller</name>
+			</value>
+			<value>
+				<name>Terragen</name>
+			</value>
+			<value>
+				<name>ERS</name>
+			</value>
+			<value>
+				<name>FIT</name>
+			</value>
+			<value>
+				<name>RMF</name>
+			</value>
+			<value>
+				<name>RST</name>
+			</value>
+			<value>
+				<name>INGR</name>
+			</value>
+			<value>
+				<name>GSAG</name>
+			</value>
+			<value>
+				<name>GSBG</name>
+			</value>
+			<value>
+				<name>PNM</name>
+			</value>
+			<value>
+				<name>ENVI</name>
+			</value>
+			<value>
+				<name>EHdr</name>
+			</value>
+			<value>
+				<name>PAux</name>
+			</value>
+			<value>
+				<name>MFF</name>
+			</value>
+			<value>
+				<name>MFF2</name>
+			</value>
+			<value>
+				<name>BT</name>
+			</value>
+			<value>
+				<name>IDA</name>
+			</value>
+			<value>
+				<name>USGSDEM</name>
+			</value>
+			<value>
+				<name>ADRG</name>
+			</value>
+			<value>
+				<name>BLX</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			Tipo de archivo
+		</description>
+		<values>
+			<value>
+				<name>Byte</name>
+			</value>
+			<value>
+				<name>Int16</name>
+			</value>
+			<value>
+				<name>UInt16</name>
+			</value>
+			<value>
+				<name>Int32</name>
+			</value>
+			<value>
+				<name>UInt32</name>
+			</value>
+			<value>
+				<name>Float32</name>
+			</value>
+			<value>
+				<name>Float64</name>
+			</value>
+			<value>
+				<name>CInt16</name>
+			</value>
+			<value>
+				<name>CInt32</name>
+			</value>
+			<value>
+				<name>CFloat32</name>
+			</value>
+			<value>
+				<name>CFloat64</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el archivo ráster de salida
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new_file" element="file" prompt="output" />
+		<guisection>
+			Requerido
+		</guisection>
+	</parameter>
+	<parameter name="createopt" type="string" required="no" multiple="yes">
+		<label>
+			Creation option(s) to pass to the output format driver
+		</label>
+		<description>
+			In the form of "NAME=VALUE", separate multiple entries with a comma.
+		</description>
+	</parameter>
+	<parameter name="metaopt" type="string" required="no" multiple="yes">
+		<label>
+			Metadata key(s) and value(s) to include
+		</label>
+		<description>
+			In the form of "META-TAG=VALUE", separate multiple entries with a comma. Not supported by all output format drivers.
+		</description>
+	</parameter>
+	<parameter name="nodata" type="float" required="no" multiple="no">
+		<description>
+			Asignar un valor especificado a las celdas sin datos para las bandas de salida
+		</description>
+	</parameter>
+	<flag name="l">
+		<description>
+			Listar formatos de salida soportados
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="c">
+		<label>
+			Do not export long colortable
+		</label>
+		<description>
+			Only applicable to Byte or UInt16 data types.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

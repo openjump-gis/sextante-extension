@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.sunmask">
+	<description>
+		Calculates cast shadow areas from sun position and DEM. Either A: exact sun position is specified, or B: date/time to calculate the sun position by r.sunmask itself.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="elev" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster de elevaciones
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Producir mapa ráster que contiene sombras
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="altitude" type="float" required="no" multiple="no">
+		<description>
+			A: altura del sol sobre el horizonte, grados
+		</description>
+		<values>
+			<value>
+				<name>0-89.999</name>
+			</value>
+		</values>
+		<guisection>
+			Por posición
+		</guisection>
+	</parameter>
+	<parameter name="azimuth" type="float" required="no" multiple="no">
+		<description>
+			A: azimut del sol desde el Norte, grados
+		</description>
+		<values>
+			<value>
+				<name>0-360</name>
+			</value>
+		</values>
+		<guisection>
+			Por posición
+		</guisection>
+	</parameter>
+	<parameter name="year" type="integer" required="no" multiple="no">
+		<description>
+			B: año (1950..2050)
+		</description>
+		<guisection>
+			Por tiempo
+		</guisection>
+	</parameter>
+	<parameter name="month" type="integer" required="no" multiple="no">
+		<description>
+			B: mes (0..12)
+		</description>
+		<guisection>
+			Por tiempo
+		</guisection>
+	</parameter>
+	<parameter name="day" type="integer" required="no" multiple="no">
+		<description>
+			B: día (0..31)
+		</description>
+		<guisection>
+			Por tiempo
+		</guisection>
+	</parameter>
+	<parameter name="hour" type="integer" required="no" multiple="no">
+		<description>
+			B: hora (0..24)
+		</description>
+		<guisection>
+			Por tiempo
+		</guisection>
+	</parameter>
+	<parameter name="minute" type="integer" required="no" multiple="no">
+		<description>
+			B: minutos (0..60)
+		</description>
+		<guisection>
+			Por tiempo
+		</guisection>
+	</parameter>
+	<parameter name="second" type="integer" required="no" multiple="no">
+		<description>
+			B: segundos (0..60)
+		</description>
+		<guisection>
+			Por tiempo
+		</guisection>
+	</parameter>
+	<parameter name="timezone" type="integer" required="no" multiple="no">
+		<description>
+			B: zona horaria (Este positivo, compensar desde GMT, también uso para ajustar ahorros de luz solar)
+		</description>
+		<guisection>
+			Por tiempo
+		</guisection>
+	</parameter>
+	<parameter name="east" type="string" required="no" multiple="no">
+		<description>
+			Coordenada Este (punto de interés, por omisión: centro del mapa)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+	</parameter>
+	<parameter name="north" type="string" required="no" multiple="no">
+		<description>
+			Coordenada Norte (punto de interés, por omisión: centro del mapa)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+	</parameter>
+	<flag name="z">
+		<description>
+			Cero es una elevación real
+		</description>
+	</flag>
+	<flag name="v">
+		<description>
+			Salida verbosa (también imprime la posición solar, etc.)
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Calcular sólo la posición solar y salir
+		</description>
+	</flag>
+	<flag name="g">
+		<description>
+			Imprimir la salida de la posición solar en estilo script de consola
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

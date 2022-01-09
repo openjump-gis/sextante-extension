@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.surf.idw">
+	<description>
+		Surface interpolation from vector point data by Inverse Distance Squared Weighting.
+	</description>
+	<keywords>
+		vectorial, interpolación
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="npoints" type="integer" required="no" multiple="no">
+		<description>
+			Número de puntos de interpolación
+		</description>
+		<keydesc>
+			<item order="1">count</item>
+		</keydesc>
+		<default>
+			12
+		</default>
+	</parameter>
+	<parameter name="power" type="float" required="no" multiple="no">
+		<description>
+			Power parameter; greater values assign greater influence to closer points
+		</description>
+		<default>
+			2.0
+		</default>
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Si se establece a 0, se usarán las coordenadas Z (sólo vectoriales 3D)
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer_zero" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="column" type="string" required="no" multiple="no">
+		<label>
+			Columna de la tabla de atributos con valores a interpolar
+		</label>
+		<description>
+			Requerido si capa &gt; 0
+		</description>
+	</parameter>
+	<flag name="n">
+		<label>
+			No indexar puntos por celda ráster
+		</label>
+		<description>
+			Más lento pero usa menos memoria e incluye puntos de la región exterior en la interpolación
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

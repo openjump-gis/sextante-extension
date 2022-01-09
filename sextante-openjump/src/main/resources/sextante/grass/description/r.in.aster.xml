@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.in.aster">
+	<description>
+		Georreferenciar, rectificar e importar imaginería Terra ASTER y MDT relativos usando gdalwarp.
+	</description>
+	<keywords>
+		ráster, imaginería, importar
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Imagen ASTER de entrada a georreferenciar y rectificar
+		</description>
+		<gisprompt age="old_file" element="file" prompt="input" />
+	</parameter>
+	<parameter name="proctype" type="string" required="yes" multiple="no">
+		<description>
+			Tipo de procesado de Imaginería ASTER (Nivel 1A, Nivel 1B o MDT relacionado)
+		</description>
+		<values>
+			<value>
+				<name>L1A</name>
+			</value>
+			<value>
+				<name>L1B</name>
+			</value>
+			<value>
+				<name>DEM</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="band" type="string" required="yes" multiple="no">
+		<description>
+			Banda L1A o L1B a traducir (1, 2, 3n, 3b, 4-14). Sólo se puede traducir una banda
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa ráster de salida
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

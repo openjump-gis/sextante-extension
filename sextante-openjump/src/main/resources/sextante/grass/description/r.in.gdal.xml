@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.in.gdal">
+	<description>
+		Importar archivo ráster soportado por GDAL a una capa de mapa ráster binario.
+	</description>
+	<keywords>
+		ráster, importar
+	</keywords>
+	<parameter name="input" type="string" required="no" multiple="no">
+		<description>
+			Mapa ráster a importar
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_file" element="file" prompt="input" />
+		<guisection>
+			Requerido
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Requerido
+		</guisection>
+	</parameter>
+	<parameter name="band" type="integer" required="no" multiple="no">
+		<description>
+			Banda a seleccionar (por omisión todas las bandas)
+		</description>
+	</parameter>
+	<parameter name="target" type="string" required="no" multiple="no">
+		<description>
+			Nombre de la localización de la que leer la proyección para la transformación GCPs
+		</description>
+	</parameter>
+	<parameter name="title" type="string" required="no" multiple="no">
+		<description>
+			Título para el mapa ráster resultante
+		</description>
+		<keydesc>
+			<item order="1">"phrase"</item>
+		</keydesc>
+		<guisection>
+			Metadatos
+		</guisection>
+	</parameter>
+	<parameter name="location" type="string" required="no" multiple="no">
+		<description>
+			Nombre de la nueva localización a crear
+		</description>
+	</parameter>
+	<flag name="o">
+		<description>
+			Ignorar proyección (usar proyección de la localización)
+		</description>
+	</flag>
+	<flag name="e">
+		<description>
+			Ampliar la extensión de la localización en base a nuevo conjunto de datos
+		</description>
+	</flag>
+	<flag name="f">
+		<description>
+			Listar los formatos soportados y salir
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="k">
+		<description>
+			Mantener números de banda en vez de usar nombre de color de banda
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>
