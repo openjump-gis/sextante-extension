@@ -24,7 +24,8 @@ public class Sextante {
 	 */
 	public static void initialize() {
 
-		AlgorithmsAndResources.addAlgorithmsAndPropertiesFromClasspath();
+	  // disabled, replaced by external search/add in SextanteToolboxPlugin [2022.01 ed]
+		//AlgorithmsAndResources.addAlgorithmsAndPropertiesFromClasspath();
 
 		m_Text = new HashMap<>();
 		m_Algorithms = new HashMap<>();
