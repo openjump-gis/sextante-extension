@@ -31,17 +31,14 @@ public class SextanteExtension extends Extension {
    * is newer than OpenJUMP one (2009?)
    */
 
-  private static final String NAME = "Sextante 2.1.0";
-  private static final String VERSION = "OpenJUMP binding 2021-08-15";
-
   @Override
   public String getName() {
-    return NAME;
+    return "Sextante";
   }
 
   @Override
   public String getVersion() {
-    return VERSION;
+    return I18N.get("es.unex.sextante.kosmo.extensions.SextanteExtension.version");
   }
 
   @Override
