@@ -5,6 +5,9 @@ package es.unex.sextante.openjump.extensions;
 import javax.swing.ImageIcon;
 
 import com.vividsolutions.jump.I18N;
+import com.vividsolutions.jump.workbench.plugin.AbstractPlugIn;
+import com.vividsolutions.jump.workbench.plugin.EnableCheck;
+import com.vividsolutions.jump.workbench.plugin.EnableCheckFactory;
 import com.vividsolutions.jump.workbench.plugin.PlugIn;
 import com.vividsolutions.jump.workbench.plugin.PlugInContext;
 
@@ -12,7 +15,7 @@ import es.unex.sextante.gui.core.SextanteGUI;
 
 import java.util.Objects;
 
-public class SextanteCommandLinePlugin implements PlugIn {
+public class SextanteCommandLinePlugin extends AbstractPlugIn {
 
   private final I18N i18n = I18N.getInstance("es.unex.sextante.openjump");
 
@@ -29,6 +32,8 @@ public class SextanteCommandLinePlugin implements PlugIn {
 
 
   public void initialize(final PlugInContext context) throws Exception {
+    super.initialize(context);
+
     context.getFeatureInstaller()
         .addMainMenuPlugin(this, new String[] { "Sextante" },
             getName(), false,  getIcon(), null);
@@ -41,5 +46,11 @@ public class SextanteCommandLinePlugin implements PlugIn {
         "Could not get resource terminal.png from " + getClass())
     );
   }
-   
+
+  @Override
+  public EnableCheck getEnableCheck() {
+    EnableCheckFactory checkFactory = EnableCheckFactory.getInstance(getContext().getWorkbenchContext());
+
+    return checkFactory.createTaskWindowMustBeActiveCheck();
+  }
 }
