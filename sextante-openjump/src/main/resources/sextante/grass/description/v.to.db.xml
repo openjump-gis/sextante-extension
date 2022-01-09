@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.to.db">
+	<description>
+		Populates database values from vector features.
+	</description>
+	<keywords>
+		vectorial, base de datos, tabla de atributos
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<label>
+			Tipo de elemento
+		</label>
+		<description>
+			For coor valid point/centroid, for length valid line/boundary
+		</description>
+		<default>
+			point,line,boundary,centroid
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Layer number (write to)
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="qlayer" type="integer" required="no" multiple="no">
+		<label>
+			Query layer number (read from)
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Consulta
+		</guisection>
+	</parameter>
+	<parameter name="option" type="string" required="yes" multiple="no">
+		<description>
+			Valor a cargar
+		</description>
+		<values>
+			<value>
+				<name>cat</name>
+				<description>insert new row for each category if doesn't exist yet</description>
+			</value>
+			<value>
+				<name>area</name>
+				<description>area size</description>
+			</value>
+			<value>
+				<name>compact</name>
+				<description>compactness of an area, calculated as 
+              compactness = perimeter / (2 * sqrt(PI * area))</description>
+			</value>
+			<value>
+				<name>fd</name>
+				<description>fractal dimension of boundary defining a polygon, calculated as 
+              fd = 2 * (log(perimeter) / log(area))</description>
+			</value>
+			<value>
+				<name>perimeter</name>
+				<description>perimeter length of an area</description>
+			</value>
+			<value>
+				<name>length</name>
+				<description>line length</description>
+			</value>
+			<value>
+				<name>count</name>
+				<description>number of features for each category</description>
+			</value>
+			<value>
+				<name>coor</name>
+				<description>point coordinates, X,Y or X,Y,Z</description>
+			</value>
+			<value>
+				<name>start</name>
+				<description>line/boundary starting point coordinates, X,Y or X,Y,Z</description>
+			</value>
+			<value>
+				<name>end</name>
+				<description>line/boundary end point coordinates, X,Y or X,Y,Z</description>
+			</value>
+			<value>
+				<name>sides</name>
+				<description>categories of areas on the left and right side of the boundary, 'qlayer' is used for area category</description>
+			</value>
+			<value>
+				<name>query</name>
+				<description>result of a database query for all records of the geometry(or geometries) from table specified by 'qlayer' option</description>
+			</value>
+			<value>
+				<name>slope</name>
+				<description>slope steepness of vector line or boundary</description>
+			</value>
+			<value>
+				<name>sinuous</name>
+				<description>line sinuousity, calculated as line length / distance between end points</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="units" type="string" required="no" multiple="no">
+		<label>
+			Unidades
+		</label>
+		<description>
+			mi(llas),f(pies),me(tros),k(ilómetros),a(cres),h(ectáreas)
+		</description>
+		<values>
+			<value>
+				<name>mi</name>
+			</value>
+			<value>
+				<name>miles</name>
+			</value>
+			<value>
+				<name>f</name>
+			</value>
+			<value>
+				<name>feet</name>
+			</value>
+			<value>
+				<name>me</name>
+			</value>
+			<value>
+				<name>meters</name>
+			</value>
+			<value>
+				<name>k</name>
+			</value>
+			<value>
+				<name>kilometers</name>
+			</value>
+			<value>
+				<name>a</name>
+			</value>
+			<value>
+				<name>acres</name>
+			</value>
+			<value>
+				<name>h</name>
+			</value>
+			<value>
+				<name>hectares</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="columns" type="string" required="no" multiple="yes">
+		<description>
+			Nombre de la(s) columna(s) de atributos.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_dbcolumn" element="dbcolumn" prompt="dbcolumn" />
+	</parameter>
+	<parameter name="qcolumn" type="string" required="no" multiple="no">
+		<label>
+			Name of attribute column used for 'query' option
+		</label>
+		<description>
+			Ej.: 'categoría', 'cuenta(*)', 'suma(valores)'
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<guisection>
+			Consulta
+		</guisection>
+	</parameter>
+	<flag name="p">
+		<description>
+			Sólo imprimir
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="s">
+		<description>
+			Only print SQL statements
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			En modo impresión imprime totales para las opciones: longitud,área,cuenta
+		</description>
+ 		<guisection>
+			Imprimir
+		</guisection>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.to.points">
+	<description>
+		Creaa puntos a lo largo de líneas de entrada en un nuevo vectorial con 2 capas.
+	</description>
+	<keywords>
+		vectorial, geometría
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Mapa vectorial de entrada que contiene líneas
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Mapa vectorial de salida en el que se escribirán los puntos
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			point,line,boundary,centroid
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>boundary</name>
+			</value>
+			<value>
+				<name>centroid</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="llayer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Line layer
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="dmax" type="float" required="no" multiple="no">
+		<description>
+			Distancia máxima entre puntos en unidades de mapa
+		</description>
+		<default>
+			100
+		</default>
+	</parameter>
+	<flag name="n">
+		<description>
+			Escribir nodos de líneas
+		</description>
+	</flag>
+	<flag name="v">
+		<description>
+			Escribir vértices de líneas
+		</description>
+	</flag>
+	<flag name="i">
+		<description>
+			Interpolar puntos entre vértices de líneas
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			No crear la tabla de atributos
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

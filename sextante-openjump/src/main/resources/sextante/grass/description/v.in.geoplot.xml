@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.in.geoplot">
+	<description>
+		Creates vector points map from a Geoplot export file
+	</description>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Geoplot ASCII file to import
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_file" element="file" prompt="input" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Vector map to store data points
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="format" type="string" required="no" multiple="no">
+		<description>
+			Format of geoplot data file
+		</description>
+		<default>
+			xyz
+		</default>
+		<values>
+			<value>
+				<name>xyz</name>
+			</value>
+			<value>
+				<name>z</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="delimiter" type="string" required="no" multiple="no">
+		<description>
+			Data delimiter
+		</description>
+		<default>
+			tab
+		</default>
+		<values>
+			<value>
+				<name>tab</name>
+			</value>
+			<value>
+				<name>space</name>
+			</value>
+			<value>
+				<name>comma</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="creference" type="string" required="no" multiple="no">
+		<description>
+			Reference corner (top-left or bottom-left)
+		</description>
+		<default>
+			bl
+		</default>
+		<values>
+			<value>
+				<name>tl</name>
+			</value>
+			<value>
+				<name>bl</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="xreference" type="float" required="no" multiple="no">
+		<description>
+			Easting of first data point
+		</description>
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<parameter name="yreference" type="float" required="no" multiple="no">
+		<description>
+			Northing of first data point
+		</description>
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<parameter name="xincrement" type="float" required="no" multiple="no">
+		<description>
+			Spacing between measurements
+		</description>
+	</parameter>
+	<parameter name="yincrement" type="float" required="no" multiple="no">
+		<description>
+			Spacing between lines
+		</description>
+	</parameter>
+	<parameter name="length" type="float" required="no" multiple="no">
+		<description>
+			number of measurements on one line
+		</description>
+	</parameter>
+	<parameter name="null" type="float" required="no" multiple="no">
+		<description>
+			NULL data value to filter out
+		</description>
+	</parameter>
+	<flag name="q">
+		<description>
+			Quiet operation: no progress display
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

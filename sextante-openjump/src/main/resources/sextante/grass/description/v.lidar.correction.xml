@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.lidar.correction">
+	<description>
+		Corrección de la salida de v.lidar.growing. Es el último de los tres algoritmos para el filtrado de LIDAR.
+	</description>
+	<keywords>
+		vectorial, LIDAR
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de observación de entrada (salida v.lidar.growing)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre de mapa vectorial clasificado de salida
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="terrain" type="string" required="yes" multiple="no">
+		<description>
+			Only 'terrain' points output vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="sce" type="float" required="no" multiple="no">
+		<description>
+			Valor de paso spline de interpolación en dirección Este
+		</description>
+		<default>
+			25
+		</default>
+	</parameter>
+	<parameter name="scn" type="float" required="no" multiple="no">
+		<description>
+			Valor de paso spline de interpolación en dirección Norte
+		</description>
+		<default>
+			25
+		</default>
+	</parameter>
+	<parameter name="lambda_c" type="float" required="no" multiple="no">
+		<description>
+			Regularization weight in reclassification evaluation
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="tch" type="float" required="no" multiple="no">
+		<description>
+			High threshold for object to terrain reclassification
+		</description>
+		<default>
+			2
+		</default>
+	</parameter>
+	<parameter name="tcl" type="float" required="no" multiple="no">
+		<description>
+			Low threshold for terrain to object reclassification
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<flag name="e">
+		<label>
+			Estimate point density and distance
+		</label>
+		<description>
+			Estimate point density and distance for the input vector points within the current region extends and quit
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

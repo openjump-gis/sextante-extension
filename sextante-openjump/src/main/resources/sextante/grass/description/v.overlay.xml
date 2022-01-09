@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.overlay">
+	<description>
+		Superpone dos mapas vectoriales.
+	</description>
+	<keywords>
+		vectorial, geometría
+	</keywords>
+	<parameter name="ainput" type="string" required="yes" multiple="no">
+		<description>
+			Name of input vector map (A)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="atype" type="string" required="no" multiple="yes">
+		<label>
+			Feature type (vector map A)
+		</label>
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			area
+		</default>
+		<values>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="alayer" type="integer" required="no" multiple="no">
+		<label>
+			Layer number (vector map A)
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="binput" type="string" required="yes" multiple="no">
+		<description>
+			Name of input vector map (B)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="btype" type="string" required="no" multiple="yes">
+		<label>
+			Feature type (vector map B)
+		</label>
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			area
+		</default>
+		<values>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="blayer" type="integer" required="no" multiple="no">
+		<label>
+			Layer number (vector map B)
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="operator" type="string" required="no" multiple="no">
+		<label>
+			El operador define los elementos escritos en el mapa vectorial de salida
+		</label>
+		<description>
+			El elemento se escribe en la salida si el resultado de la operación 'entrada A operador entrada B' es verdadero. Un elemento de entrada se considera verdadero si se define la categoría de la capa dada.
+		</description>
+		<default>
+			or
+		</default>
+		<values>
+			<value>
+				<name>and</name>
+			</value>
+			<value>
+				<name>or</name>
+			</value>
+			<value>
+				<name>not</name>
+			</value>
+			<value>
+				<name>xor</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="olayer" type="integer" required="no" multiple="yes">
+		<label>
+			Capa de salida para nueva categoría, entrada A y entrada B
+		</label>
+		<description>
+			Si es 0 o no se indica, la categoría no se escribe
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1,0,0
+		</default>
+	</parameter>
+	<flag name="t">
+		<description>
+			No crear la tabla de atributos
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

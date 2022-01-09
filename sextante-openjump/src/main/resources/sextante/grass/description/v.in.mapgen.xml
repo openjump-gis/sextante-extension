@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.in.mapgen">
+	<description>
+		Importar mapas vectoriales Mapgen o Matlab a GRASS.
+	</description>
+	<keywords>
+		vectorial, importar
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del archivo de entrada en formato Mapgen/Matlab
+		</description>
+		<gisprompt age="old_file" element="file" prompt="input" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida (omitir para visualización a stdout)
+		</description>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<flag name="f">
+		<description>
+			El archivo de entrada está en formato Matlab
+		</description>
+	</flag>
+	<flag name="z">
+		<description>
+			Crear un mapa vectorial 3D de puntos a partir de datos Matlab de 3 columnas
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.mpeg">
+	<description>
+		Programa de conversión de series de archivos ráster a MPEG.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="view1" type="string" required="yes" multiple="yes">
+		<description>
+			Archivo(s) ráster para la vista1
+		</description>
+		<gisprompt age="old" element="cell" prompt="Raster" />
+	</parameter>
+	<parameter name="view2" type="string" required="no" multiple="yes">
+		<description>
+			Archivo(s) ráster para la vista2
+		</description>
+		<gisprompt age="old" element="cell" prompt="Raster" />
+	</parameter>
+	<parameter name="view3" type="string" required="no" multiple="yes">
+		<description>
+			Archivo(s) ráster para la vista3
+		</description>
+		<gisprompt age="old" element="cell" prompt="Raster" />
+	</parameter>
+	<parameter name="view4" type="string" required="no" multiple="yes">
+		<description>
+			Archivo(s) ráster para la vista4
+		</description>
+		<gisprompt age="old" element="cell" prompt="Raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el archivo de salida
+		</description>
+		<default>
+			gmovie.mpg
+		</default>
+	</parameter>
+	<parameter name="qual" type="integer" required="no" multiple="no">
+		<description>
+			Factor de calidad (1 = calidad más alta, baja compresión)
+		</description>
+		<default>
+			3
+		</default>
+		<values>
+			<value>
+				<name>1-5</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="q">
+		<description>
+			Silencioso - suprime el informe de progreso
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			Convertir al vuelo, usar menos espacio de disco
+	(requiere r.out.ppm con la opción stdout)
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

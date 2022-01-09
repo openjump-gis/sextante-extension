@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.in.gns">
+	<description>
+		Importa archivos de país del Servidor de Nombres Geonet (GNS) US-NGA a un mapa vectorial de puntos de GRASS.
+	</description>
+	<keywords>
+		vector, import, gazetteer
+	</keywords>
+	<parameter name="file" type="string" required="yes" multiple="no">
+		<description>
+			Archivo GNS sin comprimir de NGA (con extensión .txt)
+		</description>
+		<gisprompt age="old_file" element="file" prompt="input" />
+	</parameter>
+	<parameter name="vect" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida
+		</description>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

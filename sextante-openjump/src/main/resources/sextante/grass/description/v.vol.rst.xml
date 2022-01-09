@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.vol.rst">
+	<description>
+		Interpolates point data to a G3D grid volume using regularized spline with tension (RST) algorithm.
+	</description>
+	<keywords>
+		vectorial
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial con X, Y, Z y W de entrada
+		</description>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="cellinp" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster de superficie para sección cruzada
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="wcolumn" type="string" required="no" multiple="no">
+		<description>
+			Nombre de la columna que contiene los datos a interpolar
+		</description>
+		<default>
+			flt1
+		</default>
+	</parameter>
+	<parameter name="tension" type="float" required="no" multiple="no">
+		<description>
+			Parámetro tensión
+		</description>
+		<default>
+			40.
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="smooth" type="float" required="no" multiple="no">
+		<description>
+			Parámetro suavizado
+		</description>
+		<default>
+			0.1
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="scolumn" type="string" required="no" multiple="no">
+		<description>
+			Nombre de la columna con parámetros de suavizado
+		</description>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			Condiciones "WHERE", de la instrucción SQL sin la palabra clave "where".
+		</label>
+		<description>
+			Ejemplo: salario &lt; 1000 y habitantes &gt;=10000.
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<parameter name="devi" type="string" required="no" multiple="no">
+		<description>
+			Producir archivo de puntos vectorial de desviaciones
+		</description>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Análisis
+		</guisection>
+	</parameter>
+	<parameter name="cvdev" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa vectorial de validación cruzada
+		</description>
+		<gisprompt age="new" element="vector" prompt="vector" />
+		<guisection>
+			Análisis
+		</guisection>
+	</parameter>
+	<parameter name="maskmap" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster usado como máscara
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="segmax" type="integer" required="no" multiple="no">
+		<description>
+			Número máximo de puntos en un segmento
+		</description>
+		<default>
+			50
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="npmin" type="integer" required="no" multiple="no">
+		<description>
+			Número mínimo de puntos para aproximación en un segmento (&gt;segmax)
+		</description>
+		<default>
+			200
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="dmin" type="float" required="no" multiple="no">
+		<description>
+			Distancia mínima entre puntos (para eliminar puntos casi indénticos)
+		</description>
+		<default>
+			0.500000
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="wmult" type="float" required="no" multiple="no">
+		<description>
+			Factor de conversión para valores W usados para interpolación
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="zmult" type="float" required="no" multiple="no">
+		<description>
+			Factor de conversión para valores Z
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="cellout" type="string" required="no" multiple="no">
+		<description>
+			Producir mapa ráster de sección cruzada
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="elev" type="string" required="no" multiple="no">
+		<description>
+			Producir archivo G3D de elevación
+		</description>
+		<gisprompt age="new" element="grid3" prompt="3d raster" />
+	</parameter>
+	<parameter name="gradient" type="string" required="no" multiple="no">
+		<description>
+			Producir archivo G3D de magnitud de gradiente
+		</description>
+		<gisprompt age="new" element="grid3" prompt="3d raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="aspect1" type="string" required="no" multiple="no">
+		<description>
+			Producir archivo G3D de ángulo horizontal de gradiente
+		</description>
+		<gisprompt age="new" element="grid3" prompt="3d raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="aspect2" type="string" required="no" multiple="no">
+		<description>
+			Producir archivo G3D de ángulo vertical de gradiente
+		</description>
+		<gisprompt age="new" element="grid3" prompt="3d raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="ncurv" type="string" required="no" multiple="no">
+		<description>
+			Producir archivo G3D de cambio de gradiente
+		</description>
+		<gisprompt age="new" element="grid3" prompt="3d raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="gcurv" type="string" required="no" multiple="no">
+		<description>
+			Producir archivo G3D de curvatura gausiana
+		</description>
+		<gisprompt age="new" element="grid3" prompt="3d raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<parameter name="mcurv" type="string" required="no" multiple="no">
+		<description>
+			Producir archivo G3D de curvatura media
+		</description>
+		<gisprompt age="new" element="grid3" prompt="3d raster" />
+		<guisection>
+			Opciones de salida
+		</guisection>
+	</parameter>
+	<flag name="c">
+		<description>
+			Realizar un procedimiento de validación cruzada sin interpolación de volumen
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

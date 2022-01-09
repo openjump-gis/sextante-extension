@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.xyz">
+	<description>
+		Exportar un mapa ráster a un archivo de texto como valores X, Y, Z basados en los centros de las celdas.
+	</description>
+	<keywords>
+		ráster, exportar
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster de entrada
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el archivo de salida (si se omite o "-" salida a stdout)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new_file" element="file" prompt="output" />
+	</parameter>
+	<parameter name="fs" type="string" required="no" multiple="no">
+		<description>
+			Separador de campos
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<default>
+			|
+		</default>
+	</parameter>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

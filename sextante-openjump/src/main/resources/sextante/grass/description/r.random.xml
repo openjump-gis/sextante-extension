@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.random">
+	<description>
+		Creates a raster map layer and vector point map containing randomly located points.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster de entrada
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="cover" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster de cobertura
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="n" type="string" required="yes" multiple="no">
+		<description>
+			El número de puntos a situar
+		</description>
+		<keydesc>
+			<item order="1">number[%]</item>
+		</keydesc>
+	</parameter>
+	<parameter name="raster_output" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="vector_output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<flag name="z">
+		<description>
+			Generate points also for NULL category
+		</description>
+	</flag>
+	<flag name="i">
+		<description>
+			Mostrar información sobre ráster de entrada y salir
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			Generar puntos vectoriales como puntos 3D
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

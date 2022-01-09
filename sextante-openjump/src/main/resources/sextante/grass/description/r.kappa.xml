@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.kappa">
+	<description>
+		Calcular matriz de error y el parámetro kappa para ensayo de precisión del resultado de clasificación.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="classification" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster que contiene el resultado de la reclasificación
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="reference" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster que contiene clases de referencia
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el archivo de salida que contenga la matriz de errores y kappa
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new_file" element="file" prompt="output" />
+	</parameter>
+	<parameter name="title" type="string" required="no" multiple="no">
+		<description>
+			Título para la matriz de errores y kappa
+		</description>
+		<default>
+			ACCURACY ASSESSMENT
+		</default>
+	</parameter>
+	<flag name="w">
+		<label>
+			Informe amplio
+		</label>
+		<description>
+			132 columnas (por omisión: 80)
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			Silencioso
+		</description>
+	</flag>
+	<flag name="h">
+		<description>
+			Ningún encabezamiento en el informe
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.ppm3">
+	<description>
+		Convierte 3 capas ráster de GRASS (R,G,B) a un archivo de imagen PPM a la resolución de píxel de la REGIÓN ACTUALMENTE DEFINIDA.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="red" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster a usar para &lt;red&gt;
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="green" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster a usar para &lt;green&gt;
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="blue" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster a usar para &lt;blue&gt;
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el nuevo archivo PPM. (usar out=- para stdout)
+		</description>
+	</parameter>
+	<flag name="q">
+		<description>
+			Ejecutar en modo silencioso
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			Añadir comentarios para describir la región
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.distance">
+	<description>
+		Localiza los puntos más próximos entre objetos en dos mapas ráster.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="maps" type="string" required="yes" multiple="no">
+		<description>
+			Mapas para procesar distancias entre clases
+		</description>
+		<keydesc>
+			<item order="1">map1</item>
+			<item order="2">map2</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="fs" type="string" required="no" multiple="no">
+		<description>
+			Separador de campos de salida
+		</description>
+		<default>
+			:
+		</default>
+	</parameter>
+	<flag name="l">
+		<description>
+			Incluir etiquetas de categoría en la salida
+		</description>
+	</flag>
+	<flag name="o">
+		<description>
+			Informar distancia cero si los ráster solapan
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			Ejecutar en modo silencioso
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

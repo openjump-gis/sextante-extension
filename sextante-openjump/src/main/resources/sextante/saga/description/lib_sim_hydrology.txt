@@ -1,0 +1,16 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Soil Moisture Content
+ 1	- Overland Flow - Kinematic Wave D8
+ 2	- TOPMODEL
+ 3	- Water Retention Capacity
+
+type -h or --help for further information

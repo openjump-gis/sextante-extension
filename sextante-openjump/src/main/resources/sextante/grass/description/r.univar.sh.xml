@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.univar.sh">
+	<description>
+		Calcula estadísticas univariantes a partir de un mapa ráster de GRASS.
+	</description>
+	<keywords>
+		ráster, estadísticas
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="percentile" type="integer" required="no" multiple="no">
+		<description>
+			Percentil a calcular (requiere la opción -e)
+		</description>
+		<default>
+			90
+		</default>
+		<values>
+			<value>
+				<name>0-100</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="e">
+		<description>
+			estadísticas ampliadas (cuartiles y percentiles)
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

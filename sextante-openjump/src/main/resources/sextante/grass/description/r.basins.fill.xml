@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.basins.fill">
+	<description>
+		Genera una capa de mapa ráster mostrando subcuencas hidrográficas.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="number" type="integer" required="yes" multiple="no">
+		<description>
+			Número de pases por el conjunto de datos
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="c_map" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del archivo de red de corrientes codificado
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="t_map" type="string" required="yes" multiple="no">
+		<description>
+			Nombre de archivo de red de divisorias adelgazadas
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="result" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el archivo de partición de cuenca resultante
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

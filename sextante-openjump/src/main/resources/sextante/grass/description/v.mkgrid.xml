@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.mkgrid">
+	<description>
+		Crea un mapa vectorial de GRASS de una cuadrícula definida por el usuario.
+	</description>
+	<keywords>
+		vectorial
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="grid" type="integer" required="yes" multiple="no">
+		<description>
+			Número de filas y columnas en la cuadrícula
+		</description>
+		<keydesc>
+			<item order="1">rows</item>
+			<item order="2">columns</item>
+		</keydesc>
+	</parameter>
+	<parameter name="position" type="string" required="no" multiple="no">
+		<description>
+			Dónde colocar la cuadrícula
+		</description>
+		<default>
+			region
+		</default>
+		<values>
+			<value>
+				<name>region</name>
+				<description>región actual</description>
+			</value>
+			<value>
+				<name>coor</name>
+				<description>usar las opciones 'coor' y 'box'</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="coor" type="float" required="no" multiple="no">
+		<description>
+			Coordenadas inferior izquierda Este y Norte del mapa
+		</description>
+		<keydesc>
+			<item order="1">x</item>
+			<item order="2">y</item>
+		</keydesc>
+	</parameter>
+	<parameter name="box" type="float" required="no" multiple="no">
+		<description>
+			Anchura y altura de cuadros en la cuadrícula
+		</description>
+		<keydesc>
+			<item order="1">width</item>
+			<item order="2">height</item>
+		</keydesc>
+	</parameter>
+	<parameter name="angle" type="float" required="no" multiple="no">
+		<description>
+			Ángulo de rotación (en grados en el sentido de las agujas del reloj)
+		</description>
+		<default>
+			0
+		</default>
+	</parameter>
+	<flag name="p">
+		<description>
+			Create grid of points instead of areas and centroids
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			En silencio; Sin comentarios
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

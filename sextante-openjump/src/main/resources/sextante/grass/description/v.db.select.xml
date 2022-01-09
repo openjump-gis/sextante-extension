@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.db.select">
+	<description>
+		Imprime atributos de mapa vectorial.
+	</description>
+	<keywords>
+		vectorial, base de datos, tabla de atributos
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="columns" type="string" required="no" multiple="yes">
+		<description>
+			Nombre de la(s) columna(s) de atributos.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_dbcolumn" element="dbcolumn" prompt="dbcolumn" />
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			Condiciones "WHERE", de la instrucción SQL sin la palabra clave "where".
+		</label>
+		<description>
+			Ejemplo: salario &lt; 1000 y habitantes &gt;=10000.
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+	</parameter>
+	<parameter name="fs" type="string" required="no" multiple="no">
+		<description>
+			Separador de campos de salida
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<default>
+			|
+		</default>
+		<guisection>
+			Format
+		</guisection>
+	</parameter>
+	<parameter name="vs" type="string" required="no" multiple="no">
+		<description>
+			Separador de registros vertical de salida
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<guisection>
+			Format
+		</guisection>
+	</parameter>
+	<parameter name="nv" type="string" required="no" multiple="no">
+		<description>
+			Indicador de valores nulos
+		</description>
+		<guisection>
+			Format
+		</guisection>
+	</parameter>
+	<flag name="r">
+		<description>
+			Print minimal region extent of selected vector features instead of attributes
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			No incluir nombres de columna en la salida
+		</description>
+ 		<guisection>
+			Format
+		</guisection>
+	</flag>
+	<flag name="v">
+		<description>
+			Salida vertical (en vez de horizontal)
+		</description>
+ 		<guisection>
+			Format
+		</guisection>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

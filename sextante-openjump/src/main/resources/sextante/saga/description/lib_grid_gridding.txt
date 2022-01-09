@@ -1,0 +1,19 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Shapes to Grid
+ 1	- Inverse Distance Weighted
+ 2	- Nearest Neighbour
+ 3	- Natural Neighbour
+ 4	- Modifed Quadratic Shepard
+ 5	- Triangulation
+ 6	- Kernel Density Estimation
+
+type -h or --help for further information

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.outlier">
+	<description>
+		Removes outliers from vector point data.
+	</description>
+	<keywords>
+		vectorial, estadísticas
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="outlier" type="string" required="yes" multiple="no">
+		<description>
+			Name of output outlier vector map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="qgis" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa vectorial para visualización en QGIS
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="soe" type="float" required="no" multiple="no">
+		<description>
+			Valor de paso spline de interpolación en dirección Este
+		</description>
+		<default>
+			10
+		</default>
+	</parameter>
+	<parameter name="son" type="float" required="no" multiple="no">
+		<description>
+			Valor de paso spline de interpolación en dirección Norte
+		</description>
+		<default>
+			10
+		</default>
+	</parameter>
+	<parameter name="lambda_i" type="float" required="no" multiple="no">
+		<description>
+			Tykhonov regularization weight
+		</description>
+		<default>
+			0.1
+		</default>
+	</parameter>
+	<parameter name="thres_o" type="float" required="no" multiple="no">
+		<description>
+			Threshold for the outliers
+		</description>
+		<default>
+			50
+		</default>
+	</parameter>
+	<flag name="e">
+		<label>
+			Estimate point density and distance
+		</label>
+		<description>
+			Estimate point density and distance for the input vector points within the current region extends and quit
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

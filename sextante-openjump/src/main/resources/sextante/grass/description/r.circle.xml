@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.circle">
+	<description>
+		Crea un mapa ráster que contiene anillos concéntricos alrededor de un punto dado.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="coordinate" type="string" required="yes" multiple="no">
+		<description>
+			La coordenada del centro (Este, Norte)
+		</description>
+		<keydesc>
+			<item order="1">x</item>
+			<item order="2">y</item>
+		</keydesc>
+	</parameter>
+	<parameter name="min" type="float" required="no" multiple="no">
+		<description>
+			Radio mínimo para mapa de anillo/círculo (en metros)
+		</description>
+	</parameter>
+	<parameter name="max" type="float" required="no" multiple="no">
+		<description>
+			Radio máximo para mapa de anillo/círculo (en metros)
+		</description>
+	</parameter>
+	<parameter name="mult" type="float" required="no" multiple="no">
+		<description>
+			Data value multiplier
+		</description>
+	</parameter>
+	<flag name="b">
+		<description>
+			Generar mapa ráster binario
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

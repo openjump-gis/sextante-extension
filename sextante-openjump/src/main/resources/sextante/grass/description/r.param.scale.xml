@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.param.scale">
+	<label>
+		Extrae parámetros del terreno a partir de un DEM.
+	</label>
+	<description>
+		Utiliza una aproximación multiescala tomando parámetros cuadráticos que se ajusten a cualquier tamaño de ventana (vía las menores esquinas).
+	</description>
+	<keywords>
+		ráster, goemorfología
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Capa ráster de salida que contenga parámetros morfométricos
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="s_tol" type="float" required="no" multiple="no">
+		<description>
+			Tolerancia de pendiente que define una superficie 'llana' (grados)
+		</description>
+		<default>
+			1.0
+		</default>
+	</parameter>
+	<parameter name="c_tol" type="float" required="no" multiple="no">
+		<description>
+			Tolerancia de curvatura que define una superficie 'planar'
+		</description>
+		<default>
+			0.0001
+		</default>
+	</parameter>
+	<parameter name="size" type="integer" required="no" multiple="no">
+		<description>
+			Tamaño de la ventana de procesamiento (sólo números impares, máximo 69)
+		</description>
+		<default>
+			3
+		</default>
+	</parameter>
+	<parameter name="param" type="string" required="no" multiple="no">
+		<description>
+			Parámetros morfométricos en la ventana 'size' a calcular
+		</description>
+		<default>
+			elev
+		</default>
+		<values>
+			<value>
+				<name>elev</name>
+			</value>
+			<value>
+				<name>slope</name>
+			</value>
+			<value>
+				<name>aspect</name>
+			</value>
+			<value>
+				<name>profc</name>
+			</value>
+			<value>
+				<name>planc</name>
+			</value>
+			<value>
+				<name>longc</name>
+			</value>
+			<value>
+				<name>crosc</name>
+			</value>
+			<value>
+				<name>minic</name>
+			</value>
+			<value>
+				<name>maxic</name>
+			</value>
+			<value>
+				<name>feature</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="exp" type="float" required="no" multiple="no">
+		<description>
+			Exponent for distance weighting (0.0-4.0)
+		</description>
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<parameter name="zscale" type="float" required="no" multiple="no">
+		<description>
+			Factor de escalado vertical
+		</description>
+		<default>
+			1.0
+		</default>
+	</parameter>
+	<flag name="c">
+		<description>
+			Obligar al modelo a través de la celda central de la ventana
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

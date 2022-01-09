@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.out.vtk">
+	<description>
+		Convierte mapas ráster al formato VTK-ASCII
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="yes">
+		<description>
+			Nombre(s) del (los) mapa(s) raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el archivo VTK-ASCII de salida
+		</description>
+		<gisprompt age="new_file" element="file" prompt="output" />
+	</parameter>
+	<parameter name="elevation" type="string" required="no" multiple="no">
+		<description>
+			Mapa ráster de elevación
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="null" type="float" required="no" multiple="no">
+		<description>
+			Valor para representar celdas sin datos
+		</description>
+		<default>
+			-10.0
+		</default>
+	</parameter>
+	<parameter name="elevation2d" type="float" required="no" multiple="no">
+		<description>
+			Elevación (si no se indica ningún mapa de elevación)
+		</description>
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<parameter name="rgbmaps" type="string" required="no" multiple="yes">
+		<description>
+			Tres mapas ráster (R,G,B) usados para crear valores RGB [maparojo,mapaverde,mapaazul]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Advanced options
+		</guisection>
+	</parameter>
+	<parameter name="vectormaps" type="string" required="no" multiple="yes">
+		<description>
+			Tres mapas ráster (X,Y,Z) usados para crear valores vectoriales [mapaX,mapaY,mapaZ]
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+		<guisection>
+			Advanced options
+		</guisection>
+	</parameter>
+	<parameter name="elevscale" type="float" required="no" multiple="no">
+		<description>
+			Factor de escala para la elevación
+		</description>
+		<default>
+			1.0
+		</default>
+		<guisection>
+			Advanced options
+		</guisection>
+	</parameter>
+	<parameter name="dp" type="integer" required="no" multiple="no">
+		<description>
+			Número de dígitos significativos (coma flotante solamente)
+		</description>
+		<default>
+			12
+		</default>
+		<values>
+			<value>
+				<name>0-20</name>
+			</value>
+		</values>
+		<guisection>
+			Advanced options
+		</guisection>
+	</parameter>
+	<flag name="p">
+		<description>
+			Crear datos de puntos VTK en vez de datos de celdas VTK (si no se indica mapa de elevación)
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Usar cuadrícula estructurada para la elevación (no recomendado)
+		</description>
+ 		<guisection>
+			Advanced options
+		</guisection>
+	</flag>
+	<flag name="t">
+		<description>
+			Use polydata-trianglestrips for elevation grid creation
+		</description>
+ 		<guisection>
+			Advanced options
+		</guisection>
+	</flag>
+	<flag name="v">
+		<description>
+			Usar vértices polidatos para la creación de cuadrículas de elevación (para usar con vtkDelauny2D)
+		</description>
+ 		<guisection>
+			Advanced options
+		</guisection>
+	</flag>
+	<flag name="o">
+		<description>
+			Scale factor effects the origin (if no elevation map is given)
+		</description>
+ 		<guisection>
+			Advanced options
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Corregir las coordenadas para ajustar a la precisión VTK-OpenGL
+		</description>
+ 		<guisection>
+			Advanced options
+		</guisection>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.random">
+	<description>
+		Genera un mapa de puntos vectorial 2D/3D de GRASS de forma aleatoria.
+	</description>
+	<keywords>
+		vectorial, estadísticas
+	</keywords>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="n" type="integer" required="yes" multiple="no">
+		<description>
+			Número de puntos a crear
+		</description>
+	</parameter>
+	<parameter name="zmin" type="float" required="no" multiple="no">
+		<description>
+			Minimum z height (needs -z flag or column name)
+		</description>
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<parameter name="zmax" type="float" required="no" multiple="no">
+		<description>
+			Maximum z height (needs -z flag or column name)
+		</description>
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<parameter name="column" type="string" required="no" multiple="no">
+		<label>
+			Column name and type (i.e. INTEGER, DOUBLE PRECISION) for z values
+		</label>
+		<description>
+			Writes Z data to column instead of 3D vector
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_dbcolumn" element="dbcolumn" prompt="dbcolumn" />
+	</parameter>
+	<flag name="z">
+		<description>
+			Crear salida 3D
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			Usar la función drand48() en vez de rand()
+		</description>
+	</flag>
+	<flag name="b">
+		<description>
+			No construir topología
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.gwflow">
+	<description>
+		Numerical calculation program for transient, confined and unconfined groundwater flow in two dimensions.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="phead" type="string" required="yes" multiple="no">
+		<description>
+			The initial piezometric head in [m]
+		</description>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="status" type="string" required="yes" multiple="no">
+		<description>
+			Boundary condition status, 0-inactive, 1-active, 2-dirichlet
+		</description>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="hc_x" type="string" required="yes" multiple="no">
+		<description>
+			Parte X del tensor de conductividad hidráulica en [m/s]
+		</description>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="hc_y" type="string" required="yes" multiple="no">
+		<description>
+			Parte Y del tensor de conductividad hidráulica en [m/s]
+		</description>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="q" type="string" required="no" multiple="no">
+		<description>
+			Fuentes de agua y sumideros en [m³/s]
+		</description>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="s" type="string" required="yes" multiple="no">
+		<description>
+			Rendimiento específico en [1/m]
+		</description>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="r" type="string" required="no" multiple="no">
+		<description>
+			Recargar mapa; ejemplo: 6*10^-9 por celda en [m³/s*m²]
+		</description>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="top" type="string" required="yes" multiple="no">
+		<description>
+			Superficie superior del acuífero en [m]
+		</description>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="bottom" type="string" required="yes" multiple="no">
+		<description>
+			Superficie inferior del acuífero en [m]
+		</description>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Mapa que guarda el resultado numérico [m]
+		</description>
+		<gisprompt age="new" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="velocity" type="string" required="no" multiple="no">
+		<description>
+			Calculate the groundwater filter velocity vector field [m/s]
+and write the x, and y components to maps named name_[xy]
+		</description>
+		<gisprompt age="new" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="no">
+		<description>
+			The type of groundwater flow
+		</description>
+		<default>
+			confined
+		</default>
+		<values>
+			<value>
+				<name>confined</name>
+			</value>
+			<value>
+				<name>unconfined</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="river_bed" type="string" required="no" multiple="no">
+		<description>
+			The height of the river bed in [m]
+		</description>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="river_head" type="string" required="no" multiple="no">
+		<description>
+			Water level (head) of the river with leakage connection in [m]
+		</description>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="river_leak" type="string" required="no" multiple="no">
+		<description>
+			The leakage coefficient of the river bed in [1/s].
+		</description>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="drain_bed" type="string" required="no" multiple="no">
+		<description>
+			The height of the drainage bed in [m]
+		</description>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="drain_leak" type="string" required="no" multiple="no">
+		<description>
+			The leakage coefficient of the drainage bed in [1/s]
+		</description>
+		<gisprompt age="old" element="raster" prompt="raster" />
+	</parameter>
+	<parameter name="dt" type="float" required="yes" multiple="no">
+		<description>
+			Tiempo de cálculo en segundos.
+		</description>
+		<default>
+			86400
+		</default>
+	</parameter>
+	<parameter name="maxit" type="integer" required="no" multiple="no">
+		<description>
+			Número máximo de iteraciones usado para resolver el sistema de ecuaciones lineales.
+		</description>
+		<default>
+			100000
+		</default>
+	</parameter>
+	<parameter name="error" type="float" required="no" multiple="no">
+		<description>
+			Criterios de ruptura erróneos para programas de solución iterativos (Jacobi, sor, cg o bicgstab).
+		</description>
+		<default>
+			0.0000000001
+		</default>
+	</parameter>
+	<parameter name="solver" type="string" required="no" multiple="no">
+		<description>
+			El tipo de programa de solución que debería resolver el sistema de ecuaciones lineales simétricas.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<default>
+			cg
+		</default>
+		<values>
+			<value>
+				<name>gauss</name>
+			</value>
+			<value>
+				<name>lu</name>
+			</value>
+			<value>
+				<name>cholesky</name>
+			</value>
+			<value>
+				<name>jacobi</name>
+			</value>
+			<value>
+				<name>sor</name>
+			</value>
+			<value>
+				<name>cg</name>
+			</value>
+			<value>
+				<name>bicgstab</name>
+			</value>
+			<value>
+				<name>pcg</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="relax" type="float" required="no" multiple="no">
+		<description>
+			El parámetro de relajación utilizado por los programas solucionadores de Jacobi y Sor para la estabilización o aumento de velocidad.
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<flag name="s">
+		<description>
+			Use a sparse matrix, only available with iterative solvers
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

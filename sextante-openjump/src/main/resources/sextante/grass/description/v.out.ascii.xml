@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.out.ascii">
+	<description>
+		Convierte un mapa vectorial binario de GRASS a un mapa vectorial ASCII de GRASS
+	</description>
+	<keywords>
+		vectorial, exportar
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Ruta al archivo ASCII resultante o nombre del vectorial ASCII si se define '-o'
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new_file" element="file" prompt="output" />
+	</parameter>
+	<parameter name="format" type="string" required="no" multiple="no">
+		<description>
+			Formato de salida
+		</description>
+		<default>
+			point
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>standard</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="fs" type="string" required="no" multiple="no">
+		<description>
+			Separador de campos (modo de puntos)
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<default>
+			|
+		</default>
+		<guisection>
+			Puntos
+		</guisection>
+	</parameter>
+	<parameter name="dp" type="integer" required="no" multiple="no">
+		<description>
+			Número de dígitos significativos (coma flotante solamente)
+		</description>
+		<default>
+			8
+		</default>
+		<values>
+			<value>
+				<name>0-32</name>
+			</value>
+		</values>
+		<guisection>
+			Puntos
+		</guisection>
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<parameter name="columns" type="string" required="no" multiple="yes">
+		<description>
+			Name of attribute column(s) to be exported (point mode)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_dbcolumn" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Puntos
+		</guisection>
+	</parameter>
+	<parameter name="where" type="string" required="no" multiple="no">
+		<label>
+			Condiciones "WHERE", de la instrucción SQL sin la palabra clave "where".
+		</label>
+		<description>
+			Ejemplo: salario &lt; 1000 y habitantes &gt;=10000.
+		</description>
+		<keydesc>
+			<item order="1">sql_query</item>
+		</keydesc>
+		<guisection>
+			Selection
+		</guisection>
+	</parameter>
+	<flag name="o">
+		<description>
+			Crear archivo ASCII antiguo (versión 4)
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Sólo exportar los puntos que caen dentro de la región 3D actual (modo de puntos)
+		</description>
+ 		<guisection>
+			Puntos
+		</guisection>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

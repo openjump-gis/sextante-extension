@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.quantile">
+	<description>
+		Compute quantiles using two passes.
+	</description>
+	<keywords>
+		ráster, estadísticas
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="quantiles" type="integer" required="no" multiple="no">
+		<description>
+			Number of quantiles
+		</description>
+		<default>
+			4
+		</default>
+	</parameter>
+	<parameter name="percentiles" type="float" required="no" multiple="yes">
+		<description>
+			List of percentiles
+		</description>
+	</parameter>
+	<parameter name="bins" type="integer" required="no" multiple="no">
+		<description>
+			Number of bins to use
+		</description>
+		<default>
+			1000000
+		</default>
+	</parameter>
+	<flag name="r">
+		<description>
+			Generate recode rules based on quantile-defined intervals.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

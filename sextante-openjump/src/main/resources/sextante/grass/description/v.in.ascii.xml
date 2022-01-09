@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.in.ascii">
+	<description>
+		Crea un mapa vectorial a partir de archivo de puntos ASCII o archivo ASCII vectorial.
+	</description>
+	<keywords>
+		vectorial, importar
+	</keywords>
+	<parameter name="input" type="string" required="no" multiple="no">
+		<description>
+			Archivo ASCII a importar (si no se indica se leerá de la entrada estándar)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_file" element="file" prompt="input" />
+		<guisection>
+			Requerido
+		</guisection>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="format" type="string" required="no" multiple="no">
+		<description>
+			Formato del archivo de entrada
+		</description>
+		<default>
+			point
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+				<description>simple x,y[,z] list</description>
+			</value>
+			<value>
+				<name>standard</name>
+				<description>GRASS's vector ASCII format</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="fs" type="string" required="no" multiple="no">
+		<description>
+			Separador de campos.
+		</description>
+		<keydesc>
+			<item order="1">character</item>
+		</keydesc>
+		<default>
+			|
+		</default>
+	</parameter>
+	<parameter name="skip" type="integer" required="no" multiple="no">
+		<description>
+			Número de líneas de la cabecera a saltar al comienzo del archivo de entrada (modo de puntos)
+		</description>
+		<default>
+			0
+		</default>
+	</parameter>
+	<parameter name="columns" type="string" required="no" multiple="no">
+		<label>
+			Definición de columna en estilo SQL (modo de puntos)
+		</label>
+		<description>
+			Por ejemplo: 'X doble precisión, Y doble precisión, cat int, nombre varchar(10)'
+		</description>
+		<guisection>
+			Columnas
+		</guisection>
+	</parameter>
+	<parameter name="x" type="integer" required="no" multiple="no">
+		<description>
+			Número de columna usada como coordenada X (la primera columna es 1) para modo de puntos
+		</description>
+		<default>
+			1
+		</default>
+		<guisection>
+			Columnas
+		</guisection>
+	</parameter>
+	<parameter name="y" type="integer" required="no" multiple="no">
+		<description>
+			Number of column used as y coordinate (first column is 1) for points mode
+		</description>
+		<default>
+			2
+		</default>
+		<guisection>
+			Columnas
+		</guisection>
+	</parameter>
+	<parameter name="z" type="integer" required="no" multiple="no">
+		<label>
+			Number of column used as z coordinate (first column is 1) for points mode
+		</label>
+		<description>
+			If 0, z coordinate is not used
+		</description>
+		<default>
+			0
+		</default>
+		<guisection>
+			Columnas
+		</guisection>
+	</parameter>
+	<parameter name="cat" type="integer" required="no" multiple="no">
+		<label>
+			Number of column used as category (first column is 1) for points mode
+		</label>
+		<description>
+			If 0, unique category is assigned to each row and written to new column 'cat'
+		</description>
+		<default>
+			0
+		</default>
+		<guisection>
+			Columnas
+		</guisection>
+	</parameter>
+	<flag name="z">
+		<description>
+			Create 3D vector map
+		</description>
+	</flag>
+	<flag name="e">
+		<description>
+			Create a new empty vector map and exit. Nothing is read from input
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			No esperar una cabecera cuando se lee en formato estándar
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			No crear tabla en modo de puntos
+		</description>
+ 		<guisection>
+			Columnas
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			No contruir topología en modo de puntos
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Sólo importar los puntos que caen dentro de la región actual (modo de puntos)
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.spreadpath">
+	<description>
+		Traza de forma recursiva la ruta de menor coste de vuelta hacia las celdas desde las que se determinó el coste acumulado.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="x_input" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster map containing back-path easting information
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="y_input" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster map containing back-path northing information
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="coordinate" type="string" required="no" multiple="yes">
+		<description>
+			Coordenadas de cuadrícula E y N de mapa de los puntos iniciales
+		</description>
+		<keydesc>
+			<item order="1">x</item>
+			<item order="2">y</item>
+		</keydesc>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster de ruta de propagación
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="v">
+		<description>
+			Ejecutar con comentarios
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

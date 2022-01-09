@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.in.dxf">
+	<description>
+		Convierte archivos en formato DXF a formato de mapa vectorial de GRASS.
+	</description>
+	<keywords>
+		vectorial, importar
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Name of input DXF file
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_file" element="file" prompt="input" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layers" type="string" required="no" multiple="yes">
+		<description>
+			Lista de capas a importar
+		</description>
+		<guisection>
+			DXF layers
+		</guisection>
+	</parameter>
+	<flag name="e">
+		<description>
+			Ignorar la extensión del mapa del archivo DXF
+		</description>
+	</flag>
+	<flag name="t">
+		<description>
+			No crear tablas de atributos
+		</description>
+	</flag>
+	<flag name="b">
+		<description>
+			No construir topología
+		</description>
+	</flag>
+	<flag name="f">
+		<description>
+			Import polyface meshes as 3D wire frame
+		</description>
+	</flag>
+	<flag name="l">
+		<description>
+			Listar las capas disponibles y salir
+		</description>
+ 		<guisection>
+			DXF layers
+		</guisection>
+	</flag>
+	<flag name="i">
+		<description>
+			Invertir la selección por capas (no importar las capas en la lista)
+		</description>
+ 		<guisection>
+			DXF layers
+		</guisection>
+	</flag>
+	<flag name="1">
+		<description>
+			Importar todos los objetos en una capa
+		</description>
+ 		<guisection>
+			DXF layers
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

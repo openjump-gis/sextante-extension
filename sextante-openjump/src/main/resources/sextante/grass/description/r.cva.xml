@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.cva">
+	<description>
+		Multiple/cumulative viewshed analysis
+	</description>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Elevation raster map
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="target_mask" type="string" required="no" multiple="no">
+		<description>
+			Binary raster map for target cells
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="viewpt_mask" type="string" required="no" multiple="no">
+		<description>
+			Binary raster map for viewpoints
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="sites" type="string" required="no" multiple="no">
+		<description>
+			Vector map with sites points
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Raster map name for storing results
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="obs_elev" type="float" required="no" multiple="no">
+		<description>
+			Height of the viewing location
+		</description>
+		<default>
+			1.75
+		</default>
+	</parameter>
+	<parameter name="target_elev" type="float" required="no" multiple="no">
+		<description>
+			Height of the target location
+		</description>
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<parameter name="max_dist" type="float" required="no" multiple="no">
+		<description>
+			Max viewing distance in meters
+		</description>
+		<default>
+			2000
+		</default>
+		<values>
+			<value>
+				<name>0.0-9999999.9</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="seed" type="integer" required="no" multiple="no">
+		<description>
+			Seed for the random number generator
+		</description>
+		<default>
+			1
+		</default>
+		<values>
+			<value>
+				<name>0-32767</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="sample" type="float" required="no" multiple="no">
+		<description>
+			Sampling frequency as a percentage of cells
+		</description>
+		<default>
+			10.0
+		</default>
+	</parameter>
+	<parameter name="type" type="string" required="yes" multiple="no">
+		<description>
+			Type of viewshed analysis
+		</description>
+		<default>
+			sites
+		</default>
+		<values>
+			<value>
+				<name>sites</name>
+			</value>
+			<value>
+				<name>systematic</name>
+			</value>
+			<value>
+				<name>random</name>
+			</value>
+			<value>
+				<name>all</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="spot" type="float" required="no" multiple="no">
+		<description>
+			Absolute observer height
+		</description>
+	</parameter>
+	<parameter name="offseta" type="float" required="no" multiple="no">
+		<description>
+			Observer offset (OFFSETA=obs_elev)
+		</description>
+	</parameter>
+	<parameter name="offsetb" type="float" required="no" multiple="no">
+		<description>
+			target offset (OFFSETB=target_elev)
+		</description>
+	</parameter>
+	<parameter name="azimuth1" type="float" required="no" multiple="no">
+		<description>
+			Minimum azimuth (AZIMUTH1)
+		</description>
+		<values>
+			<value>
+				<name>0.0-360.0</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="azimuth2" type="float" required="no" multiple="no">
+		<description>
+			Maximum azimuth (AZIMUTH2)
+		</description>
+		<values>
+			<value>
+				<name>0.0-360.0</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="vert1" type="float" required="no" multiple="no">
+		<description>
+			Minimum vertical angle (VERT1)
+		</description>
+		<values>
+			<value>
+				<name>0.0-90.0</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="vert2" type="float" required="no" multiple="no">
+		<description>
+			Maximum vertical angle (VERT2)
+		</description>
+		<values>
+			<value>
+				<name>-90.0-0.0</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="radius1" type="float" required="no" multiple="no">
+		<description>
+			Minimum distance from observer (RADIUS1)
+		</description>
+	</parameter>
+	<parameter name="radius2" type="float" required="no" multiple="no">
+		<description>
+			Maximum distance to observer (RADIUS2)
+		</description>
+	</parameter>
+	<parameter name="curvc" type="float" required="no" multiple="no">
+		<description>
+			Earth curvature correction threshold (0.0 = off)
+		</description>
+		<default>
+			0.0
+		</default>
+	</parameter>
+	<flag name="f">
+		<description>
+			Calculate the `visibility from' rather than `viewsheds of' 
+		</description>
+	</flag>
+	<flag name="m">
+		<description>
+			Differentiate masked cells from data value zero 
+		</description>
+	</flag>
+	<flag name="a">
+		<description>
+			Treat sample size as no. of cells 
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			Run quietly (i.e. do not report % complete) 
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Allow replacement during random sampling 
+		</description>
+	</flag>
+	<flag name="h">
+		<description>
+			Adjust spot heights below surface
+		</description>
+	</flag>
+	<flag name="i">
+		<description>
+			Ignore site attributes
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			Convert -1 to NULL in output map 
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Run silently 
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

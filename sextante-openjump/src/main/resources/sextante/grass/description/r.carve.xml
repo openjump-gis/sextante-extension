@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.carve">
+	<description>
+		Toma datos de corriente vectorial, los transforma a ráster y resta la profundidad del MDT de salida.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="rast" type="string" required="yes" multiple="no">
+		<description>
+			Nombre de mapa ráster de entrada de elevación
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="vect" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del vectorial de entrada que contiene corriente(s)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="points" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa vectorial de salida para puntos de corriente ajustados
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="width" type="float" required="no" multiple="no">
+		<description>
+			Anchura de corriente (en metros). Por defecto es la anchura de celda ráster.
+		</description>
+	</parameter>
+	<parameter name="depth" type="float" required="no" multiple="no">
+		<description>
+			Profundidad de corriente adicional (en metros)
+		</description>
+	</parameter>
+	<flag name="n">
+		<description>
+			No se admiten áreas llanas en la dirección de flujo
+		</description>
+	</flag>
+	<flag name="q">
+		<description>
+			Ejecutar en modo silencioso
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

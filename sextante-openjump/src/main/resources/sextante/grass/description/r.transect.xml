@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.transect">
+	<description>
+		Produce valores de capa de mapa ráster que caen a lo largo de línea(s) de transecto definidas por el usuario.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Mapa ráster a consultar
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="line" type="string" required="yes" multiple="yes">
+		<description>
+			Definición del transecto
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+			<item order="3">azimuth</item>
+			<item order="4">distance</item>
+		</keydesc>
+	</parameter>
+	<parameter name="null" type="string" required="no" multiple="no">
+		<description>
+			Cadena char para representar celdas sin datos
+		</description>
+		<default>
+			*
+		</default>
+	</parameter>
+	<flag name="g">
+		<description>
+			Sacar Este y Norte en las primeras dos columnas de una salida de 4 columnas
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

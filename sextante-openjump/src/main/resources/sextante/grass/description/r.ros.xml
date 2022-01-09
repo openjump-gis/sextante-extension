@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.ros">
+	<description>
+		Genera tres o cuatro capas de mapa ráster mostrando 1) la tasa de propagación (ROS) básica (perpendicular), 2) la ROS máxima (hacia delante), 3) la dirección de la máxima ROS y (opcional) 4) la distancia spotting potencial máxima.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="model" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster que contiene MODELOS de combustible
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="moisture_1h" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster que contiene la HUMEDAD de combustible a 1-HORA (%)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="moisture_10h" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster que contiene la HUMEDAD de combustible a 10-HORAS (%)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="moisture_100h" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster que contiene la HUMEDAD de combustible a 100-HORAS (%)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="moisture_live" type="string" required="yes" multiple="no">
+		<description>
+			Name of raster map containing LIVE fuel MOISTURE (%)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="velocity" type="string" required="no" multiple="no">
+		<description>
+			Name of raster map containing midflame wind VELOCITYs (ft/min)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="direction" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster que contiene las DIRECCIONES de viento (grados)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="slope" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster que contiene la PENDIENTE (grados)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="aspect" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster que contiene la ORIENTACIÓN (grados, en sentido antihorario desde el Este)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="elevation" type="string" required="no" multiple="no">
+		<description>
+			Nombre del mapa ráster que contiene la ELEVACIÓN (m) (requerido w/ -s)
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster que contiene los resultados (varias capas nuevas)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<flag name="v">
+		<description>
+			Ejecutar con comentarios
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Also produce maximum SPOTTING distance
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

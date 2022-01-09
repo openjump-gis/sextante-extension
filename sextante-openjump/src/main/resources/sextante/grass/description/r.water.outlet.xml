@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.water.outlet">
+	<description>
+		Programa de creación de cuenca hidrográfica.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="drainage" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster de entrada
+		</description>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="basin" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa ráster que contendrá los resultados
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="easting" type="string" required="yes" multiple="no">
+		<description>
+			Coordenadas de cuadrícula E del mapa
+		</description>
+		<keydesc>
+			<item order="1">x</item>
+		</keydesc>
+	</parameter>
+	<parameter name="northing" type="string" required="yes" multiple="no">
+		<description>
+			Coordenadas de cuadrícula N del mapa
+		</description>
+		<keydesc>
+			<item order="1">y</item>
+		</keydesc>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

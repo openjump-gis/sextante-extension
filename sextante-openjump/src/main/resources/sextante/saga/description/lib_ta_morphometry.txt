@@ -1,0 +1,30 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Slope, Aspect, Curvature
+ 1	- Convergence Index
+ 2	- Convergence Index (Search Radius)
+ 3	- Surface Specific Points
+ 4	- Curvature Classification
+ 5	- Hypsometry
+ 6	- Real Area Calculation
+ 7	- Morphometric Protection Index
+ 8	- Multiresolution Index of Valley Bottom Flatness (MRVBF)
+ 9	- Downslope Distance Gradient
+ 10	- Mass Balance Index
+ 11	- Effective Air Flow Heights
+ 12	- Diurnal Anisotropic Heating
+ 13	- Land Surface Temperature
+ 14	- Relative Heights and Slope Positions
+ 15	- Wind Effect (Windward / Leeward Index)
+ 16	- Terrain Ruggedness Index (TRI)
+ 17	- Vector Ruggedness Measure (VRM)
+
+type -h or --help for further information

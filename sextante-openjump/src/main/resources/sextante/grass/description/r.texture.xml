@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.texture">
+	<description>
+		Genera imágenes con elementos texturales a partir de un mapa ráster.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="prefix" type="string" required="yes" multiple="no">
+		<description>
+			Prefix for output raster map(s)
+		</description>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="size" type="integer" required="no" multiple="no">
+		<description>
+			El tamaño de la ventana deslizante (impar y &gt;= 3)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<default>
+			3
+		</default>
+	</parameter>
+	<parameter name="distance" type="integer" required="no" multiple="no">
+		<description>
+			La distancia entre dos muestras (&gt;= 1)
+		</description>
+		<keydesc>
+			<item order="1">value</item>
+		</keydesc>
+		<default>
+			1
+		</default>
+	</parameter>
+	<flag name="q">
+		<description>
+			Silencioso
+		</description>
+	</flag>
+	<flag name="a">
+		<description>
+			Momento segundo angular
+		</description>
+ 		<guisection>
+			Elementos
+		</guisection>
+	</flag>
+	<flag name="c">
+		<description>
+			Contraste
+		</description>
+ 		<guisection>
+			Elementos
+		</guisection>
+	</flag>
+	<flag name="k">
+		<description>
+			Correlación
+		</description>
+ 		<guisection>
+			Elementos
+		</guisection>
+	</flag>
+	<flag name="v">
+		<description>
+			Varianza
+		</description>
+ 		<guisection>
+			Elementos
+		</guisection>
+	</flag>
+	<flag name="i">
+		<description>
+			Momento diferencial inverso
+		</description>
+ 		<guisection>
+			Elementos
+		</guisection>
+	</flag>
+	<flag name="s">
+		<description>
+			Media de la suma
+		</description>
+ 		<guisection>
+			Elementos
+		</guisection>
+	</flag>
+	<flag name="w">
+		<description>
+			Varianza de la suma
+		</description>
+ 		<guisection>
+			Elementos
+		</guisection>
+	</flag>
+	<flag name="x">
+		<description>
+			Entropía de la suma
+		</description>
+ 		<guisection>
+			Elementos
+		</guisection>
+	</flag>
+	<flag name="e">
+		<description>
+			Entropía
+		</description>
+ 		<guisection>
+			Elementos
+		</guisection>
+	</flag>
+	<flag name="d">
+		<description>
+			Varianza de la diferencia
+		</description>
+ 		<guisection>
+			Elementos
+		</guisection>
+	</flag>
+	<flag name="p">
+		<description>
+			Entropía de la diferencia
+		</description>
+ 		<guisection>
+			Elementos
+		</guisection>
+	</flag>
+	<flag name="m">
+		<description>
+			Medida de la correlación-1
+		</description>
+ 		<guisection>
+			Elementos
+		</guisection>
+	</flag>
+	<flag name="n">
+		<description>
+			Medida de la correlación-2
+		</description>
+ 		<guisection>
+			Elementos
+		</guisection>
+	</flag>
+	<flag name="o">
+		<description>
+			Coeficiente de correlación máximo
+		</description>
+ 		<guisection>
+			Elementos
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

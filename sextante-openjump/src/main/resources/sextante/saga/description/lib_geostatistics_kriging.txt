@@ -1,0 +1,21 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Ordinary Kriging (VF)
+ 1	- Ordinary Kriging (VF, Global)
+ 2	- Universal Kriging (VF)
+ 3	- Universal Kriging (VF, Global)
+ 4	- Variogram (Dialog))
+ 5	- Ordinary Kriging
+ 6	- Ordinary Kriging (Global)
+ 7	- Universal Kriging
+ 8	- Universal Kriging (Global)
+
+type -h or --help for further information

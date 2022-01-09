@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.contour">
+	<description>
+		Produces a vector map of specified contours from a raster map.
+	</description>
+	<keywords>
+		raster, DEM, contours, vector
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="levels" type="float" required="no" multiple="yes">
+		<description>
+			Lista de niveles de contorno
+		</description>
+	</parameter>
+	<parameter name="minlevel" type="float" required="no" multiple="no">
+		<description>
+			Nivel mínimo de contorno
+		</description>
+	</parameter>
+	<parameter name="maxlevel" type="float" required="no" multiple="no">
+		<description>
+			Nivel máximo de contorno
+		</description>
+	</parameter>
+	<parameter name="step" type="float" required="no" multiple="no">
+		<description>
+			Incremento entre niveles de contorno
+		</description>
+	</parameter>
+	<parameter name="cut" type="integer" required="no" multiple="no">
+		<description>
+			Número mínimo de puntos para una línea de contorno (0 -&gt; sin límite)
+		</description>
+		<default>
+			0
+		</default>
+	</parameter>
+	<flag name="q">
+		<description>
+			Ejecutar en modo silencioso
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			Suprime mensaje de error de cruzamiento simple
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

@@ -1,0 +1,15 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Shapes Report
+ 1	- Shapes Summary Report
+ 2	- Terrain Path Cross Sections
+
+type -h or --help for further information

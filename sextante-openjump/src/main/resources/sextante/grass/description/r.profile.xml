@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.profile">
+	<description>
+		Saca los valores de la capa de mapa ráster que caen en la línea(s) definida por el usuario.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="no" multiple="no">
+		<description>
+			Nombre de archivo para la salida (usar salida=- para stdout)
+		</description>
+		<gisprompt age="new_file" element="file" prompt="output" />
+		<default>
+			-
+		</default>
+	</parameter>
+	<parameter name="profile" type="string" required="no" multiple="yes">
+		<description>
+			Pares de coordenadas del perfil
+		</description>
+		<keydesc>
+			<item order="1">east</item>
+			<item order="2">north</item>
+		</keydesc>
+	</parameter>
+	<parameter name="res" type="float" required="no" multiple="no">
+		<description>
+			Resolución a lo largo del perfil (por omisión = resolución de la región actual)
+		</description>
+	</parameter>
+	<parameter name="null" type="string" required="no" multiple="no">
+		<description>
+			Carácter para representar celdas sin datos
+		</description>
+		<default>
+			*
+		</default>
+	</parameter>
+	<flag name="i">
+		<description>
+			Seleccionar puntos finales de forma interactiva
+		</description>
+	</flag>
+	<flag name="g">
+		<description>
+			Sacar Este y Norte en las primeras dos columnas de una salida de 4 columnas
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			Dar los valores de color RRR GGG BBB para cada punto del perfil
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

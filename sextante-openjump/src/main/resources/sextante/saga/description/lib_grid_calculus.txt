@@ -1,0 +1,30 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- Grid Normalisation
+ 1	- Grid Calculator
+ 2	- Grid Volume
+ 3	- Grid Difference
+ 4	- Function
+ 5	- Geometric Figures
+ 6	- Random Terrain Generation
+ 7	- Random Field
+ 8	- Grids Sum
+ 9	- Grids Product
+ 10	- Grid Standardisation
+ 11	- Fuzzify
+ 12	- Fuzzy Intersection (AND)
+ 13	- Fuzzy Union (OR)
+ 14	- Metric Conversions
+ 15	- Gradient Vector from Cartesian to Polar Coordinates
+ 16	- Gradient Vector from Polar to Cartesian Coordinates
+ 17	- Polynomial Trend from Grids
+
+type -h or --help for further information

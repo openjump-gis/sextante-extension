@@ -1,0 +1,25 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+executable modules:
+ 0	- ODBC Connect
+ 1	- ODBC Disconnect
+ 2	- ODBC Commit/Rollback Transaction
+ 3	- ODBC Execute SQL
+ 4	- Table Field Description
+ 5	- Table Import
+ 6	- Table Export
+ 7	- Table Deletion
+ 8	- Table from Query
+ 9	- Points Import
+ 10	- Points Export
+ 11	- PostGIS Shapes Import
+ 12	- PostGIS Shapes Export
+
+type -h or --help for further information

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.los">
+	<description>
+		Programa de análisis ráster de línea visual.
+	</description>
+	<keywords>
+		ráster
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de elevación.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="coordinate" type="string" required="yes" multiple="no">
+		<description>
+			Coordenada que identifica el lugar de observación
+		</description>
+		<keydesc>
+			<item order="1">x</item>
+			<item order="2">y</item>
+		</keydesc>
+	</parameter>
+	<parameter name="patt_map" type="string" required="no" multiple="no">
+		<description>
+			Mapa ráster binario (1/0) a usar como máscara
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="obs_elev" type="float" required="no" multiple="no">
+		<description>
+			Altura del punto de observación sobre el terreno
+		</description>
+		<default>
+			1.75
+		</default>
+	</parameter>
+	<parameter name="max_dist" type="float" required="no" multiple="no">
+		<description>
+			Distancia máxima desde el punto de observación (metros)
+		</description>
+		<default>
+			10000
+		</default>
+		<values>
+			<value>
+				<name>0-5000000</name>
+			</value>
+		</values>
+	</parameter>
+	<flag name="c">
+		<description>
+			Consider earth curvature (current ellipsoid)
+		</description>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

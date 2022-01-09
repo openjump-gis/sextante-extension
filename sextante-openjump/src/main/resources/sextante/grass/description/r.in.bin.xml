@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.in.bin">
+	<description>
+		Importar un archivo ráster binario a una capa de mapa ráster de GRASS.
+	</description>
+	<keywords>
+		ráster, importar
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Archivo ráster binario a importar
+		</description>
+		<gisprompt age="old_file" element="file" prompt="input" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="title" type="string" required="no" multiple="no">
+		<description>
+			Título para el mapa ráster resultante
+		</description>
+		<keydesc>
+			<item order="1">"phrase"</item>
+		</keydesc>
+	</parameter>
+	<parameter name="bytes" type="integer" required="no" multiple="no">
+		<description>
+			Número de bytes por celda (1, 2, 4)
+		</description>
+		<default>
+			1
+		</default>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<parameter name="north" type="float" required="no" multiple="no">
+		<description>
+			Límite Norte de la región geográfica (borde exterior)
+		</description>
+		<guisection>
+			Límites
+		</guisection>
+	</parameter>
+	<parameter name="south" type="float" required="no" multiple="no">
+		<description>
+			Límite Sur de la región geográfica (borde exterior)
+		</description>
+		<guisection>
+			Límites
+		</guisection>
+	</parameter>
+	<parameter name="east" type="float" required="no" multiple="no">
+		<description>
+			Límite Este de la región geográfica (borde exterior)
+		</description>
+		<guisection>
+			Límites
+		</guisection>
+	</parameter>
+	<parameter name="west" type="float" required="no" multiple="no">
+		<description>
+			Límite Oeste de la región geográfica (borde exterior)
+		</description>
+		<guisection>
+			Límites
+		</guisection>
+	</parameter>
+	<parameter name="rows" type="integer" required="no" multiple="no">
+		<description>
+			Número de líneas
+		</description>
+		<guisection>
+			Límites
+		</guisection>
+	</parameter>
+	<parameter name="cols" type="integer" required="no" multiple="no">
+		<description>
+			Número de columnas
+		</description>
+		<guisection>
+			Límites
+		</guisection>
+	</parameter>
+	<parameter name="anull" type="float" required="no" multiple="no">
+		<description>
+			Establecer valor a NULO
+		</description>
+		<guisection>
+			Configuraciones
+		</guisection>
+	</parameter>
+	<flag name="f">
+		<description>
+			Importar como datos de coma flotante (por omisión: entero)
+		</description>
+	</flag>
+	<flag name="d">
+		<description>
+			Importar como datos de precisión doble (por omisión; entero)
+		</description>
+	</flag>
+	<flag name="s">
+		<description>
+			Datos firmados (alto bit significa valor negativo)
+		</description>
+ 		<guisection>
+			Configuraciones
+		</guisection>
+	</flag>
+	<flag name="b">
+		<description>
+			Byte Swap the Data During Import
+		</description>
+ 		<guisection>
+			Configuraciones
+		</guisection>
+	</flag>
+	<flag name="h">
+		<description>
+			Obtener información de la región de cabecera tipo GMT
+		</description>
+ 		<guisection>
+			Límites
+		</guisection>
+	</flag>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

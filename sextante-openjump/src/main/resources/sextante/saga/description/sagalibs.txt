@@ -1,0 +1,74 @@
+_____________________________________________
+  #####   ##   #####    ##
+ ###     ###  ##       ###
+  ###   # ## ##  #### # ##
+   ### ##### ##    # #####
+##### #   ##  ##### #   ##
+_____________________________________________
+
+
+available module libraries:
+- contrib_a_perego.dll
+- docs_html.dll
+- docs_pdf.dll
+- garden_3d_viewer.dll
+- geostatistics_grid.dll
+- geostatistics_kriging.dll
+- geostatistics_points.dll
+- geostatistics_regression.dll
+- grid_analysis.dll
+- grid_calculus.dll
+- grid_calculus_bsl.dll
+- grid_filter.dll
+- grid_gridding.dll
+- grid_spline.dll
+- grid_tools.dll
+- grid_visualisation.dll
+- ihacres.dll
+- imagery_classification.dll
+- imagery_rga.dll
+- imagery_segmentation.dll
+- imagery_tools.dll
+- io_esri_e00.dll
+- io_gdal.dll
+- io_gps.dll
+- io_grid.dll
+- io_grid_grib2.dll
+- io_grid_image.dll
+- io_odbc.dll
+- io_shapes.dll
+- io_shapes_dxf.dll
+- io_shapes_las.dll
+- io_table.dll
+- lectures_introduction.dll
+- pj_georeference.dll
+- pj_geotrans.dll
+- pj_proj4.dll
+- pointcloud_tools.dll
+- pointcloud_viewer.dll
+- recreations_fractals.dll
+- shapes_grid.dll
+- shapes_lines.dll
+- shapes_points.dll
+- shapes_polygons.dll
+- shapes_tools.dll
+- shapes_transect.dll
+- sim_cellular_automata.dll
+- sim_ecosystems_hugget.dll
+- sim_fire_spreading.dll
+- sim_hydrology.dll
+- table_calculus.dll
+- table_tools.dll
+- ta_channels.dll
+- ta_compound.dll
+- ta_hydrology.dll
+- ta_lighting.dll
+- ta_morphometry.dll
+- ta_preprocessor.dll
+- ta_profiles.dll
+- tin_tools.dll
+- tin_viewer.dll
+
+60 SAGA Module Libraries
+
+type -h or --help for further information

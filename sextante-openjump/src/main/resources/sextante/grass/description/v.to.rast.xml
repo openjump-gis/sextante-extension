@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.to.rast">
+	<description>
+		Converts a binary GRASS vector map into a GRASS raster map .
+	</description>
+	<keywords>
+		vectorial, ráster, conversión
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa vectorial de entrada.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del mapa raster de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="use" type="string" required="no" multiple="no">
+		<description>
+			Source of raster values
+		</description>
+		<default>
+			attr
+		</default>
+		<values>
+			<value>
+				<name>attr</name>
+				<description>read values from attribute table</description>
+			</value>
+			<value>
+				<name>cat</name>
+				<description>use category values</description>
+			</value>
+			<value>
+				<name>val</name>
+				<description>use value specified by value option</description>
+			</value>
+			<value>
+				<name>z</name>
+				<description>use z coordinate (points or contours only)</description>
+			</value>
+			<value>
+				<name>dir</name>
+				<description>output as flow direction (lines only)</description>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="type" type="string" required="no" multiple="yes">
+		<description>
+			Tipo de objeto espacial.
+		</description>
+		<default>
+			point,line,area
+		</default>
+		<values>
+			<value>
+				<name>point</name>
+			</value>
+			<value>
+				<name>line</name>
+			</value>
+			<value>
+				<name>area</name>
+			</value>
+		</values>
+	</parameter>
+	<parameter name="layer" type="integer" required="no" multiple="no">
+		<label>
+			Número de capa.
+		</label>
+		<description>
+			Es posible conectar un solo mapa vectorial con múltiples tablas de una base de datos. Este número determina qué tabla se ha de usar.
+		</description>
+		<gisprompt age="old_layer" element="layer" prompt="layer" />
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="column" type="string" required="no" multiple="no">
+		<description>
+			Nombre de columna para el parámetro atributos (el tipo de datos debe ser numérico)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_dbcolumn" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Attributes
+		</guisection>
+	</parameter>
+	<parameter name="value" type="float" required="no" multiple="no">
+		<description>
+			Valor ráster
+		</description>
+		<default>
+			1
+		</default>
+	</parameter>
+	<parameter name="rows" type="integer" required="no" multiple="no">
+		<description>
+			Número de filas a mantener en memoria
+		</description>
+		<default>
+			4096
+		</default>
+	</parameter>
+	<parameter name="rgbcolumn" type="string" required="no" multiple="no">
+		<description>
+			Nombre de la columna de definición de color (con entradas RRR:GGG:BBB)
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_dbcolumn" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Attributes
+		</guisection>
+	</parameter>
+	<parameter name="labelcolumn" type="string" required="no" multiple="no">
+		<description>
+			Nombre de la columna usada como etiquetas de categoría ráster
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old_dbcolumn" element="dbcolumn" prompt="dbcolumn" />
+		<guisection>
+			Attributes
+		</guisection>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

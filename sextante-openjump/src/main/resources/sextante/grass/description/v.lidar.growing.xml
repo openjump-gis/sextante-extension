@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="v.lidar.growing">
+	<description>
+		Building contour determination and Region Growing algorithm for determining the building inside
+	</description>
+	<keywords>
+		vectorial, LIDAR
+	</keywords>
+	<parameter name="input" type="string" required="yes" multiple="no">
+		<description>
+			Input vector (v.lidar.edgedetection output
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="output" type="string" required="yes" multiple="no">
+		<description>
+			Nombre para el mapa vectorial de salida.
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="new" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="first" type="string" required="yes" multiple="no">
+		<description>
+			Nombre del primer mapa vectorial de pulsos
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="vector" prompt="vector" />
+	</parameter>
+	<parameter name="tj" type="float" required="no" multiple="no">
+		<description>
+			Threshold for cell object frequency in region growing
+		</description>
+		<default>
+			0.2
+		</default>
+	</parameter>
+	<parameter name="td" type="float" required="no" multiple="no">
+		<description>
+			Threshold for double pulse in region growing
+		</description>
+		<default>
+			0.6
+		</default>
+	</parameter>
+	<flag name="overwrite">
+		<description>
+			Permite a los archivos de salida sobrescribir los archivos existentes.
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>

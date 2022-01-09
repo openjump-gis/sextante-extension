@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="CP1252"?>
+<!DOCTYPE task SYSTEM "grass-interface.dtd">
+<task name="r.null">
+	<description>
+		Manages NULL-values of given raster map.
+	</description>
+	<keywords>
+		raster, null data
+	</keywords>
+	<parameter name="map" type="string" required="yes" multiple="no">
+		<description>
+			Mapa ráster para el que editar archivo nulo
+		</description>
+		<keydesc>
+			<item order="1">name</item>
+		</keydesc>
+		<gisprompt age="old" element="cell" prompt="raster" />
+	</parameter>
+	<parameter name="setnull" type="string" required="no" multiple="yes">
+		<description>
+			Lista de valores de celda para establecer a NULO
+		</description>
+		<keydesc>
+			<item order="1">val[-val]</item>
+		</keydesc>
+	</parameter>
+	<parameter name="null" type="float" required="no" multiple="no">
+		<description>
+			El valor por el que sustituir los valores nulos
+		</description>
+	</parameter>
+	<flag name="f">
+		<description>
+			Hacer el trabajo sólo si el mapa es de coma flotante
+		</description>
+	</flag>
+	<flag name="i">
+		<description>
+			Hacer el trabajo sólo si el mapa es de enteros
+		</description>
+	</flag>
+	<flag name="n">
+		<description>
+			Hacer el trabajo sólo si el mapa es no tiene un archivo de mapa de bits de valor NULO
+		</description>
+	</flag>
+	<flag name="c">
+		<description>
+			Crear archivo de mapa de bits de valor NULO validando todas las celdas de datos
+		</description>
+	</flag>
+	<flag name="r">
+		<description>
+			Eliminar archivo de mapa de bits de valor NULO
+		</description>
+	</flag>
+	<flag name="verbose">
+		<description>
+			Salida detallada del módulo.
+		</description>
+	</flag>
+	<flag name="quiet">
+		<description>
+			Salida del módulo "silenciosa".
+		</description>
+	</flag>
+</task>
