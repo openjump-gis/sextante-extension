@@ -18,7 +18,7 @@
 
   <properties>
     <!-- update version property here, used by all submodules instantly -->
-    <project.build.version>2.1.1-SNAPSHOT</project.build.version>
+    <project.build.version>2.2.0-SNAPSHOT</project.build.version>
 
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
