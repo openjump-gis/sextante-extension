@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import com.vividsolutions.jump.workbench.Logger;
+
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
 import io.github.classgraph.ClassInfoList;
@@ -33,7 +35,7 @@ public class Finder {
         public boolean includeClasspathElement(String classpathElementPathStr) {
           if (!jarPattern.matcher(classpathElementPathStr).matches())
             return false;
-          System.out.println(classpathElementPathStr);
+          Logger.debug("Add to scanpath -> "+classpathElementPathStr);
           return true;
         }
       })
