@@ -46,7 +46,7 @@
       <plugin>
         <groupId>io.github.git-commit-id</groupId>
         <artifactId>git-commit-id-maven-plugin</artifactId>
-        <version>5.0.0</version>
+        <version>4.9.9</version>
         <?m2e execute onConfiguration,onIncremental?>
         <executions>
           <!-- retrieve git revision information from local repo -->
@@ -120,7 +120,7 @@
           <execution>
             <!-- fix "not covered by lifecycle configuration" Eclipse issue -->
             <?m2e execute onConfiguration,onIncremental?>
-            <id>copy-dependencies</id>
+            <id>copy-dependencies for development</id>
             <phase>process-resources</phase>
             <goals>
               <goal>copy-dependencies</goal>
